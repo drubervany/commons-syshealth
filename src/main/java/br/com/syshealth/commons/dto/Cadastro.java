@@ -17,7 +17,6 @@ public class Cadastro implements Serializable {
         super();
         this.competencia = competencia;
         this.empresa = empresa;
-
     }
 
     public Integer getCompetencia() {
