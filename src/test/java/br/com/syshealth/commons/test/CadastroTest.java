@@ -28,6 +28,7 @@ public class CadastroTest {
                 new EmpresaCadastro(12345L, OperadoraEnum.BRADESCO,
                         subEmpresas));
 
+        /* Teste bradesco */
         Stream<SubEmpresaCadastro> streamSubEmpresa = cadastro.getEmpresa().getSubEmpresas().stream();
 
         Stream<Set<Segurado>> mapSegurado = streamSubEmpresa.map(se -> se.getSegurados().stream().collect(Collectors.toSet()));
