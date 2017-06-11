@@ -11,20 +11,34 @@ public class Cadastro implements Serializable {
 
     private final Integer competencia;
 
-    private final EmpresaCadastro empresa;
+    private final Empresa empresa;
 
-    public Cadastro(Integer competencia, EmpresaCadastro empresa) {
-        super();
-        this.competencia = competencia;
-        this.empresa = empresa;
-    }
+    private final SubEmpresa subEmpresa;
+
+    private final Segurado segurado;
 
     public Integer getCompetencia() {
         return competencia;
     }
 
-    public EmpresaCadastro getEmpresa() {
+    public Cadastro(Integer competencia, Empresa empresa, SubEmpresa subEmpresa, Segurado segurado) {
+        super();
+        this.competencia = competencia;
+        this.empresa = empresa;
+        this.subEmpresa = subEmpresa;
+        this.segurado = segurado;
+    }
+
+    public Empresa getEmpresa() {
         return empresa;
+    }
+
+    public Segurado getSegurado() {
+        return segurado;
+    }
+
+    public SubEmpresa getSubEmpresa() {
+        return subEmpresa;
     }
 
     public String toJson() {

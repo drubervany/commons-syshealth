@@ -9,10 +9,16 @@ public class SubEmpresa implements Serializable {
 
     private final String nome;
 
-    public SubEmpresa(Integer codigo, String nome) {
+    private final Copay copay;
+
+    private final Aporte aporte;
+
+    public SubEmpresa(Integer codigo, String nome, Copay copay, Aporte aporte) {
         super();
         this.codigo = codigo;
         this.nome = nome;
+        this.copay = copay;
+        this.aporte = aporte;
     }
 
     public Integer getCodigo() {
@@ -52,6 +58,14 @@ public class SubEmpresa implements Serializable {
         } else if (!nome.equals(other.nome))
             return false;
         return true;
+    }
+
+    public Aporte getAporte() {
+        return aporte;
+    }
+
+    public Copay getCopay() {
+        return copay;
     }
 
 }
