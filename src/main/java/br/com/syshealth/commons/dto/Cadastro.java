@@ -22,7 +22,6 @@ public class Cadastro implements Serializable {
     }
 
     public Cadastro(Integer competencia, Empresa empresa, SubEmpresa subEmpresa, Segurado segurado) {
-        super();
         this.competencia = competencia;
         this.empresa = empresa;
         this.subEmpresa = subEmpresa;
