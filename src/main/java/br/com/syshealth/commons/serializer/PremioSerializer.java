@@ -1,4 +1,4 @@
-package br.com.syshealth.commons.dto;
+package br.com.syshealth.commons.serializer;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -8,15 +8,15 @@ import com.google.gson.GsonBuilder;
 import br.com.syshealth.commons.utils.Sistema;
 
 @SuppressWarnings("serial")
-public class Premio implements Serializable {
+public class PremioSerializer implements Serializable {
 
     private final Integer competencia;
 
-    private final Empresa empresa;
+    private final EmpresaSerializer empresa;
 
-    private final SubEmpresa subEmpresa;
+    private final SubEmpresaSerializer subEmpresa;
 
-    private final Segurado segurado;
+    private final SeguradoSerializer segurado;
 
     private final BigDecimal valorPremio;
 
@@ -26,7 +26,7 @@ public class Premio implements Serializable {
 
     private final BigDecimal valorParteSegurado;
 
-    public Premio(Integer competencia, Empresa empresa, SubEmpresa subEmpresa, Segurado segurado, BigDecimal valorPremio,
+    public PremioSerializer(Integer competencia, EmpresaSerializer empresa, SubEmpresaSerializer subEmpresa, SeguradoSerializer segurado, BigDecimal valorPremio,
             BigDecimal valorTaxaAdm, BigDecimal valorRemissao, BigDecimal valorParteSegurado) {
         super();
         this.competencia = competencia;
@@ -43,15 +43,15 @@ public class Premio implements Serializable {
         return competencia;
     }
 
-    public Empresa getEmpresa() {
+    public EmpresaSerializer getEmpresa() {
         return empresa;
     }
 
-    public Segurado getSegurado() {
+    public SeguradoSerializer getSegurado() {
         return segurado;
     }
 
-    public SubEmpresa getSubEmpresa() {
+    public SubEmpresaSerializer getSubEmpresa() {
         return subEmpresa;
     }
 
@@ -75,8 +75,8 @@ public class Premio implements Serializable {
         return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().toJson(this);
     }
 
-    public static Premio fromJson(String json) {
-        return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().fromJson(json, Premio.class);
+    public static PremioSerializer fromJson(String json) {
+        return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().fromJson(json, PremioSerializer.class);
     }
 
 }

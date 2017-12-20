@@ -1,4 +1,4 @@
-package br.com.syshealth.commons.dto;
+package br.com.syshealth.commons.serializer;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -11,15 +11,15 @@ import br.com.syshealth.commons.enums.SimNaoEnum;
 import br.com.syshealth.commons.utils.Sistema;
 
 @SuppressWarnings("serial")
-public class Sinistro implements Serializable {
+public class SinistroSerializer implements Serializable {
 
     private final Integer competencia;
 
-    private final Empresa empresa;
+    private final EmpresaSerializer empresa;
 
-    private final SubEmpresa subEmpresa;
+    private final SubEmpresaSerializer subEmpresa;
 
-    private final Segurado segurado;
+    private final SeguradoSerializer segurado;
 
     private final String conta;
 
@@ -29,11 +29,11 @@ public class Sinistro implements Serializable {
 
     private final String grupoDespesa;
 
-    private final Procedimento procedimento;
+    private final ProcedimentoSerializer procedimento;
 
     private final Integer qtdeProcedimento;
 
-    private final Prestador prestador;
+    private final PrestadorSerializer prestador;
 
     private final BigDecimal valorSinistro;
 
@@ -55,8 +55,8 @@ public class Sinistro implements Serializable {
 
     private final String crmSolicitante;
 
-    public Sinistro(Integer competencia, Empresa empresa, SubEmpresa subEmpresa, Segurado segurado, String conta, Date dataAtendimento,
-            Date dataPagamento, String grupoDespesa, Procedimento procedimento, Integer qtdeProcedimento, Prestador prestador,
+    public SinistroSerializer(Integer competencia, EmpresaSerializer empresa, SubEmpresaSerializer subEmpresa, SeguradoSerializer segurado, String conta, Date dataAtendimento,
+            Date dataPagamento, String grupoDespesa, ProcedimentoSerializer procedimento, Integer qtdeProcedimento, PrestadorSerializer prestador,
             BigDecimal valorSinistro, BigDecimal valorRecibo, BigDecimal valorPago, BigDecimal valorInssIssFajtr,
             BigDecimal valorInssIssMoeda, String numDocumento, RedeReembolsoEnum redeReembolso, SimNaoEnum internado,
             String localAtendimento, String crmSolicitante) {
@@ -88,15 +88,15 @@ public class Sinistro implements Serializable {
         return competencia;
     }
 
-    public Empresa getEmpresa() {
+    public EmpresaSerializer getEmpresa() {
         return empresa;
     }
 
-    public SubEmpresa getSubEmpresa() {
+    public SubEmpresaSerializer getSubEmpresa() {
         return subEmpresa;
     }
 
-    public Segurado getSegurado() {
+    public SeguradoSerializer getSegurado() {
         return segurado;
     }
 
@@ -116,7 +116,7 @@ public class Sinistro implements Serializable {
         return grupoDespesa;
     }
 
-    public Procedimento getProcedimento() {
+    public ProcedimentoSerializer getProcedimento() {
         return procedimento;
     }
 
@@ -124,7 +124,7 @@ public class Sinistro implements Serializable {
         return qtdeProcedimento;
     }
 
-    public Prestador getPrestador() {
+    public PrestadorSerializer getPrestador() {
         return prestador;
     }
 
@@ -172,8 +172,8 @@ public class Sinistro implements Serializable {
         return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().toJson(this);
     }
 
-    public static Sinistro fromJson(String json) {
-        return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().fromJson(json, Sinistro.class);
+    public static SinistroSerializer fromJson(String json) {
+        return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().fromJson(json, SinistroSerializer.class);
     }
 
 }

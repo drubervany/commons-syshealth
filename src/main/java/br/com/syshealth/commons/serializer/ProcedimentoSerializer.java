@@ -1,20 +1,20 @@
-package br.com.syshealth.commons.dto;
+package br.com.syshealth.commons.serializer;
 
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-public class EstadoCivil implements Serializable {
+public class ProcedimentoSerializer implements Serializable {
 
-	private final Integer codigo;
+	private final Long codigo;
 	private final String nome;
 
-	public EstadoCivil(Integer codigo, String nome) {
+	public ProcedimentoSerializer(Long codigo, String nome) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;
 	}
 
-	public Integer getCodigo() {
+	public Long getCodigo() {
 		return codigo;
 	}
 

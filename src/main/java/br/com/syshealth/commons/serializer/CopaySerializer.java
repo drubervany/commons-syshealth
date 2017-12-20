@@ -1,4 +1,4 @@
-package br.com.syshealth.commons.dto;
+package br.com.syshealth.commons.serializer;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -8,13 +8,13 @@ import com.google.gson.GsonBuilder;
 import br.com.syshealth.commons.utils.Sistema;
 
 @SuppressWarnings("serial")
-public class Copay implements Serializable {
+public class CopaySerializer implements Serializable {
 
     private final String descricao;
 
     private final BigDecimal valor;
 
-    public Copay(String descricao, BigDecimal valor) {
+    public CopaySerializer(String descricao, BigDecimal valor) {
         super();
         this.descricao = descricao;
         this.valor = valor;
@@ -32,7 +32,7 @@ public class Copay implements Serializable {
         return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().toJson(this);
     }
 
-    public static Copay fromJson(String json) {
-        return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().fromJson(json, Copay.class);
+    public static CopaySerializer fromJson(String json) {
+        return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().fromJson(json, CopaySerializer.class);
     }
 }

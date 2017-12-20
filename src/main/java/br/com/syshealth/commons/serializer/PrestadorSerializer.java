@@ -1,9 +1,9 @@
-package br.com.syshealth.commons.dto;
+package br.com.syshealth.commons.serializer;
 
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-public class Prestador implements Serializable {
+public class PrestadorSerializer implements Serializable {
 
     private final Long codigo;
 
@@ -13,7 +13,7 @@ public class Prestador implements Serializable {
 
     private final String tipoDoReferenciado;
 
-    public Prestador(Long codigo, String nome, String cpfCgcDoReferenciado, String tipoDoReferenciado) {
+    public PrestadorSerializer(Long codigo, String nome, String cpfCgcDoReferenciado, String tipoDoReferenciado) {
         super();
         this.codigo = codigo;
         this.nome = nome;

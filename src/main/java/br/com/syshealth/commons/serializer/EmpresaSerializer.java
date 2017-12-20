@@ -1,11 +1,12 @@
-package br.com.syshealth.commons.dto;
+package br.com.syshealth.commons.serializer;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import br.com.syshealth.commons.enums.OperadoraEnum;
 
 @SuppressWarnings("serial")
-public class Empresa implements Serializable {
+public class EmpresaSerializer implements Serializable {
 
     private final Integer codigo;
 
@@ -14,9 +15,10 @@ public class Empresa implements Serializable {
     private final Long contrato;
 
     private final OperadoraEnum operadora;
+    
+    private BigDecimal limiteTecnico;
 
-    public Empresa(Integer codigo, String nome, Long contrato, OperadoraEnum operadora) {
-        super();
+    public EmpresaSerializer(Integer codigo, String nome, Long contrato, OperadoraEnum operadora) {
         this.codigo = codigo;
         this.nome = nome;
         this.contrato = contrato;
@@ -38,4 +40,12 @@ public class Empresa implements Serializable {
     public OperadoraEnum getOperadora() {
         return operadora;
     }
+
+	public BigDecimal getLimiteTecnico() {
+		return limiteTecnico;
+	}
+
+	public void setLimiteTecnico(BigDecimal limiteTecnico) {
+		this.limiteTecnico = limiteTecnico;
+	}
 }

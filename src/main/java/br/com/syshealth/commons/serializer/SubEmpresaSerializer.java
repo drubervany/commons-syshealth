@@ -1,26 +1,27 @@
-package br.com.syshealth.commons.dto;
+package br.com.syshealth.commons.serializer;
 
 import java.io.Serializable;
 
-import br.com.syshealth.commons.enums.AcomodacaoEnum;
+@SuppressWarnings("serial")
+public class SubEmpresaSerializer implements Serializable {
 
-public class Plano implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    private final String codigo;
+    private final Integer codigo;
 
     private final String nome;
 
-    private AcomodacaoEnum acomodacao;
+    private final CopaySerializer copay;
 
-    public Plano(String codigo, String nome) {
+    private final AporteSerializer aporte;
+
+    public SubEmpresaSerializer(Integer codigo, String nome, CopaySerializer copay, AporteSerializer aporte) {
         super();
         this.codigo = codigo;
         this.nome = nome;
+        this.copay = copay;
+        this.aporte = aporte;
     }
 
-    public String getCodigo() {
+    public Integer getCodigo() {
         return codigo;
     }
 
@@ -33,6 +34,7 @@ public class Plano implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+        result = prime * result + ((nome == null) ? 0 : nome.hashCode());
         return result;
     }
 
@@ -44,21 +46,26 @@ public class Plano implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Plano other = (Plano) obj;
+        SubEmpresaSerializer other = (SubEmpresaSerializer) obj;
         if (codigo == null) {
             if (other.codigo != null)
                 return false;
         } else if (!codigo.equals(other.codigo))
             return false;
+        if (nome == null) {
+            if (other.nome != null)
+                return false;
+        } else if (!nome.equals(other.nome))
+            return false;
         return true;
     }
 
-    public AcomodacaoEnum getAcomodacao() {
-        return acomodacao;
+    public AporteSerializer getAporte() {
+        return aporte;
     }
 
-    public void setAcomodacao(AcomodacaoEnum acomodacao) {
-        this.acomodacao = acomodacao;
+    public CopaySerializer getCopay() {
+        return copay;
     }
 
 }

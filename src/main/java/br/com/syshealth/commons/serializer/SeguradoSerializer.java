@@ -1,4 +1,4 @@
-package br.com.syshealth.commons.dto;
+package br.com.syshealth.commons.serializer;
 
 import java.util.Date;
 
@@ -10,7 +10,7 @@ import br.com.syshealth.commons.enums.SexoEnum;
 import br.com.syshealth.commons.enums.TipoBeneficiarioEnum;
 import br.com.syshealth.commons.utils.Sistema;
 
-public class Segurado {
+public class SeguradoSerializer {
 
     private final Long codigo;
 
@@ -36,11 +36,11 @@ public class Segurado {
 
     private final Integer idade;
 
-    private final Plano plano;
+    private final PlanoSerializer plano;
 
-    public Segurado(Long codigo, String carteirinha, String nome, String cpf, Date dataNascimento, Date dataInicio, Date dataFim,
+    public SeguradoSerializer(Long codigo, String carteirinha, String nome, String cpf, Date dataNascimento, Date dataInicio, Date dataFim,
             TipoBeneficiarioEnum tipoBeneficiario, SexoEnum sexo, GrauParentescoEnum parentesco, EstadoCivilEnum estadoCivil,
-            Integer idade, Plano plano) {
+            Integer idade, PlanoSerializer plano) {
         super();
         this.codigo = codigo;
         this.carteirinha = carteirinha;
@@ -105,7 +105,7 @@ public class Segurado {
         return idade;
     }
 
-    public Plano getPlano() {
+    public PlanoSerializer getPlano() {
         return plano;
     }
 
@@ -113,8 +113,8 @@ public class Segurado {
         return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().toJson(this);
     }
 
-    public static Segurado fromJson(String json) {
-        return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().fromJson(json, Segurado.class);
+    public static SeguradoSerializer fromJson(String json) {
+        return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().fromJson(json, SeguradoSerializer.class);
     }
 
 }
