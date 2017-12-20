@@ -5,11 +5,13 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class EstadoCivilSerializer implements Serializable {
 
-	private final Integer codigo;
-	private final String nome;
+	private Integer codigo;
+	private String nome;
+
+	public EstadoCivilSerializer() {
+	}
 
 	public EstadoCivilSerializer(Integer codigo, String nome) {
-		super();
 		this.codigo = codigo;
 		this.nome = nome;
 	}

@@ -10,29 +10,33 @@ import br.com.syshealth.commons.utils.Sistema;
 @SuppressWarnings("serial")
 public class CopaySerializer implements Serializable {
 
-    private final String descricao;
+	private String descricao;
 
-    private final BigDecimal valor;
+	private BigDecimal valor;
 
-    public CopaySerializer(String descricao, BigDecimal valor) {
-        super();
-        this.descricao = descricao;
-        this.valor = valor;
-    }
+	public CopaySerializer() {
 
-    public String getDescricao() {
-        return descricao;
-    }
+	}
 
-    public BigDecimal getValor() {
-        return valor;
-    }
+	public CopaySerializer(String descricao, BigDecimal valor) {
+		this.descricao = descricao;
+		this.valor = valor;
+	}
 
-    public String toJson() {
-        return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().toJson(this);
-    }
+	public String getDescricao() {
+		return descricao;
+	}
 
-    public static CopaySerializer fromJson(String json) {
-        return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().fromJson(json, CopaySerializer.class);
-    }
+	public BigDecimal getValor() {
+		return valor;
+	}
+
+	public String toJson() {
+		return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().toJson(this);
+	}
+
+	public static CopaySerializer fromJson(String json) {
+		return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().fromJson(json,
+				CopaySerializer.class);
+	}
 }

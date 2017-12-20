@@ -12,109 +12,114 @@ import br.com.syshealth.commons.utils.Sistema;
 
 public class SeguradoSerializer {
 
-    private final Long codigo;
+	private Long codigo;
 
-    private final String carteirinha;
+	private String carteirinha;
 
-    private final String nome;
+	private String nome;
 
-    private final String cpf;
+	private String cpf;
 
-    private final Date dataNascimento;
+	private Date dataNascimento;
 
-    private final Date dataInicio;
+	private Date dataInicio;
 
-    private final Date dataFim;
+	private Date dataFim;
 
-    private final TipoBeneficiarioEnum tipoBeneficiario;
+	private TipoBeneficiarioEnum tipoBeneficiario;
 
-    private final SexoEnum sexo;
+	private SexoEnum sexo;
 
-    private final GrauParentescoEnum parentesco;
+	private GrauParentescoEnum parentesco;
 
-    private final EstadoCivilEnum estadoCivil;
+	private EstadoCivilEnum estadoCivil;
 
-    private final Integer idade;
+	private Integer idade;
 
-    private final PlanoSerializer plano;
+	private PlanoSerializer plano;
 
-    public SeguradoSerializer(Long codigo, String carteirinha, String nome, String cpf, Date dataNascimento, Date dataInicio, Date dataFim,
-            TipoBeneficiarioEnum tipoBeneficiario, SexoEnum sexo, GrauParentescoEnum parentesco, EstadoCivilEnum estadoCivil,
-            Integer idade, PlanoSerializer plano) {
-        super();
-        this.codigo = codigo;
-        this.carteirinha = carteirinha;
-        this.nome = nome;
-        this.cpf = cpf;
-        this.dataNascimento = dataNascimento;
-        this.dataInicio = dataInicio;
-        this.dataFim = dataFim;
-        this.tipoBeneficiario = tipoBeneficiario;
-        this.sexo = sexo;
-        this.parentesco = parentesco;
-        this.estadoCivil = estadoCivil;
-        this.idade = idade;
-        this.plano = plano;
-    }
+	public SeguradoSerializer() {
 
-    public Long getCodigo() {
-        return codigo;
-    }
+	}
 
-    public String getCarteirinha() {
-        return carteirinha;
-    }
+	public SeguradoSerializer(Long codigo, String carteirinha, String nome, String cpf, Date dataNascimento,
+			Date dataInicio, Date dataFim, TipoBeneficiarioEnum tipoBeneficiario, SexoEnum sexo,
+			GrauParentescoEnum parentesco, EstadoCivilEnum estadoCivil, Integer idade, PlanoSerializer plano) {
 
-    public String getNome() {
-        return nome;
-    }
+		this.codigo = codigo;
+		this.carteirinha = carteirinha;
+		this.nome = nome;
+		this.cpf = cpf;
+		this.dataNascimento = dataNascimento;
+		this.dataInicio = dataInicio;
+		this.dataFim = dataFim;
+		this.tipoBeneficiario = tipoBeneficiario;
+		this.sexo = sexo;
+		this.parentesco = parentesco;
+		this.estadoCivil = estadoCivil;
+		this.idade = idade;
+		this.plano = plano;
+	}
 
-    public String getCpf() {
-        return cpf;
-    }
+	public Long getCodigo() {
+		return codigo;
+	}
 
-    public Date getDataNascimento() {
-        return dataNascimento;
-    }
+	public String getCarteirinha() {
+		return carteirinha;
+	}
 
-    public Date getDataInicio() {
-        return dataInicio;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public Date getDataFim() {
-        return dataFim;
-    }
+	public String getCpf() {
+		return cpf;
+	}
 
-    public TipoBeneficiarioEnum getTipoBeneficiario() {
-        return tipoBeneficiario;
-    }
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
 
-    public SexoEnum getSexo() {
-        return sexo;
-    }
+	public Date getDataInicio() {
+		return dataInicio;
+	}
 
-    public GrauParentescoEnum getParentesco() {
-        return parentesco;
-    }
+	public Date getDataFim() {
+		return dataFim;
+	}
 
-    public EstadoCivilEnum getEstadoCivil() {
-        return estadoCivil;
-    }
+	public TipoBeneficiarioEnum getTipoBeneficiario() {
+		return tipoBeneficiario;
+	}
 
-    public Integer getIdade() {
-        return idade;
-    }
+	public SexoEnum getSexo() {
+		return sexo;
+	}
 
-    public PlanoSerializer getPlano() {
-        return plano;
-    }
+	public GrauParentescoEnum getParentesco() {
+		return parentesco;
+	}
 
-    public String toJson() {
-        return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().toJson(this);
-    }
+	public EstadoCivilEnum getEstadoCivil() {
+		return estadoCivil;
+	}
 
-    public static SeguradoSerializer fromJson(String json) {
-        return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().fromJson(json, SeguradoSerializer.class);
-    }
+	public Integer getIdade() {
+		return idade;
+	}
+
+	public PlanoSerializer getPlano() {
+		return plano;
+	}
+
+	public String toJson() {
+		return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().toJson(this);
+	}
+
+	public static SeguradoSerializer fromJson(String json) {
+		return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().fromJson(json,
+				SeguradoSerializer.class);
+	}
 
 }

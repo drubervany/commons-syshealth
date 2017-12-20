@@ -9,42 +9,48 @@ import br.com.syshealth.commons.utils.Sistema;
 @SuppressWarnings("serial")
 public class CadastroSerializer implements Serializable {
 
-    private final Integer competencia;
+	private Integer competencia;
 
-    private final EmpresaSerializer empresa;
+	private EmpresaSerializer empresa;
 
-    private final SubEmpresaSerializer subEmpresa;
+	private SubEmpresaSerializer subEmpresa;
 
-    private final SeguradoSerializer segurado;
+	private SeguradoSerializer segurado;
 
-    public Integer getCompetencia() {
-        return competencia;
-    }
+	public CadastroSerializer() {
 
-    public CadastroSerializer(Integer competencia, EmpresaSerializer empresa, SubEmpresaSerializer subEmpresa, SeguradoSerializer segurado) {
-        this.competencia = competencia;
-        this.empresa = empresa;
-        this.subEmpresa = subEmpresa;
-        this.segurado = segurado;
-    }
+	}
 
-    public EmpresaSerializer getEmpresa() {
-        return empresa;
-    }
+	public CadastroSerializer(Integer competencia, EmpresaSerializer empresa, SubEmpresaSerializer subEmpresa,
+			SeguradoSerializer segurado) {
+		this.competencia = competencia;
+		this.empresa = empresa;
+		this.subEmpresa = subEmpresa;
+		this.segurado = segurado;
+	}
 
-    public SeguradoSerializer getSegurado() {
-        return segurado;
-    }
+	public EmpresaSerializer getEmpresa() {
+		return empresa;
+	}
 
-    public SubEmpresaSerializer getSubEmpresa() {
-        return subEmpresa;
-    }
+	public SeguradoSerializer getSegurado() {
+		return segurado;
+	}
 
-    public String toJson() {
-        return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().toJson(this);
-    }
+	public SubEmpresaSerializer getSubEmpresa() {
+		return subEmpresa;
+	}
 
-    public static CadastroSerializer fromJson(String json) {
-        return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().fromJson(json, CadastroSerializer.class);
-    }
+	public Integer getCompetencia() {
+		return competencia;
+	}
+
+	public String toJson() {
+		return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().toJson(this);
+	}
+
+	public static CadastroSerializer fromJson(String json) {
+		return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().fromJson(json,
+				CadastroSerializer.class);
+	}
 }

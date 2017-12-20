@@ -13,167 +13,173 @@ import br.com.syshealth.commons.utils.Sistema;
 @SuppressWarnings("serial")
 public class SinistroSerializer implements Serializable {
 
-    private final Integer competencia;
+	private Integer competencia;
 
-    private final EmpresaSerializer empresa;
+	private EmpresaSerializer empresa;
 
-    private final SubEmpresaSerializer subEmpresa;
+	private SubEmpresaSerializer subEmpresa;
 
-    private final SeguradoSerializer segurado;
+	private SeguradoSerializer segurado;
 
-    private final String conta;
+	private String conta;
 
-    private final Date dataAtendimento;
+	private Date dataAtendimento;
 
-    private final Date dataPagamento;
+	private Date dataPagamento;
 
-    private final String grupoDespesa;
+	private String grupoDespesa;
 
-    private final ProcedimentoSerializer procedimento;
+	private ProcedimentoSerializer procedimento;
 
-    private final Integer qtdeProcedimento;
+	private Integer qtdeProcedimento;
 
-    private final PrestadorSerializer prestador;
+	private PrestadorSerializer prestador;
 
-    private final BigDecimal valorSinistro;
+	private BigDecimal valorSinistro;
 
-    private final BigDecimal valorRecibo;
+	private BigDecimal valorRecibo;
 
-    private final BigDecimal valorPago;
+	private BigDecimal valorPago;
 
-    private final BigDecimal valorInssIssFajtr;
+	private BigDecimal valorInssIssFajtr;
 
-    private final BigDecimal valorInssIssMoeda;
+	private BigDecimal valorInssIssMoeda;
 
-    private final String numDocumento;
+	private String numDocumento;
 
-    private final RedeReembolsoEnum redeReembolso;
+	private RedeReembolsoEnum redeReembolso;
 
-    private final SimNaoEnum internado;
+	private SimNaoEnum internado;
 
-    private final String localAtendimento;
+	private String localAtendimento;
 
-    private final String crmSolicitante;
+	private String crmSolicitante;
 
-    public SinistroSerializer(Integer competencia, EmpresaSerializer empresa, SubEmpresaSerializer subEmpresa, SeguradoSerializer segurado, String conta, Date dataAtendimento,
-            Date dataPagamento, String grupoDespesa, ProcedimentoSerializer procedimento, Integer qtdeProcedimento, PrestadorSerializer prestador,
-            BigDecimal valorSinistro, BigDecimal valorRecibo, BigDecimal valorPago, BigDecimal valorInssIssFajtr,
-            BigDecimal valorInssIssMoeda, String numDocumento, RedeReembolsoEnum redeReembolso, SimNaoEnum internado,
-            String localAtendimento, String crmSolicitante) {
-        super();
-        this.competencia = competencia;
-        this.empresa = empresa;
-        this.subEmpresa = subEmpresa;
-        this.segurado = segurado;
-        this.conta = conta;
-        this.dataAtendimento = dataAtendimento;
-        this.dataPagamento = dataPagamento;
-        this.grupoDespesa = grupoDespesa;
-        this.procedimento = procedimento;
-        this.qtdeProcedimento = qtdeProcedimento;
-        this.prestador = prestador;
-        this.valorSinistro = valorSinistro;
-        this.valorRecibo = valorRecibo;
-        this.valorPago = valorPago;
-        this.valorInssIssFajtr = valorInssIssFajtr;
-        this.valorInssIssMoeda = valorInssIssMoeda;
-        this.numDocumento = numDocumento;
-        this.redeReembolso = redeReembolso;
-        this.internado = internado;
-        this.localAtendimento = localAtendimento;
-        this.crmSolicitante = crmSolicitante;
-    }
+	public SinistroSerializer() {
 
-    public Integer getCompetencia() {
-        return competencia;
-    }
+	}
 
-    public EmpresaSerializer getEmpresa() {
-        return empresa;
-    }
+	public SinistroSerializer(Integer competencia, EmpresaSerializer empresa, SubEmpresaSerializer subEmpresa,
+			SeguradoSerializer segurado, String conta, Date dataAtendimento, Date dataPagamento, String grupoDespesa,
+			ProcedimentoSerializer procedimento, Integer qtdeProcedimento, PrestadorSerializer prestador,
+			BigDecimal valorSinistro, BigDecimal valorRecibo, BigDecimal valorPago, BigDecimal valorInssIssFajtr,
+			BigDecimal valorInssIssMoeda, String numDocumento, RedeReembolsoEnum redeReembolso, SimNaoEnum internado,
+			String localAtendimento, String crmSolicitante) {
 
-    public SubEmpresaSerializer getSubEmpresa() {
-        return subEmpresa;
-    }
+		this.competencia = competencia;
+		this.empresa = empresa;
+		this.subEmpresa = subEmpresa;
+		this.segurado = segurado;
+		this.conta = conta;
+		this.dataAtendimento = dataAtendimento;
+		this.dataPagamento = dataPagamento;
+		this.grupoDespesa = grupoDespesa;
+		this.procedimento = procedimento;
+		this.qtdeProcedimento = qtdeProcedimento;
+		this.prestador = prestador;
+		this.valorSinistro = valorSinistro;
+		this.valorRecibo = valorRecibo;
+		this.valorPago = valorPago;
+		this.valorInssIssFajtr = valorInssIssFajtr;
+		this.valorInssIssMoeda = valorInssIssMoeda;
+		this.numDocumento = numDocumento;
+		this.redeReembolso = redeReembolso;
+		this.internado = internado;
+		this.localAtendimento = localAtendimento;
+		this.crmSolicitante = crmSolicitante;
+	}
 
-    public SeguradoSerializer getSegurado() {
-        return segurado;
-    }
+	public Integer getCompetencia() {
+		return competencia;
+	}
 
-    public String getConta() {
-        return conta;
-    }
+	public EmpresaSerializer getEmpresa() {
+		return empresa;
+	}
 
-    public Date getDataAtendimento() {
-        return dataAtendimento;
-    }
+	public SubEmpresaSerializer getSubEmpresa() {
+		return subEmpresa;
+	}
 
-    public Date getDataPagamento() {
-        return dataPagamento;
-    }
+	public SeguradoSerializer getSegurado() {
+		return segurado;
+	}
 
-    public String getGrupoDespesa() {
-        return grupoDespesa;
-    }
+	public String getConta() {
+		return conta;
+	}
 
-    public ProcedimentoSerializer getProcedimento() {
-        return procedimento;
-    }
+	public Date getDataAtendimento() {
+		return dataAtendimento;
+	}
 
-    public Integer getQtdeProcedimento() {
-        return qtdeProcedimento;
-    }
+	public Date getDataPagamento() {
+		return dataPagamento;
+	}
 
-    public PrestadorSerializer getPrestador() {
-        return prestador;
-    }
+	public String getGrupoDespesa() {
+		return grupoDespesa;
+	}
 
-    public BigDecimal getValorSinistro() {
-        return valorSinistro;
-    }
+	public ProcedimentoSerializer getProcedimento() {
+		return procedimento;
+	}
 
-    public BigDecimal getValorRecibo() {
-        return valorRecibo;
-    }
+	public Integer getQtdeProcedimento() {
+		return qtdeProcedimento;
+	}
 
-    public BigDecimal getValorPago() {
-        return valorPago;
-    }
+	public PrestadorSerializer getPrestador() {
+		return prestador;
+	}
 
-    public BigDecimal getValorInssIssFajtr() {
-        return valorInssIssFajtr;
-    }
+	public BigDecimal getValorSinistro() {
+		return valorSinistro;
+	}
 
-    public BigDecimal getValorInssIssMoeda() {
-        return valorInssIssMoeda;
-    }
+	public BigDecimal getValorRecibo() {
+		return valorRecibo;
+	}
 
-    public String getNumDocumento() {
-        return numDocumento;
-    }
+	public BigDecimal getValorPago() {
+		return valorPago;
+	}
 
-    public RedeReembolsoEnum getRedeReembolso() {
-        return redeReembolso;
-    }
+	public BigDecimal getValorInssIssFajtr() {
+		return valorInssIssFajtr;
+	}
 
-    public SimNaoEnum getInternado() {
-        return internado;
-    }
+	public BigDecimal getValorInssIssMoeda() {
+		return valorInssIssMoeda;
+	}
 
-    public String getLocalAtendimento() {
-        return localAtendimento;
-    }
+	public String getNumDocumento() {
+		return numDocumento;
+	}
 
-    public String getCrmSolicitante() {
-        return crmSolicitante;
-    }
+	public RedeReembolsoEnum getRedeReembolso() {
+		return redeReembolso;
+	}
 
-    public String toJson() {
-        return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().toJson(this);
-    }
+	public SimNaoEnum getInternado() {
+		return internado;
+	}
 
-    public static SinistroSerializer fromJson(String json) {
-        return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().fromJson(json, SinistroSerializer.class);
-    }
+	public String getLocalAtendimento() {
+		return localAtendimento;
+	}
+
+	public String getCrmSolicitante() {
+		return crmSolicitante;
+	}
+
+	public String toJson() {
+		return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().toJson(this);
+	}
+
+	public static SinistroSerializer fromJson(String json) {
+		return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().fromJson(json,
+				SinistroSerializer.class);
+	}
 
 }

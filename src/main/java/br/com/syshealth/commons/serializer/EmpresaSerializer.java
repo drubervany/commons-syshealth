@@ -8,38 +8,42 @@ import br.com.syshealth.commons.enums.OperadoraEnum;
 @SuppressWarnings("serial")
 public class EmpresaSerializer implements Serializable {
 
-    private final Integer codigo;
+	private Integer codigo;
 
-    private final String nome;
+	private String nome;
 
-    private final Long contrato;
+	private Long contrato;
 
-    private final OperadoraEnum operadora;
-    
-    private BigDecimal limiteTecnico;
+	private OperadoraEnum operadora;
 
-    public EmpresaSerializer(Integer codigo, String nome, Long contrato, OperadoraEnum operadora) {
-        this.codigo = codigo;
-        this.nome = nome;
-        this.contrato = contrato;
-        this.operadora = operadora;
-    }
+	private BigDecimal limiteTecnico;
 
-    public Integer getCodigo() {
-        return codigo;
-    }
+	public EmpresaSerializer() {
 
-    public String getNome() {
-        return nome;
-    }
+	}
 
-    public Long getContrato() {
-        return contrato;
-    }
+	public EmpresaSerializer(Integer codigo, String nome, Long contrato, OperadoraEnum operadora) {
+		this.codigo = codigo;
+		this.nome = nome;
+		this.contrato = contrato;
+		this.operadora = operadora;
+	}
 
-    public OperadoraEnum getOperadora() {
-        return operadora;
-    }
+	public Integer getCodigo() {
+		return codigo;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public Long getContrato() {
+		return contrato;
+	}
+
+	public OperadoraEnum getOperadora() {
+		return operadora;
+	}
 
 	public BigDecimal getLimiteTecnico() {
 		return limiteTecnico;

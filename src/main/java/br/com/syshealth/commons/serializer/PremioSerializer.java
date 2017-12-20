@@ -10,73 +10,79 @@ import br.com.syshealth.commons.utils.Sistema;
 @SuppressWarnings("serial")
 public class PremioSerializer implements Serializable {
 
-    private final Integer competencia;
+	private Integer competencia;
 
-    private final EmpresaSerializer empresa;
+	private EmpresaSerializer empresa;
 
-    private final SubEmpresaSerializer subEmpresa;
+	private SubEmpresaSerializer subEmpresa;
 
-    private final SeguradoSerializer segurado;
+	private SeguradoSerializer segurado;
 
-    private final BigDecimal valorPremio;
+	private BigDecimal valorPremio;
 
-    private final BigDecimal valorTaxaAdm;
+	private BigDecimal valorTaxaAdm;
 
-    private final BigDecimal valorRemissao;
+	private BigDecimal valorRemissao;
 
-    private final BigDecimal valorParteSegurado;
+	private BigDecimal valorParteSegurado;
 
-    public PremioSerializer(Integer competencia, EmpresaSerializer empresa, SubEmpresaSerializer subEmpresa, SeguradoSerializer segurado, BigDecimal valorPremio,
-            BigDecimal valorTaxaAdm, BigDecimal valorRemissao, BigDecimal valorParteSegurado) {
-        super();
-        this.competencia = competencia;
-        this.empresa = empresa;
-        this.subEmpresa = subEmpresa;
-        this.segurado = segurado;
-        this.valorPremio = valorPremio;
-        this.valorTaxaAdm = valorTaxaAdm;
-        this.valorRemissao = valorRemissao;
-        this.valorParteSegurado = valorParteSegurado;
-    }
+	public PremioSerializer() {
 
-    public Integer getCompetencia() {
-        return competencia;
-    }
+	}
 
-    public EmpresaSerializer getEmpresa() {
-        return empresa;
-    }
+	public PremioSerializer(Integer competencia, EmpresaSerializer empresa, SubEmpresaSerializer subEmpresa,
+			SeguradoSerializer segurado, BigDecimal valorPremio, BigDecimal valorTaxaAdm, BigDecimal valorRemissao,
+			BigDecimal valorParteSegurado) {
+		super();
+		this.competencia = competencia;
+		this.empresa = empresa;
+		this.subEmpresa = subEmpresa;
+		this.segurado = segurado;
+		this.valorPremio = valorPremio;
+		this.valorTaxaAdm = valorTaxaAdm;
+		this.valorRemissao = valorRemissao;
+		this.valorParteSegurado = valorParteSegurado;
+	}
 
-    public SeguradoSerializer getSegurado() {
-        return segurado;
-    }
+	public Integer getCompetencia() {
+		return competencia;
+	}
 
-    public SubEmpresaSerializer getSubEmpresa() {
-        return subEmpresa;
-    }
+	public EmpresaSerializer getEmpresa() {
+		return empresa;
+	}
 
-    public BigDecimal getValorPremio() {
-        return valorPremio;
-    }
+	public SeguradoSerializer getSegurado() {
+		return segurado;
+	}
 
-    public BigDecimal getValorTaxaAdm() {
-        return valorTaxaAdm;
-    }
+	public SubEmpresaSerializer getSubEmpresa() {
+		return subEmpresa;
+	}
 
-    public BigDecimal getValorRemissao() {
-        return valorRemissao;
-    }
+	public BigDecimal getValorPremio() {
+		return valorPremio;
+	}
 
-    public BigDecimal getValorParteSegurado() {
-        return valorParteSegurado;
-    }
+	public BigDecimal getValorTaxaAdm() {
+		return valorTaxaAdm;
+	}
 
-    public String toJson() {
-        return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().toJson(this);
-    }
+	public BigDecimal getValorRemissao() {
+		return valorRemissao;
+	}
 
-    public static PremioSerializer fromJson(String json) {
-        return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().fromJson(json, PremioSerializer.class);
-    }
+	public BigDecimal getValorParteSegurado() {
+		return valorParteSegurado;
+	}
+
+	public String toJson() {
+		return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().toJson(this);
+	}
+
+	public static PremioSerializer fromJson(String json) {
+		return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().fromJson(json,
+				PremioSerializer.class);
+	}
 
 }

@@ -5,11 +5,14 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class ProcedimentoSerializer implements Serializable {
 
-	private final Long codigo;
-	private final String nome;
+	private Long codigo;
+	private String nome;
+
+	public ProcedimentoSerializer() {
+
+	}
 
 	public ProcedimentoSerializer(Long codigo, String nome) {
-		super();
 		this.codigo = codigo;
 		this.nome = nome;
 	}

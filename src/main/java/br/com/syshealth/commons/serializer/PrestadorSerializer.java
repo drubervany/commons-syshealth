@@ -5,36 +5,39 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class PrestadorSerializer implements Serializable {
 
-    private final Long codigo;
+	private Long codigo;
 
-    private final String nome;
+	private String nome;
 
-    private final String cpfCgcDoReferenciado;
+	private String cpfCgcDoReferenciado;
 
-    private final String tipoDoReferenciado;
+	private String tipoDoReferenciado;
 
-    public PrestadorSerializer(Long codigo, String nome, String cpfCgcDoReferenciado, String tipoDoReferenciado) {
-        super();
-        this.codigo = codigo;
-        this.nome = nome;
-        this.cpfCgcDoReferenciado = cpfCgcDoReferenciado;
-        this.tipoDoReferenciado = tipoDoReferenciado;
-    }
+	public PrestadorSerializer() {
 
-    public Long getCodigo() {
-        return codigo;
-    }
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	public PrestadorSerializer(Long codigo, String nome, String cpfCgcDoReferenciado, String tipoDoReferenciado) {
+		this.codigo = codigo;
+		this.nome = nome;
+		this.cpfCgcDoReferenciado = cpfCgcDoReferenciado;
+		this.tipoDoReferenciado = tipoDoReferenciado;
+	}
 
-    public String getCpfCgcDoReferenciado() {
-        return cpfCgcDoReferenciado;
-    }
+	public Long getCodigo() {
+		return codigo;
+	}
 
-    public String getTipoDoReferenciado() {
-        return tipoDoReferenciado;
-    }
+	public String getNome() {
+		return nome;
+	}
+
+	public String getCpfCgcDoReferenciado() {
+		return cpfCgcDoReferenciado;
+	}
+
+	public String getTipoDoReferenciado() {
+		return tipoDoReferenciado;
+	}
 
 }
