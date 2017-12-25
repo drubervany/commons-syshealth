@@ -196,7 +196,7 @@ public final class DateUtil {
 
 		}
 
-		// Marca que Ã© um saldo negativo ou positivo
+		// Marca que é um saldo negativo ou positivo
 		result_months = result_months * dif_multiplier;
 
 		// Retirna a diferenca de dias do total dos meses

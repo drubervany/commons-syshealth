@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 public class StringUtils {
 
-	private static String[] meses = { "", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto",
+	private static String[] meses = { "", "Janeiro", "Fevereiro", "Marï¿½o", "Abril", "Maio", "Junho", "Julho", "Agosto",
 			"Setembro", "Outubro", "Novembro", "Dezembro" };
 	private static String[] mesesAbreviado = { "", "Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out",
 			"Nov", "Dez" };
@@ -90,7 +90,7 @@ public class StringUtils {
 		// Cria um objeto calendar com a data atual
 		Calendar today = Calendar.getInstance();
 
-		// Obtém a idade baseado no ano
+		// Obtï¿½m a idade baseado no ano
 		int age = today.get(Calendar.YEAR) - dateOfBirth.get(Calendar.YEAR);
 
 		dateOfBirth.add(Calendar.YEAR, age);
@@ -101,7 +101,7 @@ public class StringUtils {
 		return age;
 	}
 
-	public final static Date converteDataStringParaDate(String data) throws IllegalArgumentException {
+	public final static Date converteDataStringParaDate(String data) {
 		try {
 			SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -118,8 +118,8 @@ public class StringUtils {
 
 			return dataFormatada;
 		} catch (ParseException p) {
-			throw new IllegalArgumentException("Erro ao converter data de string para date!", p.getCause());
 		}
+		return null;
 	}
 
 	public static String converteVigenciaParaCapa(Integer inicioVigencia, Integer fimVigencia) {
