@@ -14,7 +14,12 @@ public class PlanoSerializer implements Serializable {
 	private AcomodacaoEnum acomodacao;
 
 	public PlanoSerializer() {
+	}
 
+	public PlanoSerializer(String codigo, String nome, AcomodacaoEnum acomodacao) {
+		this.codigo = codigo;
+		this.nome = nome;
+		this.acomodacao = acomodacao;
 	}
 
 	public String getCodigo() {

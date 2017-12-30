@@ -13,10 +13,6 @@ public class SubEmpresaSerializer implements Serializable {
 
 	private AporteSerializer aporte;
 
-	public SubEmpresaSerializer() {
-
-	}
-
 	public SubEmpresaSerializer(Long codigo, String nome, CopaySerializer copay, AporteSerializer aporte) {
 
 		this.codigo = codigo;
