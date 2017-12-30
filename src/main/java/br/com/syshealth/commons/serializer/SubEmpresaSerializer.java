@@ -5,7 +5,7 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class SubEmpresaSerializer implements Serializable {
 
-	private Integer codigo;
+	private Long codigo;
 
 	private String nome;
 
@@ -17,7 +17,7 @@ public class SubEmpresaSerializer implements Serializable {
 
 	}
 
-	public SubEmpresaSerializer(Integer codigo, String nome, CopaySerializer copay, AporteSerializer aporte) {
+	public SubEmpresaSerializer(Long codigo, String nome, CopaySerializer copay, AporteSerializer aporte) {
 
 		this.codigo = codigo;
 		this.nome = nome;
@@ -26,7 +26,7 @@ public class SubEmpresaSerializer implements Serializable {
 
 	}
 
-	public Integer getCodigo() {
+	public Long getCodigo() {
 		return codigo;
 	}
 
