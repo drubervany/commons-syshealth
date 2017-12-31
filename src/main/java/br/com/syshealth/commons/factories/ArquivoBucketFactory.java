@@ -8,4 +8,10 @@ public class ArquivoBucketFactory {
 
 		return contrato + "_" + competencia + "_" + operadora.getNome() + ".json";
 	}
+
+	public static String criarNomeArquivoExcel(Long contrato, Integer dataInicio, Integer dataFim,
+			OperadoraEnum operadora) {
+
+		return contrato + "_" + dataInicio + "_" + dataFim + "_" + operadora.getNome() + ".xlsx";
+	}
 }
