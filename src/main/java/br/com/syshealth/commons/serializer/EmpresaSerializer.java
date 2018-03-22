@@ -18,15 +18,16 @@ public class EmpresaSerializer implements Serializable {
 
 	private BigDecimal limiteTecnico;
 
-	public EmpresaSerializer() {
-
+	private EmpresaSerializer(Builder builder) {
+		this.codigo = builder.codigo;
+		this.nome = builder.nome;
+		this.contrato = builder.contrato;
+		this.operadora = builder.operadora;
+		this.limiteTecnico = builder.limiteTecnico;
 	}
 
-	public EmpresaSerializer(Integer codigo, String nome, Long contrato, OperadoraEnum operadora) {
-		this.codigo = codigo;
-		this.nome = nome;
-		this.contrato = contrato;
-		this.operadora = operadora;
+	public EmpresaSerializer() {
+
 	}
 
 	public Integer getCodigo() {
@@ -51,5 +52,57 @@ public class EmpresaSerializer implements Serializable {
 
 	public void setLimiteTecnico(BigDecimal limiteTecnico) {
 		this.limiteTecnico = limiteTecnico;
+	}
+
+	/**
+	 * Creates builder to build {@link EmpresaSerializer}.
+	 * 
+	 * @return created builder
+	 */
+	public static Builder builder() {
+		return new Builder();
+	}
+
+	/**
+	 * Builder to build {@link EmpresaSerializer}.
+	 */
+	public static final class Builder {
+		private Integer codigo;
+		private String nome;
+		private Long contrato;
+		private OperadoraEnum operadora;
+		private BigDecimal limiteTecnico;
+
+		private Builder() {
+		}
+
+		public Builder withCodigo(Integer codigo) {
+			this.codigo = codigo;
+			return this;
+		}
+
+		public Builder withNome(String nome) {
+			this.nome = nome;
+			return this;
+		}
+
+		public Builder withContrato(Long contrato) {
+			this.contrato = contrato;
+			return this;
+		}
+
+		public Builder withOperadora(OperadoraEnum operadora) {
+			this.operadora = operadora;
+			return this;
+		}
+
+		public Builder withLimiteTecnico(BigDecimal limiteTecnico) {
+			this.limiteTecnico = limiteTecnico;
+			return this;
+		}
+
+		public EmpresaSerializer build() {
+			return new EmpresaSerializer(this);
+		}
 	}
 }

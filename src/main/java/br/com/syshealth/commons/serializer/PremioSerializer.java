@@ -26,22 +26,19 @@ public class PremioSerializer implements Serializable {
 
 	private BigDecimal valorParteSegurado;
 
-	public PremioSerializer() {
-
+	private PremioSerializer(Builder builder) {
+		this.competencia = builder.competencia;
+		this.empresa = builder.empresa;
+		this.subEmpresa = builder.subEmpresa;
+		this.segurado = builder.segurado;
+		this.valorPremio = builder.valorPremio;
+		this.valorTaxaAdm = builder.valorTaxaAdm;
+		this.valorRemissao = builder.valorRemissao;
+		this.valorParteSegurado = builder.valorParteSegurado;
 	}
 
-	public PremioSerializer(Integer competencia, EmpresaSerializer empresa, SubEmpresaSerializer subEmpresa,
-			SeguradoSerializer segurado, BigDecimal valorPremio, BigDecimal valorTaxaAdm, BigDecimal valorRemissao,
-			BigDecimal valorParteSegurado) {
-		super();
-		this.competencia = competencia;
-		this.empresa = empresa;
-		this.subEmpresa = subEmpresa;
-		this.segurado = segurado;
-		this.valorPremio = valorPremio;
-		this.valorTaxaAdm = valorTaxaAdm;
-		this.valorRemissao = valorRemissao;
-		this.valorParteSegurado = valorParteSegurado;
+	public PremioSerializer() {
+
 	}
 
 	public Integer getCompetencia() {
@@ -80,9 +77,74 @@ public class PremioSerializer implements Serializable {
 		return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().toJson(this);
 	}
 
-	public static PremioSerializer fromJson(String json) {
-		return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().fromJson(json,
-				PremioSerializer.class);
+	/**
+	 * Creates builder to build {@link PremioSerializer}.
+	 * 
+	 * @return created builder
+	 */
+	public static Builder builder() {
+		return new Builder();
+	}
+
+	/**
+	 * Builder to build {@link PremioSerializer}.
+	 */
+	public static final class Builder {
+		private Integer competencia;
+		private EmpresaSerializer empresa;
+		private SubEmpresaSerializer subEmpresa;
+		private SeguradoSerializer segurado;
+		private BigDecimal valorPremio;
+		private BigDecimal valorTaxaAdm;
+		private BigDecimal valorRemissao;
+		private BigDecimal valorParteSegurado;
+
+		private Builder() {
+		}
+
+		public Builder withCompetencia(Integer competencia) {
+			this.competencia = competencia;
+			return this;
+		}
+
+		public Builder withEmpresa(EmpresaSerializer empresa) {
+			this.empresa = empresa;
+			return this;
+		}
+
+		public Builder withSubEmpresa(SubEmpresaSerializer subEmpresa) {
+			this.subEmpresa = subEmpresa;
+			return this;
+		}
+
+		public Builder withSegurado(SeguradoSerializer segurado) {
+			this.segurado = segurado;
+			return this;
+		}
+
+		public Builder withValorPremio(BigDecimal valorPremio) {
+			this.valorPremio = valorPremio;
+			return this;
+		}
+
+		public Builder withValorTaxaAdm(BigDecimal valorTaxaAdm) {
+			this.valorTaxaAdm = valorTaxaAdm;
+			return this;
+		}
+
+		public Builder withValorRemissao(BigDecimal valorRemissao) {
+			this.valorRemissao = valorRemissao;
+			return this;
+		}
+
+		public Builder withValorParteSegurado(BigDecimal valorParteSegurado) {
+			this.valorParteSegurado = valorParteSegurado;
+			return this;
+		}
+
+		public PremioSerializer build() {
+			return new PremioSerializer(this);
+		}
 	}
 
 }

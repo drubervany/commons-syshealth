@@ -9,6 +9,7 @@ import br.com.syshealth.commons.enums.GrauParentescoEnum;
 import br.com.syshealth.commons.enums.SexoEnum;
 import br.com.syshealth.commons.enums.TipoBeneficiarioEnum;
 import br.com.syshealth.commons.utils.Sistema;
+import br.com.syshealth.commons.utils.StringUtils;
 
 public class SeguradoSerializer {
 
@@ -38,27 +39,24 @@ public class SeguradoSerializer {
 
 	private PlanoSerializer plano;
 
-	public SeguradoSerializer() {
-
+	private SeguradoSerializer(Builder builder) {
+		this.codigo = builder.codigo;
+		this.carteirinha = builder.carteirinha;
+		this.nome = builder.nome;
+		this.cpf = builder.cpf;
+		this.dataNascimento = builder.dataNascimento;
+		this.dataInicio = builder.dataInicio;
+		this.dataFim = builder.dataFim;
+		this.tipoBeneficiario = builder.tipoBeneficiario;
+		this.sexo = builder.sexo;
+		this.parentesco = builder.parentesco;
+		this.estadoCivil = builder.estadoCivil;
+		this.idade = StringUtils.calculaIdade(builder.dataNascimento);
+		this.plano = builder.plano;
 	}
 
-	public SeguradoSerializer(Long codigo, String carteirinha, String nome, String cpf, Date dataNascimento,
-			Date dataInicio, Date dataFim, TipoBeneficiarioEnum tipoBeneficiario, SexoEnum sexo,
-			GrauParentescoEnum parentesco, EstadoCivilEnum estadoCivil, Integer idade, PlanoSerializer plano) {
+	public SeguradoSerializer() {
 
-		this.codigo = codigo;
-		this.carteirinha = carteirinha;
-		this.nome = nome;
-		this.cpf = cpf;
-		this.dataNascimento = dataNascimento;
-		this.dataInicio = dataInicio;
-		this.dataFim = dataFim;
-		this.tipoBeneficiario = tipoBeneficiario;
-		this.sexo = sexo;
-		this.parentesco = parentesco;
-		this.estadoCivil = estadoCivil;
-		this.idade = idade;
-		this.plano = plano;
 	}
 
 	public Long getCodigo() {
@@ -117,9 +115,98 @@ public class SeguradoSerializer {
 		return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().toJson(this);
 	}
 
-	public static SeguradoSerializer fromJson(String json) {
-		return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().fromJson(json,
-				SeguradoSerializer.class);
+	/**
+	 * Creates builder to build {@link SeguradoSerializer}.
+	 * 
+	 * @return created builder
+	 */
+	public static Builder builder() {
+		return new Builder();
+	}
+
+	/**
+	 * Builder to build {@link SeguradoSerializer}.
+	 */
+	public static final class Builder {
+		private Long codigo;
+		private String carteirinha;
+		private String nome;
+		private String cpf;
+		private Date dataNascimento;
+		private Date dataInicio;
+		private Date dataFim;
+		private TipoBeneficiarioEnum tipoBeneficiario;
+		private SexoEnum sexo;
+		private GrauParentescoEnum parentesco;
+		private EstadoCivilEnum estadoCivil;
+		private PlanoSerializer plano;
+
+		private Builder() {
+		}
+
+		public Builder withCodigo(Long codigo) {
+			this.codigo = codigo;
+			return this;
+		}
+
+		public Builder withCarteirinha(String carteirinha) {
+			this.carteirinha = carteirinha;
+			return this;
+		}
+
+		public Builder withNome(String nome) {
+			this.nome = nome;
+			return this;
+		}
+
+		public Builder withCpf(String cpf) {
+			this.cpf = cpf;
+			return this;
+		}
+
+		public Builder withDataNascimento(Date dataNascimento) {
+			this.dataNascimento = dataNascimento;
+			return this;
+		}
+
+		public Builder withDataInicio(Date dataInicio) {
+			this.dataInicio = dataInicio;
+			return this;
+		}
+
+		public Builder withDataFim(Date dataFim) {
+			this.dataFim = dataFim;
+			return this;
+		}
+
+		public Builder withTipoBeneficiario(TipoBeneficiarioEnum tipoBeneficiario) {
+			this.tipoBeneficiario = tipoBeneficiario;
+			return this;
+		}
+
+		public Builder withSexo(SexoEnum sexo) {
+			this.sexo = sexo;
+			return this;
+		}
+
+		public Builder withParentesco(GrauParentescoEnum parentesco) {
+			this.parentesco = parentesco;
+			return this;
+		}
+
+		public Builder withEstadoCivil(EstadoCivilEnum estadoCivil) {
+			this.estadoCivil = estadoCivil;
+			return this;
+		}
+
+		public Builder withPlano(PlanoSerializer plano) {
+			this.plano = plano;
+			return this;
+		}
+
+		public SeguradoSerializer build() {
+			return new SeguradoSerializer(this);
+		}
 	}
 
 }
