@@ -5,6 +5,7 @@ import java.io.Serializable;
 import com.google.gson.GsonBuilder;
 
 import br.com.syshealth.commons.utils.Sistema;
+import javax.annotation.Generated;
 
 @SuppressWarnings("serial")
 public class CadastroSerializer implements Serializable {
@@ -17,16 +18,15 @@ public class CadastroSerializer implements Serializable {
 
 	private SeguradoSerializer segurado;
 
-	public CadastroSerializer() {
-
+	private CadastroSerializer(Builder builder) {
+		this.competencia = builder.competencia;
+		this.empresa = builder.empresa;
+		this.subEmpresa = builder.subEmpresa;
+		this.segurado = builder.segurado;
 	}
 
-	public CadastroSerializer(Integer competencia, EmpresaSerializer empresa, SubEmpresaSerializer subEmpresa,
-			SeguradoSerializer segurado) {
-		this.competencia = competencia;
-		this.empresa = empresa;
-		this.subEmpresa = subEmpresa;
-		this.segurado = segurado;
+	public CadastroSerializer() {
+
 	}
 
 	public EmpresaSerializer getEmpresa() {
@@ -49,8 +49,49 @@ public class CadastroSerializer implements Serializable {
 		return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().toJson(this);
 	}
 
-	public static CadastroSerializer fromJson(String json) {
-		return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().fromJson(json,
-				CadastroSerializer.class);
+	/**
+	 * Creates builder to build {@link CadastroSerializer}.
+	 * 
+	 * @return created builder
+	 */
+	public static Builder builder() {
+		return new Builder();
+	}
+
+	/**
+	 * Builder to build {@link CadastroSerializer}.
+	 */
+	public static final class Builder {
+		private Integer competencia;
+		private EmpresaSerializer empresa;
+		private SubEmpresaSerializer subEmpresa;
+		private SeguradoSerializer segurado;
+
+		private Builder() {
+		}
+
+		public Builder withCompetencia(Integer competencia) {
+			this.competencia = competencia;
+			return this;
+		}
+
+		public Builder withEmpresa(EmpresaSerializer empresa) {
+			this.empresa = empresa;
+			return this;
+		}
+
+		public Builder withSubEmpresa(SubEmpresaSerializer subEmpresa) {
+			this.subEmpresa = subEmpresa;
+			return this;
+		}
+
+		public Builder withSegurado(SeguradoSerializer segurado) {
+			this.segurado = segurado;
+			return this;
+		}
+
+		public CadastroSerializer build() {
+			return new CadastroSerializer(this);
+		}
 	}
 }
