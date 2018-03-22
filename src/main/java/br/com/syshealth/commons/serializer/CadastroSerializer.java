@@ -5,7 +5,6 @@ import java.io.Serializable;
 import com.google.gson.GsonBuilder;
 
 import br.com.syshealth.commons.utils.Sistema;
-import javax.annotation.Generated;
 
 @SuppressWarnings("serial")
 public class CadastroSerializer implements Serializable {
