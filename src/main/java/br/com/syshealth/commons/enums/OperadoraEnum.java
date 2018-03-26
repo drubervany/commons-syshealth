@@ -1,7 +1,7 @@
 package br.com.syshealth.commons.enums;
 
 public enum OperadoraEnum {
-    BRADESCO("Bradesco");
+    BRADESCO("Bradesco Saúde");
     // ALLIANZ,
     // AMIL,
     // BRADESCO,

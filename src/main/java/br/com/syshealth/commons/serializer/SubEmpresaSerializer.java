@@ -23,6 +23,9 @@ public class SubEmpresaSerializer implements Serializable {
 		this.empresa = builder.empresa;
 	}
 
+	public SubEmpresaSerializer() {
+	}
+
 	public Long getCodigo() {
 		return codigo;
 	}

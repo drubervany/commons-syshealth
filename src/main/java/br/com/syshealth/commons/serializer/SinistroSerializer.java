@@ -319,4 +319,65 @@ public class SinistroSerializer implements Serializable {
 		}
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((competencia == null) ? 0 : competencia.hashCode());
+		result = prime * result + ((dataAtendimento == null) ? 0 : dataAtendimento.hashCode());
+		result = prime * result + ((empresa == null) ? 0 : empresa.hashCode());
+		result = prime * result + ((prestador == null) ? 0 : prestador.hashCode());
+		result = prime * result + ((procedimento == null) ? 0 : procedimento.hashCode());
+		result = prime * result + ((segurado == null) ? 0 : segurado.hashCode());
+		result = prime * result + ((subEmpresa == null) ? 0 : subEmpresa.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SinistroSerializer other = (SinistroSerializer) obj;
+		if (competencia == null) {
+			if (other.competencia != null)
+				return false;
+		} else if (!competencia.equals(other.competencia))
+			return false;
+		if (dataAtendimento == null) {
+			if (other.dataAtendimento != null)
+				return false;
+		} else if (!dataAtendimento.equals(other.dataAtendimento))
+			return false;
+		if (empresa == null) {
+			if (other.empresa != null)
+				return false;
+		} else if (!empresa.equals(other.empresa))
+			return false;
+		if (prestador == null) {
+			if (other.prestador != null)
+				return false;
+		} else if (!prestador.equals(other.prestador))
+			return false;
+		if (procedimento == null) {
+			if (other.procedimento != null)
+				return false;
+		} else if (!procedimento.equals(other.procedimento))
+			return false;
+		if (segurado == null) {
+			if (other.segurado != null)
+				return false;
+		} else if (!segurado.equals(other.segurado))
+			return false;
+		if (subEmpresa == null) {
+			if (other.subEmpresa != null)
+				return false;
+		} else if (!subEmpresa.equals(other.subEmpresa))
+			return false;
+		return true;
+	}
+
 }

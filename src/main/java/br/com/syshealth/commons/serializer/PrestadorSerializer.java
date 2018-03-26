@@ -1,7 +1,6 @@
 package br.com.syshealth.commons.serializer;
 
 import java.io.Serializable;
-import javax.annotation.Generated;
 
 @SuppressWarnings("serial")
 public class PrestadorSerializer implements Serializable {
@@ -87,4 +86,40 @@ public class PrestadorSerializer implements Serializable {
 		}
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		result = prime * result + ((cpfCgcDoReferenciado == null) ? 0 : cpfCgcDoReferenciado.hashCode());
+		result = prime * result + ((tipoDoReferenciado == null) ? 0 : tipoDoReferenciado.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PrestadorSerializer other = (PrestadorSerializer) obj;
+		if (codigo == null) {
+			if (other.codigo != null)
+				return false;
+		} else if (!codigo.equals(other.codigo))
+			return false;
+		if (cpfCgcDoReferenciado == null) {
+			if (other.cpfCgcDoReferenciado != null)
+				return false;
+		} else if (!cpfCgcDoReferenciado.equals(other.cpfCgcDoReferenciado))
+			return false;
+		if (tipoDoReferenciado == null) {
+			if (other.tipoDoReferenciado != null)
+				return false;
+		} else if (!tipoDoReferenciado.equals(other.tipoDoReferenciado))
+			return false;
+		return true;
+	}
 }

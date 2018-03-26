@@ -56,7 +56,6 @@ public class SeguradoSerializer {
 	}
 
 	public SeguradoSerializer() {
-
 	}
 
 	public Long getCodigo() {

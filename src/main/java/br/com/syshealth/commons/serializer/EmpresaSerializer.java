@@ -27,7 +27,6 @@ public class EmpresaSerializer implements Serializable {
 	}
 
 	public EmpresaSerializer() {
-
 	}
 
 	public Integer getCodigo() {
