@@ -1,7 +1,10 @@
 package br.com.syshealth.commons.enums;
 
 public enum EstadoCivilEnum {
-	SOLTEIRO(1), CASADO(2), VIUVO(3), OUTROS(4);
+	SOLTEIRO(1), 
+	CASADO(2), 
+	VIUVO(3), 
+	OUTROS(4);
 
 	private int codigo;
 
