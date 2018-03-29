@@ -6,7 +6,7 @@ public enum GrupoServicoEnum {
 	PRONTO_SOCORRO(1, "Pronto Socorro"), 
 	EXAMES_SIMPLES(1, "Exames Simples"), 
 	EXAMES_ESPECIAIS(1, "Exames Especiais"), 
-	INTENACAO(1, "Internação"), 
+	INTERNACAO(1, "Internação"), 
 	HONORARIO(1, "Honorário"), 
 	TERAPIA(1, "Terapia"), 
 	OUTROS(1, "Outros");
