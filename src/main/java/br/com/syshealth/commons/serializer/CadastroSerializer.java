@@ -1,13 +1,10 @@
 package br.com.syshealth.commons.serializer;
 
-import java.io.Serializable;
-
 import com.google.gson.GsonBuilder;
 
 import br.com.syshealth.commons.utils.Sistema;
 
-@SuppressWarnings("serial")
-public class CadastroSerializer implements Serializable {
+public class CadastroSerializer {
 
 	private Integer competencia;
 
@@ -135,6 +132,5 @@ public class CadastroSerializer implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
+
 }

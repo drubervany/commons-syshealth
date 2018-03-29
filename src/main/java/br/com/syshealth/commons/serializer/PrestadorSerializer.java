@@ -1,9 +1,6 @@
 package br.com.syshealth.commons.serializer;
 
-import java.io.Serializable;
-
-@SuppressWarnings("serial")
-public class PrestadorSerializer implements Serializable {
+public class PrestadorSerializer {
 
 	private Long codigo;
 

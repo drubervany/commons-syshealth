@@ -1,14 +1,12 @@
 package br.com.syshealth.commons.serializer;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 import com.google.gson.GsonBuilder;
 
 import br.com.syshealth.commons.utils.Sistema;
 
-@SuppressWarnings("serial")
-public class PremioSerializer implements Serializable {
+public class PremioSerializer {
 
 	private Integer competencia;
 

@@ -1,12 +1,10 @@
 package br.com.syshealth.commons.serializer;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 import br.com.syshealth.commons.enums.OperadoraEnum;
 
-@SuppressWarnings("serial")
-public class EmpresaSerializer implements Serializable {
+public class EmpresaSerializer {
 
 	private Integer codigo;
 

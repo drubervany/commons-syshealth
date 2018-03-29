@@ -1,6 +1,5 @@
 package br.com.syshealth.commons.serializer;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -10,8 +9,7 @@ import br.com.syshealth.commons.enums.RedeReembolsoEnum;
 import br.com.syshealth.commons.enums.SimNaoEnum;
 import br.com.syshealth.commons.utils.Sistema;
 
-@SuppressWarnings("serial")
-public class SinistroSerializer implements Serializable {
+public class SinistroSerializer {
 
 	private Integer competencia;
 

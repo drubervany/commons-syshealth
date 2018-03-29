@@ -1,9 +1,6 @@
 package br.com.syshealth.commons.serializer;
 
-import java.io.Serializable;
-
-@SuppressWarnings("serial")
-public class SubEmpresaSerializer implements Serializable {
+public class SubEmpresaSerializer {
 
 	private Long codigo;
 

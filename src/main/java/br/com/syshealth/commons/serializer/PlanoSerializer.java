@@ -1,11 +1,8 @@
 package br.com.syshealth.commons.serializer;
 
-import java.io.Serializable;
-
 import br.com.syshealth.commons.enums.AcomodacaoEnum;
 
-@SuppressWarnings("serial")
-public class PlanoSerializer implements Serializable {
+public class PlanoSerializer {
 
 	private String codigo;
 
