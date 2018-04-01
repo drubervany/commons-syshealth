@@ -3,12 +3,12 @@ package br.com.syshealth.commons.serializer;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import com.google.gson.GsonBuilder;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import br.com.syshealth.commons.enums.RedeReembolsoEnum;
 import br.com.syshealth.commons.enums.SimNaoEnum;
-import br.com.syshealth.commons.utils.Sistema;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SinistroSerializer {
 
 	private Integer competencia;
@@ -163,10 +163,6 @@ public class SinistroSerializer {
 
 	public String getCrmSolicitante() {
 		return crmSolicitante;
-	}
-
-	public String toJson() {
-		return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().toJson(this);
 	}
 
 	/**

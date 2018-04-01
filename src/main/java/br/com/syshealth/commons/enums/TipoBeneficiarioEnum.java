@@ -1,11 +1,23 @@
 package br.com.syshealth.commons.enums;
 
 public enum TipoBeneficiarioEnum {
-	TITULAR, 
-	DEPENDENTE, 
-	AGREGADO, 
-	DEMITIDO, 
-	APOSENTADO, 
-	AFASTADO, 
-	SEMTIPO;
+	
+	TITULAR("Titular"), 
+	DEPENDENTE("Dependente"), 
+	AGREGADO("Agregado"), 
+	DEMITIDO("Demitido"), 
+	APOSENTADO("Aposentado"), 
+	AFASTADO("Afastado"), 
+	SEMTIPO("Náo Informado");
+
+	private String descricao;
+
+	private TipoBeneficiarioEnum(final String descricao) {
+		this.descricao = descricao;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
 }

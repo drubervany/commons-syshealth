@@ -28,5 +28,7 @@ public enum FaixaEtariaEnum {
     public String getFaixaEtaria() {
         return this.idadeInicio + " - " + this.idadeFinal;
     }
+    
+    
 
 }

@@ -2,15 +2,15 @@ package br.com.syshealth.commons.serializer;
 
 import java.util.Date;
 
-import com.google.gson.GsonBuilder;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import br.com.syshealth.commons.enums.EstadoCivilEnum;
 import br.com.syshealth.commons.enums.GrauParentescoEnum;
 import br.com.syshealth.commons.enums.SexoEnum;
 import br.com.syshealth.commons.enums.TipoBeneficiarioEnum;
-import br.com.syshealth.commons.utils.Sistema;
 import br.com.syshealth.commons.utils.StringUtils;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SeguradoSerializer {
 
 	private Long codigo;
@@ -108,10 +108,6 @@ public class SeguradoSerializer {
 
 	public PlanoSerializer getPlano() {
 		return plano;
-	}
-
-	public String toJson() {
-		return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().toJson(this);
 	}
 
 	/**

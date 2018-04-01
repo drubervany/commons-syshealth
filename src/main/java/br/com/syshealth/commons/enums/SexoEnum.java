@@ -1,20 +1,23 @@
 package br.com.syshealth.commons.enums;
 
 public enum SexoEnum {
-    MASCULINO(1),
-    FEMININO(2);
+	MASCULINO(1, "Masculino"), FEMININO(2, "Feminino");
 
-    private int codigo;
+	private int codigo;
+	private String descricao;
 
-    private SexoEnum(final int codigo) {
-        this.setCodigo(codigo);
-    }
+	private SexoEnum(final int codigo, final String descricao) {
+		this.codigo = codigo;
+		this.descricao = descricao;
 
-    public int getCodigo() {
-        return codigo;
-    }
+	}
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
 }

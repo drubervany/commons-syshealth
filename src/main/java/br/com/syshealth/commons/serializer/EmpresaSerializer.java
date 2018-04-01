@@ -2,8 +2,11 @@ package br.com.syshealth.commons.serializer;
 
 import java.math.BigDecimal;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import br.com.syshealth.commons.enums.OperadoraEnum;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class EmpresaSerializer {
 
 	private Integer codigo;

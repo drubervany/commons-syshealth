@@ -6,7 +6,7 @@ public class ArquivoBucketFactory {
 
 	public static String criarNomeArquivo(Long contrato, Integer competencia, OperadoraEnum operadora) {
 
-		return contrato + "_" + competencia + "_" + operadora.getNome() + ".json";
+		return contrato + "_" + competencia + "_" + operadora.name() + ".json";
 	}
 
 	public static String criarNomeArquivoExcel(Long contrato, Integer dataInicio, Integer dataFim,

@@ -1,7 +1,10 @@
 package br.com.syshealth.commons.serializer;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import br.com.syshealth.commons.enums.AcomodacaoEnum;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PlanoSerializer {
 
 	private String codigo;

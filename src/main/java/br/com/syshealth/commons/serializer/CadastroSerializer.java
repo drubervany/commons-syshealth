@@ -1,9 +1,8 @@
 package br.com.syshealth.commons.serializer;
 
-import com.google.gson.GsonBuilder;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import br.com.syshealth.commons.utils.Sistema;
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CadastroSerializer {
 
 	private Integer competencia;
@@ -38,10 +37,6 @@ public class CadastroSerializer {
 
 	public Integer getCompetencia() {
 		return competencia;
-	}
-
-	public String toJson() {
-		return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().toJson(this);
 	}
 
 	/**

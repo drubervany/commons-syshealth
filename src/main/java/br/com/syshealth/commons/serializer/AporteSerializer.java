@@ -2,10 +2,9 @@ package br.com.syshealth.commons.serializer;
 
 import java.math.BigDecimal;
 
-import com.google.gson.GsonBuilder;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import br.com.syshealth.commons.utils.Sistema;
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AporteSerializer {
 
 	private String descricao;
@@ -29,12 +28,4 @@ public class AporteSerializer {
 		return valor;
 	}
 
-	public String toJson() {
-		return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().toJson(this);
-	}
-
-	public static AporteSerializer fromJson(String json) {
-		return new GsonBuilder().setDateFormat(Sistema.FORMATO_DATA.getValue()).create().fromJson(json,
-				AporteSerializer.class);
-	}
 }
