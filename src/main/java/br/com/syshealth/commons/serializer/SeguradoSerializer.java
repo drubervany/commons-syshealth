@@ -2,15 +2,12 @@ package br.com.syshealth.commons.serializer;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import br.com.syshealth.commons.enums.EstadoCivilEnum;
 import br.com.syshealth.commons.enums.GrauParentescoEnum;
 import br.com.syshealth.commons.enums.SexoEnum;
 import br.com.syshealth.commons.enums.TipoBeneficiarioEnum;
 import br.com.syshealth.commons.utils.StringUtils;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class SeguradoSerializer {
 
 	private Long codigo;
@@ -39,6 +36,9 @@ public class SeguradoSerializer {
 
 	private PlanoSerializer plano;
 
+	public SeguradoSerializer() {
+	}
+
 	private SeguradoSerializer(Builder builder) {
 		this.codigo = builder.codigo;
 		this.carteirinha = builder.carteirinha;
@@ -53,9 +53,6 @@ public class SeguradoSerializer {
 		this.estadoCivil = builder.estadoCivil;
 		this.idade = StringUtils.calculaIdade(builder.dataNascimento);
 		this.plano = builder.plano;
-	}
-
-	public SeguradoSerializer() {
 	}
 
 	public Long getCodigo() {

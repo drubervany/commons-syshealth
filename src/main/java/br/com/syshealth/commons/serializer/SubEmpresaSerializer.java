@@ -1,8 +1,5 @@
 package br.com.syshealth.commons.serializer;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class SubEmpresaSerializer {
 
 	private Long codigo;
@@ -15,15 +12,15 @@ public class SubEmpresaSerializer {
 
 	private EmpresaSerializer empresa;
 
+	public SubEmpresaSerializer() {
+	}
+
 	private SubEmpresaSerializer(Builder builder) {
 		this.codigo = builder.codigo;
 		this.nome = builder.nome;
 		this.copay = builder.copay;
 		this.aporte = builder.aporte;
 		this.empresa = builder.empresa;
-	}
-
-	public SubEmpresaSerializer() {
 	}
 
 	public Long getCodigo() {

@@ -1,18 +1,17 @@
-package br.com.syshealth.commons.serializer;
+package br.com.syshealth.commons.model;
 
 import java.math.BigDecimal;
 
-public class CopaySerializer {
+public class Copay {
 
 	private String descricao;
 
 	private BigDecimal valor;
 
-	public CopaySerializer() {
-
+	public Copay() {
 	}
 
-	public CopaySerializer(String descricao, BigDecimal valor) {
+	public Copay(String descricao, BigDecimal valor) {
 		this.descricao = descricao;
 		this.valor = valor;
 	}

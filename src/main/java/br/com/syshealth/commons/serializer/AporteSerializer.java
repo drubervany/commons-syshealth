@@ -2,9 +2,6 @@ package br.com.syshealth.commons.serializer;
 
 import java.math.BigDecimal;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class AporteSerializer {
 
 	private String descricao;

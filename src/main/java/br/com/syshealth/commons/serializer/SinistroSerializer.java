@@ -3,12 +3,9 @@ package br.com.syshealth.commons.serializer;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import br.com.syshealth.commons.enums.RedeReembolsoEnum;
 import br.com.syshealth.commons.enums.SimNaoEnum;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class SinistroSerializer {
 
 	private Integer competencia;

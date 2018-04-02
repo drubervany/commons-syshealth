@@ -1,8 +1,5 @@
 package br.com.syshealth.commons.serializer;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class CadastroSerializer {
 
 	private Integer competencia;
@@ -13,14 +10,14 @@ public class CadastroSerializer {
 
 	private SeguradoSerializer segurado;
 
+	public CadastroSerializer() {
+	}
+
 	private CadastroSerializer(Builder builder) {
 		this.competencia = builder.competencia;
 		this.empresa = builder.empresa;
 		this.subEmpresa = builder.subEmpresa;
 		this.segurado = builder.segurado;
-	}
-
-	public CadastroSerializer() {
 	}
 
 	public EmpresaSerializer getEmpresa() {

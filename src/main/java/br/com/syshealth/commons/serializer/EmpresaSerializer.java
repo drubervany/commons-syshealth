@@ -2,11 +2,8 @@ package br.com.syshealth.commons.serializer;
 
 import java.math.BigDecimal;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import br.com.syshealth.commons.enums.OperadoraEnum;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class EmpresaSerializer {
 
 	private Integer codigo;
@@ -19,15 +16,15 @@ public class EmpresaSerializer {
 
 	private BigDecimal limiteTecnico;
 
+	public EmpresaSerializer() {
+	}
+
 	private EmpresaSerializer(Builder builder) {
 		this.codigo = builder.codigo;
 		this.nome = builder.nome;
 		this.contrato = builder.contrato;
 		this.operadora = builder.operadora;
 		this.limiteTecnico = builder.limiteTecnico;
-	}
-
-	public EmpresaSerializer() {
 	}
 
 	public Integer getCodigo() {

@@ -1,6 +1,6 @@
-package br.com.syshealth.commons.serializer;
+package br.com.syshealth.commons.model;
 
-public class PrestadorSerializer {
+public class Prestador {
 
 	private Long codigo;
 
@@ -10,15 +10,7 @@ public class PrestadorSerializer {
 
 	private String tipoDoReferenciado;
 
-	private PrestadorSerializer(Builder builder) {
-		this.codigo = builder.codigo;
-		this.nome = builder.nome;
-		this.cpfCgcDoReferenciado = builder.cpfCgcDoReferenciado;
-		this.tipoDoReferenciado = builder.tipoDoReferenciado;
-	}
-
-	public PrestadorSerializer() {
-
+	public Prestador() {
 	}
 
 	public Long getCodigo() {
@@ -35,52 +27,6 @@ public class PrestadorSerializer {
 
 	public String getTipoDoReferenciado() {
 		return tipoDoReferenciado;
-	}
-
-	/**
-	 * Creates builder to build {@link PrestadorSerializer}.
-	 * 
-	 * @return created builder
-	 */
-	public static Builder builder() {
-		return new Builder();
-	}
-
-	/**
-	 * Builder to build {@link PrestadorSerializer}.
-	 */
-	public static final class Builder {
-		private Long codigo;
-		private String nome;
-		private String cpfCgcDoReferenciado;
-		private String tipoDoReferenciado;
-
-		private Builder() {
-		}
-
-		public Builder withCodigo(Long codigo) {
-			this.codigo = codigo;
-			return this;
-		}
-
-		public Builder withNome(String nome) {
-			this.nome = nome;
-			return this;
-		}
-
-		public Builder withCpfCgcDoReferenciado(String cpfCgcDoReferenciado) {
-			this.cpfCgcDoReferenciado = cpfCgcDoReferenciado;
-			return this;
-		}
-
-		public Builder withTipoDoReferenciado(String tipoDoReferenciado) {
-			this.tipoDoReferenciado = tipoDoReferenciado;
-			return this;
-		}
-
-		public PrestadorSerializer build() {
-			return new PrestadorSerializer(this);
-		}
 	}
 
 	@Override
@@ -101,7 +47,7 @@ public class PrestadorSerializer {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		PrestadorSerializer other = (PrestadorSerializer) obj;
+		Prestador other = (Prestador) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;
