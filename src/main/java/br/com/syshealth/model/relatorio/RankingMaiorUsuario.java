@@ -2,6 +2,9 @@ package br.com.syshealth.model.relatorio;
 
 import java.math.BigDecimal;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class RankingMaiorUsuario {
 
 	private Integer ranking;

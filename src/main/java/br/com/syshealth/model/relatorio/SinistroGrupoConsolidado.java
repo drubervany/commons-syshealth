@@ -2,15 +2,18 @@ package br.com.syshealth.model.relatorio;
 
 import java.math.BigDecimal;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import br.com.syshealth.commons.enums.GrupoServicoEnum;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SinistroGrupoConsolidado {
 
 	private GrupoServicoEnum grupoServico;
 	private Integer quantidade = 0;
 	private BigDecimal sinistro = BigDecimal.ZERO;
 	private BigDecimal frequencia = BigDecimal.ZERO;
-	private BigDecimal custoMedio = BigDecimal.ZERO;
 
 	public SinistroGrupoConsolidado() {
 	}
@@ -47,19 +50,16 @@ public class SinistroGrupoConsolidado {
 		this.frequencia = frequencia;
 	}
 
+	@JsonProperty
 	public BigDecimal getCustoMedio() {
-		return custoMedio;
+		return this.sinistro.divide(this.frequencia);
 	}
 
-	public void setCustoMedio(BigDecimal custoMedio) {
-		this.custoMedio = custoMedio;
-	}
 
 	public void add(SinistroGrupoConsolidado sinistroGrupoConsolidado) {
 		this.quantidade += sinistroGrupoConsolidado.getQuantidade();
 		this.sinistro = this.sinistro.add(sinistroGrupoConsolidado.getSinistro());
 		this.frequencia = this.frequencia.add(sinistroGrupoConsolidado.getFrequencia());
-		this.custoMedio = this.custoMedio.add(sinistroGrupoConsolidado.getCustoMedio());
 	}
 
 }

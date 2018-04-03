@@ -3,18 +3,19 @@ package br.com.syshealth.model.relatorio;
 import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import br.com.syshealth.commons.utils.StringUtils;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PerfilFinanceiro {
 
 	private Integer competencia;
 	private Integer vidas = 0;
 	private BigDecimal premio = BigDecimal.ZERO;
-	private BigDecimal premioPmpm = BigDecimal.ZERO;
 	private BigDecimal aporte = BigDecimal.ZERO;
 	private BigDecimal sinistro = BigDecimal.ZERO;
-	private BigDecimal sinistroPmpm = BigDecimal.ZERO;
 	private BigDecimal copay = BigDecimal.ZERO;
 	private BigDecimal sinistralidade = BigDecimal.ZERO;
 
@@ -42,41 +43,35 @@ public class PerfilFinanceiro {
 		return premio;
 	}
 
+	@JsonProperty
 	public BigDecimal getPremioPmpm() {
-
 		if (this.vidas != 0)
-			this.premioPmpm = this.premio.divide(new BigDecimal(this.vidas));
+			return this.premio.divide(new BigDecimal(this.vidas));
 		else
-			this.premioPmpm = BigDecimal.ZERO;
-
-		return premioPmpm;
+			return BigDecimal.ZERO;
 	}
 
 	public BigDecimal getSinistro() {
 		return sinistro;
 	}
 
+	@JsonProperty
 	public BigDecimal getSinistroPmpm() {
-
 		if (this.vidas != 0)
-			this.sinistroPmpm = this.sinistro.divide(new BigDecimal(this.vidas));
+			return this.sinistro.divide(new BigDecimal(this.vidas));
 		else
-			this.sinistroPmpm = BigDecimal.ZERO;
-
-		return sinistroPmpm;
+			return BigDecimal.ZERO;
 	}
 
 	public BigDecimal getCopay() {
 		return copay;
 	}
 
+	public void setSinistralidade(BigDecimal sinistralidade) {
+		this.sinistralidade = sinistralidade;
+	}
+
 	public BigDecimal getSinistralidade() {
-
-		if (this.premio != BigDecimal.ZERO)
-			this.sinistralidade = this.sinistro.divide(this.premio);
-		else
-			this.sinistralidade = BigDecimal.ZERO;
-
 		return sinistralidade;
 	}
 

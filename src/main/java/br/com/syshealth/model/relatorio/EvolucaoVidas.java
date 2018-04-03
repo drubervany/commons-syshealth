@@ -1,9 +1,11 @@
 package br.com.syshealth.model.relatorio;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import br.com.syshealth.commons.utils.StringUtils;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class EvolucaoVidas {
 
 	private Integer competencia;

@@ -3,15 +3,17 @@ package br.com.syshealth.model.relatorio;
 import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import br.com.syshealth.commons.utils.StringUtils;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SinistroRedeReembolso {
 
 	private Integer competencia;
 	private BigDecimal rede = BigDecimal.ZERO;
 	private BigDecimal reembolso = BigDecimal.ZERO;
-	private BigDecimal total = BigDecimal.ZERO;
 	private BigDecimal percentual = BigDecimal.ZERO;
 
 	public SinistroRedeReembolso() {
@@ -41,12 +43,9 @@ public class SinistroRedeReembolso {
 		this.reembolso = reembolso;
 	}
 
+	@JsonProperty
 	public BigDecimal getTotal() {
-		return total;
-	}
-
-	public void setTotal(BigDecimal total) {
-		this.total = total;
+		return this.rede.add(this.reembolso);
 	}
 
 	public BigDecimal getPercentual() {

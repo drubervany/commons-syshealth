@@ -2,12 +2,15 @@ package br.com.syshealth.model.relatorio;
 
 import java.math.BigDecimal;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class VidasGenero {
 
 	private String faixaEtaria;
 	private Integer masculino;
 	private Integer feminino;
-	private Integer total;
 	private BigDecimal percentual;
 
 	public VidasGenero() {
@@ -43,13 +46,15 @@ public class VidasGenero {
 		this.feminino = feminino;
 	}
 
+	@JsonProperty
 	public Integer getTotal() {
-
-		this.total = this.masculino + this.feminino;
-
-		return total;
+		return this.masculino + this.feminino;
 	}
 
+	public void setPercentual(BigDecimal percentual) {
+		this.percentual = percentual;
+	}
+	
 	public BigDecimal getPercentual() {
 		return percentual;
 	}

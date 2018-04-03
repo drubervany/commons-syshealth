@@ -36,7 +36,6 @@ public class Relatorio {
 	}
 
 	public EvolucaoVidas getEvolucaoVidas() {
-
 		return evolucaoVidas;
 	}
 
@@ -45,7 +44,6 @@ public class Relatorio {
 	}
 
 	public List<VidasGenero> getVidasGenero() {
-
 		return vidasGenero;
 	}
 
@@ -58,12 +56,10 @@ public class Relatorio {
 	}
 
 	public void setVidasPlano(List<VidasPlano> vidasPlano) {
-
 		this.vidasPlano = vidasPlano;
 	}
 
 	public VidasPlanoAcomodacao getVidasPlanoAcomodacao() {
-
 		return vidasPlanoAcomodacao;
 	}
 
@@ -72,7 +68,6 @@ public class Relatorio {
 	}
 
 	public List<VidasTipoBeneficiario> getVidasTitularidade() {
-
 		return vidasTitularidade;
 	}
 
@@ -81,7 +76,6 @@ public class Relatorio {
 	}
 
 	public PerfilFinanceiro getPerfilFinanceiro() {
-
 		return perfilFinanceiro;
 	}
 
@@ -90,7 +84,6 @@ public class Relatorio {
 	}
 
 	public List<SinistroFaixaEtaria> getSinistroFaixaEtaria() {
-
 		return sinistroFaixaEtaria;
 	}
 
@@ -99,7 +92,6 @@ public class Relatorio {
 	}
 
 	public List<SinistroGrupoConsolidado> getSinistroGrupoConsolidado() {
-
 		return sinistroGrupoConsolidado;
 	}
 
