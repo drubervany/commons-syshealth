@@ -4,11 +4,13 @@ import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import br.com.syshealth.commons.serializer.PrestadorSerializer;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RankingMaiorPrestador {
 
 	private Integer ranking;
-	private String prestador;
+	private PrestadorSerializer prestador;
 	private BigDecimal sinistro;
 	private BigDecimal percSinistro;
 
@@ -23,11 +25,11 @@ public class RankingMaiorPrestador {
 		this.ranking = ranking;
 	}
 
-	public String getPrestador() {
+	public PrestadorSerializer getPrestador() {
 		return prestador;
 	}
 
-	public void setPrestador(String prestador) {
+	public void setPrestador(PrestadorSerializer prestador) {
 		this.prestador = prestador;
 	}
 

@@ -39,9 +39,4 @@ public class EvolucaoVidas {
 	public String getCompetenciaConvertida() {
 		return StringUtils.converteCompetenciaEmDataAbreviada(this.competencia);
 	}
-
-	public void add(EvolucaoVidas evolucaoVidas) {
-		this.vidas += evolucaoVidas.getVidas();
-	}
-
 }

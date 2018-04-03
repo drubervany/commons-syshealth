@@ -58,10 +58,4 @@ public class VidasGenero {
 	public BigDecimal getPercentual() {
 		return percentual;
 	}
-
-	public void add(VidasGenero vidasGenero) {
-		this.masculino += vidasGenero.getMasculino();
-		this.feminino += vidasGenero.getFeminino();
-	}
-
 }

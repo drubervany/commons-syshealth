@@ -16,7 +16,7 @@ public class Relatorio {
 	private List<VidasGenero> vidasGenero;
 	private List<VidasPlano> vidasPlano;
 	private VidasPlanoAcomodacao vidasPlanoAcomodacao;
-	private List<VidasTipoBeneficiario> vidasTitularidade;
+	private List<VidasTipoBeneficiario> vidasTipoBeneficiario;
 
 	private PerfilFinanceiro perfilFinanceiro;
 
@@ -67,12 +67,12 @@ public class Relatorio {
 		this.vidasPlanoAcomodacao = vidasPlanoAcomodacao;
 	}
 
-	public List<VidasTipoBeneficiario> getVidasTitularidade() {
-		return vidasTitularidade;
+	public List<VidasTipoBeneficiario> getVidasTipoBeneficiario() {
+		return vidasTipoBeneficiario;
 	}
 
-	public void setVidasTitularidade(List<VidasTipoBeneficiario> vidasTitularidade) {
-		this.vidasTitularidade = vidasTitularidade;
+	public void setVidasTipoBeneficiario(List<VidasTipoBeneficiario> VidasTipoBeneficiario) {
+		this.vidasTipoBeneficiario = VidasTipoBeneficiario;
 	}
 
 	public PerfilFinanceiro getPerfilFinanceiro() {
