@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import br.com.syshealth.commons.serializer.EmpresaSerializer;
 import br.com.syshealth.commons.serializer.SubEmpresaSerializer;
 
 @JsonIgnoreProperties(ignoreUnknown = true)

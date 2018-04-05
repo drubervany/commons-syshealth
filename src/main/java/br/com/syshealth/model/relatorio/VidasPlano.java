@@ -45,17 +45,10 @@ public class VidasPlano {
 	}
 
 	public BigDecimal getPercentual() {
-		if (percentual == null)
-			percentual = BigDecimal.ZERO;
 		return percentual;
 	}
 
 	public void setPercentual(BigDecimal percentual) {
 		this.percentual = percentual;
-	}
-
-	public void add(VidasPlano vidasPlano) {
-		this.vidas += vidasPlano.getVidas();
-		this.utilizacao += vidasPlano.getUtilizacao();
 	}
 }

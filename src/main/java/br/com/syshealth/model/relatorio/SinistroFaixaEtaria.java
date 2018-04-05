@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SinistroFaixaEtaria {
 
 	private String faixaEtaria;
-	private Integer vidas;
+	private Integer vidas = 0;
 	private BigDecimal sinistro = BigDecimal.ZERO;
 	private BigDecimal percVidas = BigDecimal.ZERO;
 	private BigDecimal percSinistro = BigDecimal.ZERO;
@@ -29,6 +29,9 @@ public class SinistroFaixaEtaria {
 
 	@JsonProperty
 	public BigDecimal getSinistroPmpm() {
+		if (this.vidas.intValue() == 0)
+			return BigDecimal.ZERO;
+
 		return this.sinistro.divide(new BigDecimal(this.vidas));
 	}
 
@@ -38,11 +41,6 @@ public class SinistroFaixaEtaria {
 
 	public BigDecimal getPercSinistro() {
 		return percSinistro;
-	}
-
-	public void add(SinistroFaixaEtaria sinistroFaixaEtaria) {
-		this.vidas += sinistroFaixaEtaria.getVidas();
-		this.sinistro = this.sinistro.add(sinistroFaixaEtaria.getSinistro());
 	}
 
 	public void setFaixaEtaria(String faixaEtaria) {

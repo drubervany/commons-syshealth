@@ -52,9 +52,11 @@ public class SinistroGrupoConsolidado {
 
 	@JsonProperty
 	public BigDecimal getCustoMedio() {
+		if (this.frequencia.intValue() == 0)
+			return BigDecimal.ZERO;
+
 		return this.sinistro.divide(this.frequencia);
 	}
-
 
 	public void add(SinistroGrupoConsolidado sinistroGrupoConsolidado) {
 		this.quantidade += sinistroGrupoConsolidado.getQuantidade();

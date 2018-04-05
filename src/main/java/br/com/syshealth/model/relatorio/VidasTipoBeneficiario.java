@@ -106,16 +106,4 @@ public class VidasTipoBeneficiario {
 	public Integer getTotalDependentes() {
 		return dependente + afastado + demitido + aposentado + agregado;
 	}
-
-	public void add(VidasTipoBeneficiario vidasTipoBeneficiario) {
-
-		this.titular += vidasTipoBeneficiario.getTitular();
-		this.dependente += vidasTipoBeneficiario.getDependente();
-		this.afastado += vidasTipoBeneficiario.getAfastado();
-		this.demitido += vidasTipoBeneficiario.getDemitido();
-		this.aposentado += vidasTipoBeneficiario.getAposentado();
-		this.agregado += vidasTipoBeneficiario.getAgregado();
-
-	}
-
 }

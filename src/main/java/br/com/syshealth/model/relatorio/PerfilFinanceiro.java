@@ -45,10 +45,10 @@ public class PerfilFinanceiro {
 
 	@JsonProperty
 	public BigDecimal getPremioPmpm() {
-		if (this.vidas != 0)
-			return this.premio.divide(new BigDecimal(this.vidas));
-		else
+		if (this.vidas.intValue() == 0)
 			return BigDecimal.ZERO;
+
+		return this.premio.divide(new BigDecimal(this.vidas));
 	}
 
 	public BigDecimal getSinistro() {
@@ -57,10 +57,10 @@ public class PerfilFinanceiro {
 
 	@JsonProperty
 	public BigDecimal getSinistroPmpm() {
-		if (this.vidas != 0)
-			return this.sinistro.divide(new BigDecimal(this.vidas));
-		else
+		if (this.vidas.intValue() == 0)
 			return BigDecimal.ZERO;
+
+		return this.sinistro.divide(new BigDecimal(this.vidas));
 	}
 
 	public BigDecimal getCopay() {
@@ -104,13 +104,6 @@ public class PerfilFinanceiro {
 			return false;
 		}
 		return true;
-	}
-
-	public void add(PerfilFinanceiro perfilFinanceiro) {
-		this.premio = perfilFinanceiro.getPremio();
-		this.aporte = perfilFinanceiro.getAporte();
-		this.sinistro = perfilFinanceiro.getSinistro();
-		this.copay = perfilFinanceiro.getCopay();
 	}
 
 	public static Builder builder() {

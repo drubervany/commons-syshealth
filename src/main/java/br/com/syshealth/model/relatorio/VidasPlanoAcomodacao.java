@@ -66,10 +66,4 @@ public class VidasPlanoAcomodacao {
 	public String getCompetenciaConvertida() {
 		return StringUtils.converteCompetenciaEmDataAbreviada(competencia);
 	}
-
-	public void add(VidasPlanoAcomodacao vidasPlanoAcomodacao) {
-		this.basico += vidasPlanoAcomodacao.getBasico();
-		this.intermediario += vidasPlanoAcomodacao.getIntermediario();
-		this.executivo += vidasPlanoAcomodacao.getExecutivo();
-	}
 }
