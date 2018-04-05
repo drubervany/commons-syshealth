@@ -8,13 +8,13 @@ public class AporteSerializer {
 
 	private BigDecimal valor;
 
-	public AporteSerializer() {
-
+	private AporteSerializer(Builder builder) {
+		this.descricao = builder.descricao;
+		this.valor = builder.valor;
 	}
 
-	public AporteSerializer(String descricao, BigDecimal valor) {
-		this.descricao = descricao;
-		this.valor = valor;
+	public AporteSerializer() {
+
 	}
 
 	public String getDescricao() {
@@ -23,6 +23,40 @@ public class AporteSerializer {
 
 	public BigDecimal getValor() {
 		return valor;
+	}
+
+	/**
+	 * Creates builder to build {@link AporteSerializer}.
+	 * 
+	 * @return created builder
+	 */
+	public static Builder builder() {
+		return new Builder();
+	}
+
+	/**
+	 * Builder to build {@link AporteSerializer}.
+	 */
+	public static final class Builder {
+		private String descricao;
+		private BigDecimal valor;
+
+		private Builder() {
+		}
+
+		public Builder withDescricao(String descricao) {
+			this.descricao = descricao;
+			return this;
+		}
+
+		public Builder withValor(BigDecimal valor) {
+			this.valor = valor;
+			return this;
+		}
+
+		public AporteSerializer build() {
+			return new AporteSerializer(this);
+		}
 	}
 
 }
