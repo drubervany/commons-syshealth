@@ -204,4 +204,24 @@ public final class DateUtil {
 
 		return result_years + result_months + result_days;
 	}
+	
+	public static Integer quantidadeMeses(Integer dataInico, Integer dataFim) throws ParseException {
+		SimpleDateFormat formato = new SimpleDateFormat("yyyyMM");
+
+		Date dataInicoDate = formato.parse(dataInico.toString());
+		Date dataFimDate = formato.parse(dataFim.toString());
+
+		int count = 1;
+		Calendar clStart = Calendar.getInstance();
+		clStart.setTime(dataInicoDate);
+		Calendar clEnd = Calendar.getInstance();
+		clEnd.setTime(dataFimDate);
+		while (clStart.get(Calendar.MONTH) != clEnd.get(Calendar.MONTH)
+				|| clStart.get(Calendar.YEAR) != clEnd.get(Calendar.YEAR)) {
+			clStart.add(Calendar.MONTH, 1);
+			count++;
+		}
+
+		return count;
+	}
 }
