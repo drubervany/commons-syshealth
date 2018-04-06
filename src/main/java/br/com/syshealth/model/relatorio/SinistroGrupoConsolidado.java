@@ -1,6 +1,7 @@
 package br.com.syshealth.model.relatorio;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -55,7 +56,7 @@ public class SinistroGrupoConsolidado {
 		if (this.frequencia.intValue() == 0)
 			return BigDecimal.ZERO;
 
-		return this.sinistro.divide(this.frequencia);
+		return this.sinistro.divide(this.frequencia, 2, RoundingMode.HALF_UP);
 	}
 
 	public void add(SinistroGrupoConsolidado sinistroGrupoConsolidado) {

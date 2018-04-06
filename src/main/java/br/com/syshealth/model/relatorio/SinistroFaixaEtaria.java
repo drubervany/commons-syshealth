@@ -1,6 +1,7 @@
 package br.com.syshealth.model.relatorio;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -32,7 +33,7 @@ public class SinistroFaixaEtaria {
 		if (this.vidas.intValue() == 0)
 			return BigDecimal.ZERO;
 
-		return this.sinistro.divide(new BigDecimal(this.vidas));
+		return this.sinistro.divide(new BigDecimal(this.vidas), 2, RoundingMode.HALF_UP);
 	}
 
 	public BigDecimal getPercVidas() {
