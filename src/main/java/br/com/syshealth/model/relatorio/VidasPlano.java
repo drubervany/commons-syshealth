@@ -12,12 +12,14 @@ public class VidasPlano {
 	private Integer utilizacao = 0;
 	private BigDecimal percentual = BigDecimal.ZERO;
 
-	public VidasPlano() {
+	private VidasPlano(Builder builder) {
+		this.plano = builder.plano;
+		this.vidas = builder.vidas;
+		this.utilizacao = builder.utilizacao;
+		this.percentual = builder.percentual;
 	}
 
-	public VidasPlano(String plano, Integer vidas) {
-		this.plano = plano;
-		this.vidas = vidas;
+	public VidasPlano() {
 	}
 
 	public String getPlano() {
@@ -51,4 +53,51 @@ public class VidasPlano {
 	public void setPercentual(BigDecimal percentual) {
 		this.percentual = percentual;
 	}
+
+	/**
+	 * Creates builder to build {@link VidasPlano}.
+	 * 
+	 * @return created builder
+	 */
+	public static Builder builder() {
+		return new Builder();
+	}
+
+	/**
+	 * Builder to build {@link VidasPlano}.
+	 */
+	public static final class Builder {
+		private String plano;
+		private Integer vidas;
+		private Integer utilizacao;
+		private BigDecimal percentual;
+
+		private Builder() {
+		}
+
+		public Builder withPlano(String plano) {
+			this.plano = plano;
+			return this;
+		}
+
+		public Builder withVidas(Integer vidas) {
+			this.vidas = vidas;
+			return this;
+		}
+
+		public Builder withUtilizacao(Integer utilizacao) {
+			this.utilizacao = utilizacao;
+			return this;
+		}
+
+		public Builder withPercentual(BigDecimal percentual) {
+			this.percentual = percentual;
+			return this;
+		}
+
+		public VidasPlano build() {
+			return new VidasPlano(this);
+		}
+	}
+
 }

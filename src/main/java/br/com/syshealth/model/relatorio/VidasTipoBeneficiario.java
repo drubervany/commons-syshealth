@@ -18,19 +18,18 @@ public class VidasTipoBeneficiario {
 	private Integer agregado = 0;
 	private BigDecimal percentual = BigDecimal.ZERO;
 
-	public VidasTipoBeneficiario() {
+	private VidasTipoBeneficiario(Builder builder) {
+		this.faixaEtaria = builder.faixaEtaria;
+		this.titular = builder.titular;
+		this.dependente = builder.dependente;
+		this.afastado = builder.afastado;
+		this.demitido = builder.demitido;
+		this.aposentado = builder.aposentado;
+		this.agregado = builder.agregado;
+		this.percentual = builder.percentual;
 	}
 
-	public VidasTipoBeneficiario(String faixaEtaria, Integer titular, Integer dependente, Integer afastado,
-			Integer demitido, Integer aposentado, Integer agregado) {
-
-		this.faixaEtaria = faixaEtaria;
-		this.titular = titular;
-		this.dependente = dependente;
-		this.afastado = afastado;
-		this.demitido = demitido;
-		this.aposentado = aposentado;
-		this.agregado = agregado;
+	public VidasTipoBeneficiario() {
 	}
 
 	public String getFaixaEtaria() {
@@ -105,5 +104,75 @@ public class VidasTipoBeneficiario {
 	@JsonIgnore
 	public Integer getTotalDependentes() {
 		return dependente + afastado + demitido + aposentado + agregado;
+	}
+
+	/**
+	 * Creates builder to build {@link VidasTipoBeneficiario}.
+	 * 
+	 * @return created builder
+	 */
+	public static Builder builder() {
+		return new Builder();
+	}
+
+	/**
+	 * Builder to build {@link VidasTipoBeneficiario}.
+	 */
+	public static final class Builder {
+		private String faixaEtaria;
+		private Integer titular;
+		private Integer dependente;
+		private Integer afastado;
+		private Integer demitido;
+		private Integer aposentado;
+		private Integer agregado;
+		private BigDecimal percentual;
+
+		private Builder() {
+		}
+
+		public Builder withFaixaEtaria(String faixaEtaria) {
+			this.faixaEtaria = faixaEtaria;
+			return this;
+		}
+
+		public Builder withTitular(Integer titular) {
+			this.titular = titular;
+			return this;
+		}
+
+		public Builder withDependente(Integer dependente) {
+			this.dependente = dependente;
+			return this;
+		}
+
+		public Builder withAfastado(Integer afastado) {
+			this.afastado = afastado;
+			return this;
+		}
+
+		public Builder withDemitido(Integer demitido) {
+			this.demitido = demitido;
+			return this;
+		}
+
+		public Builder withAposentado(Integer aposentado) {
+			this.aposentado = aposentado;
+			return this;
+		}
+
+		public Builder withAgregado(Integer agregado) {
+			this.agregado = agregado;
+			return this;
+		}
+
+		public Builder withPercentual(BigDecimal percentual) {
+			this.percentual = percentual;
+			return this;
+		}
+
+		public VidasTipoBeneficiario build() {
+			return new VidasTipoBeneficiario(this);
+		}
 	}
 }

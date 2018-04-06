@@ -13,13 +13,14 @@ public class VidasGenero {
 	private Integer feminino;
 	private BigDecimal percentual;
 
-	public VidasGenero() {
+	private VidasGenero(Builder builder) {
+		this.faixaEtaria = builder.faixaEtaria;
+		this.masculino = builder.masculino;
+		this.feminino = builder.feminino;
+		this.percentual = builder.percentual;
 	}
 
-	public VidasGenero(String faixaEtaria, Integer masculino, Integer feminino) {
-		this.faixaEtaria = faixaEtaria;
-		this.masculino = masculino;
-		this.feminino = feminino;
+	public VidasGenero() {
 	}
 
 	public String getFaixaEtaria() {
@@ -54,8 +55,54 @@ public class VidasGenero {
 	public void setPercentual(BigDecimal percentual) {
 		this.percentual = percentual;
 	}
-	
+
 	public BigDecimal getPercentual() {
 		return percentual;
+	}
+
+	/**
+	 * Creates builder to build {@link VidasGenero}.
+	 * 
+	 * @return created builder
+	 */
+	public static Builder builder() {
+		return new Builder();
+	}
+
+	/**
+	 * Builder to build {@link VidasGenero}.
+	 */
+	public static final class Builder {
+		private String faixaEtaria;
+		private Integer masculino;
+		private Integer feminino;
+		private BigDecimal percentual;
+
+		private Builder() {
+		}
+
+		public Builder withFaixaEtaria(String faixaEtaria) {
+			this.faixaEtaria = faixaEtaria;
+			return this;
+		}
+
+		public Builder withMasculino(Integer masculino) {
+			this.masculino = masculino;
+			return this;
+		}
+
+		public Builder withFeminino(Integer feminino) {
+			this.feminino = feminino;
+			return this;
+		}
+
+		public Builder withPercentual(BigDecimal percentual) {
+			this.percentual = percentual;
+			return this;
+		}
+
+		public VidasGenero build() {
+			return new VidasGenero(this);
+		}
 	}
 }

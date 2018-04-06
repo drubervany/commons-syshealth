@@ -13,6 +13,14 @@ public class SinistroFaixaEtaria {
 	private BigDecimal percVidas = BigDecimal.ZERO;
 	private BigDecimal percSinistro = BigDecimal.ZERO;
 
+	private SinistroFaixaEtaria(Builder builder) {
+		this.faixaEtaria = builder.faixaEtaria;
+		this.vidas = builder.vidas;
+		this.sinistro = builder.sinistro;
+		this.percVidas = builder.percVidas;
+		this.percSinistro = builder.percSinistro;
+	}
+
 	public SinistroFaixaEtaria() {
 	}
 
@@ -64,4 +72,54 @@ public class SinistroFaixaEtaria {
 		this.percSinistro = percSinistro;
 	}
 
+	/**
+	 * Creates builder to build {@link SinistroFaixaEtaria}.
+	 * @return created builder
+	 */
+	public static Builder builder() {
+		return new Builder();
+	}
+
+	/**
+	 * Builder to build {@link SinistroFaixaEtaria}.
+	 */
+	public static final class Builder {
+		private String faixaEtaria;
+		private Integer vidas;
+		private BigDecimal sinistro;
+		private BigDecimal percVidas;
+		private BigDecimal percSinistro;
+
+		private Builder() {
+		}
+
+		public Builder withFaixaEtaria(String faixaEtaria) {
+			this.faixaEtaria = faixaEtaria;
+			return this;
+		}
+
+		public Builder withVidas(Integer vidas) {
+			this.vidas = vidas;
+			return this;
+		}
+
+		public Builder withSinistro(BigDecimal sinistro) {
+			this.sinistro = sinistro;
+			return this;
+		}
+
+		public Builder withPercVidas(BigDecimal percVidas) {
+			this.percVidas = percVidas;
+			return this;
+		}
+
+		public Builder withPercSinistro(BigDecimal percSinistro) {
+			this.percSinistro = percSinistro;
+			return this;
+		}
+
+		public SinistroFaixaEtaria build() {
+			return new SinistroFaixaEtaria(this);
+		}
+	}
 }

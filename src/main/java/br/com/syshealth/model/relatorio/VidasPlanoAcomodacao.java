@@ -14,15 +14,14 @@ public class VidasPlanoAcomodacao {
 	private Integer intermediario = 0;
 	private Integer executivo = 0;
 
-	public VidasPlanoAcomodacao() {
+	private VidasPlanoAcomodacao(Builder builder) {
+		this.competencia = builder.competencia;
+		this.basico = builder.basico;
+		this.intermediario = builder.intermediario;
+		this.executivo = builder.executivo;
 	}
 
-	public VidasPlanoAcomodacao(final Integer competencia, final Integer basico, final Integer intermediario,
-			final Integer executivo) {
-		this.competencia = competencia;
-		this.basico = basico;
-		this.intermediario = intermediario;
-		this.executivo = executivo;
+	public VidasPlanoAcomodacao() {
 	}
 
 	public Integer getCompetencia() {
@@ -66,4 +65,51 @@ public class VidasPlanoAcomodacao {
 	public String getCompetenciaConvertida() {
 		return StringUtils.converteCompetenciaEmDataAbreviada(competencia);
 	}
+
+	/**
+	 * Creates builder to build {@link VidasPlanoAcomodacao}.
+	 * 
+	 * @return created builder
+	 */
+	public static Builder builder() {
+		return new Builder();
+	}
+
+	/**
+	 * Builder to build {@link VidasPlanoAcomodacao}.
+	 */
+	public static final class Builder {
+		private Integer competencia;
+		private Integer basico;
+		private Integer intermediario;
+		private Integer executivo;
+
+		private Builder() {
+		}
+
+		public Builder withCompetencia(Integer competencia) {
+			this.competencia = competencia;
+			return this;
+		}
+
+		public Builder withBasico(Integer basico) {
+			this.basico = basico;
+			return this;
+		}
+
+		public Builder withIntermediario(Integer intermediario) {
+			this.intermediario = intermediario;
+			return this;
+		}
+
+		public Builder withExecutivo(Integer executivo) {
+			this.executivo = executivo;
+			return this;
+		}
+
+		public VidasPlanoAcomodacao build() {
+			return new VidasPlanoAcomodacao(this);
+		}
+	}
+
 }
