@@ -26,6 +26,6 @@ public class ArquivoBucketFactory {
 
 	private static String nomeArquivoRelatorio(Long contrato, Integer dataInicio, Integer dataFim,
 			OperadoraEnum operadora, String extencao) {
-		return contrato + "_" + dataInicio + "_" + dataFim + "_" + operadora.getNome() + extencao;
+		return contrato + "_" + dataInicio + "_" + dataFim + "_" + operadora.name() + extencao;
 	}
 }
