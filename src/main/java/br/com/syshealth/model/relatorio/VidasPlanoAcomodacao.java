@@ -108,7 +108,10 @@ public class VidasPlanoAcomodacao {
 		}
 
 		public VidasPlanoAcomodacao build() {
-			return new VidasPlanoAcomodacao(this);
+			if (this.competencia != 0 && this.competencia != null)
+				return new VidasPlanoAcomodacao(this);
+			else
+				return null;
 		}
 	}
 

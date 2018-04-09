@@ -16,6 +16,13 @@ public class SinistroGrupoConsolidado {
 	private BigDecimal sinistro = BigDecimal.ZERO;
 	private BigDecimal frequencia = BigDecimal.ZERO;
 
+	private SinistroGrupoConsolidado(Builder builder) {
+		this.grupoServico = builder.grupoServico;
+		this.quantidade = builder.quantidade;
+		this.sinistro = builder.sinistro;
+		this.frequencia = builder.frequencia;
+	}
+
 	public SinistroGrupoConsolidado() {
 	}
 
@@ -23,32 +30,16 @@ public class SinistroGrupoConsolidado {
 		return grupoServico;
 	}
 
-	public void setGrupoServico(GrupoServicoEnum grupoServico) {
-		this.grupoServico = grupoServico;
-	}
-
 	public Integer getQuantidade() {
 		return quantidade;
-	}
-
-	public void setQuantidade(Integer quantidade) {
-		this.quantidade = quantidade;
 	}
 
 	public BigDecimal getSinistro() {
 		return sinistro;
 	}
 
-	public void setSinistro(BigDecimal sinistro) {
-		this.sinistro = sinistro;
-	}
-
 	public BigDecimal getFrequencia() {
 		return frequencia;
-	}
-
-	public void setFrequencia(BigDecimal frequencia) {
-		this.frequencia = frequencia;
 	}
 
 	@JsonProperty
@@ -59,10 +50,49 @@ public class SinistroGrupoConsolidado {
 		return this.sinistro.divide(this.frequencia, 2, RoundingMode.HALF_UP);
 	}
 
-	public void add(SinistroGrupoConsolidado sinistroGrupoConsolidado) {
-		this.quantidade += sinistroGrupoConsolidado.getQuantidade();
-		this.sinistro = this.sinistro.add(sinistroGrupoConsolidado.getSinistro());
-		this.frequencia = this.frequencia.add(sinistroGrupoConsolidado.getFrequencia());
+	/**
+	 * Creates builder to build {@link SinistroGrupoConsolidado}.
+	 * 
+	 * @return created builder
+	 */
+	public static Builder builder() {
+		return new Builder();
 	}
 
+	/**
+	 * Builder to build {@link SinistroGrupoConsolidado}.
+	 */
+	public static final class Builder {
+		private GrupoServicoEnum grupoServico;
+		private Integer quantidade;
+		private BigDecimal sinistro;
+		private BigDecimal frequencia;
+
+		private Builder() {
+		}
+
+		public Builder withGrupoServico(GrupoServicoEnum grupoServico) {
+			this.grupoServico = grupoServico;
+			return this;
+		}
+
+		public Builder withQuantidade(Integer quantidade) {
+			this.quantidade = quantidade;
+			return this;
+		}
+
+		public Builder withSinistro(BigDecimal sinistro) {
+			this.sinistro = sinistro;
+			return this;
+		}
+
+		public Builder withFrequencia(BigDecimal frequencia) {
+			this.frequencia = frequencia;
+			return this;
+		}
+
+		public SinistroGrupoConsolidado build() {
+			return new SinistroGrupoConsolidado(this);
+		}
+	}
 }

@@ -16,6 +16,13 @@ public class SinistroRedeReembolso {
 	private BigDecimal reembolso = BigDecimal.ZERO;
 	private BigDecimal percentual = BigDecimal.ZERO;
 
+	private SinistroRedeReembolso(Builder builder) {
+		this.competencia = builder.competencia;
+		this.rede = builder.rede;
+		this.reembolso = builder.reembolso;
+		this.percentual = builder.percentual;
+	}
+
 	public SinistroRedeReembolso() {
 	}
 
@@ -61,8 +68,50 @@ public class SinistroRedeReembolso {
 		return StringUtils.converteCompetenciaEmDataAbreviada(competencia);
 	}
 
-	public void add(SinistroRedeReembolso sinistroRedeReembolso) {
-		this.rede = this.rede.add(sinistroRedeReembolso.getRede());
-		this.reembolso = this.reembolso.add(sinistroRedeReembolso.getReembolso());
+	/**
+	 * Creates builder to build {@link SinistroRedeReembolso}.
+	 * 
+	 * @return created builder
+	 */
+	public static Builder builder() {
+		return new Builder();
 	}
+
+	/**
+	 * Builder to build {@link SinistroRedeReembolso}.
+	 */
+	public static final class Builder {
+		private Integer competencia;
+		private BigDecimal rede;
+		private BigDecimal reembolso;
+		private BigDecimal percentual;
+
+		private Builder() {
+		}
+
+		public Builder withCompetencia(Integer competencia) {
+			this.competencia = competencia;
+			return this;
+		}
+
+		public Builder withRede(BigDecimal rede) {
+			this.rede = rede;
+			return this;
+		}
+
+		public Builder withReembolso(BigDecimal reembolso) {
+			this.reembolso = reembolso;
+			return this;
+		}
+
+		public Builder withPercentual(BigDecimal percentual) {
+			this.percentual = percentual;
+			return this;
+		}
+
+		public SinistroRedeReembolso build() {
+			return new SinistroRedeReembolso(this);
+		}
+	}
+
 }

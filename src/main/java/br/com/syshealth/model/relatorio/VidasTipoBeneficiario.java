@@ -36,56 +36,28 @@ public class VidasTipoBeneficiario {
 		return faixaEtaria;
 	}
 
-	public void setFaixaEtaria(String faixaEtaria) {
-		this.faixaEtaria = faixaEtaria;
-	}
-
 	public Integer getTitular() {
 		return titular;
-	}
-
-	public void setTitular(Integer titular) {
-		this.titular = titular;
 	}
 
 	public Integer getDependente() {
 		return dependente;
 	}
 
-	public void setDependente(Integer dependente) {
-		this.dependente = dependente;
-	}
-
 	public Integer getAfastado() {
 		return afastado;
-	}
-
-	public void setAfastado(Integer afastado) {
-		this.afastado = afastado;
 	}
 
 	public Integer getDemitido() {
 		return demitido;
 	}
 
-	public void setDemitido(Integer demitido) {
-		this.demitido = demitido;
-	}
-
 	public Integer getAposentado() {
 		return aposentado;
 	}
 
-	public void setAposentado(Integer aposentado) {
-		this.aposentado = aposentado;
-	}
-
 	public Integer getAgregado() {
 		return agregado;
-	}
-
-	public void setAgregado(Integer agregado) {
-		this.agregado = agregado;
 	}
 
 	@JsonProperty
@@ -95,10 +67,6 @@ public class VidasTipoBeneficiario {
 
 	public BigDecimal getPercentual() {
 		return percentual;
-	}
-
-	public void setPercentual(BigDecimal percentual) {
-		this.percentual = percentual;
 	}
 
 	@JsonIgnore
