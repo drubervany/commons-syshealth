@@ -1,7 +1,9 @@
 package br.com.syshealth.commons.enums;
 
 public enum SexoEnum {
-	MASCULINO(1, "Masculino"), FEMININO(2, "Feminino");
+	OUTRO(0, "Outro"),
+	MASCULINO(1, "Masculino"), 
+	FEMININO(2, "Feminino");
 
 	private int codigo;
 	private String descricao;

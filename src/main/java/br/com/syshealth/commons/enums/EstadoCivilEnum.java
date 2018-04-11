@@ -1,6 +1,7 @@
 package br.com.syshealth.commons.enums;
 
 public enum EstadoCivilEnum {
+	OUTRO(0),
 	SOLTEIRO(1), 
 	CASADO(2), 
 	VIUVO(3), 

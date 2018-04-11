@@ -11,6 +11,8 @@ public class PremioSerializer {
 	private SubEmpresaSerializer subEmpresa;
 
 	private SeguradoSerializer segurado;
+	
+	private CobrancaSerializer cobranca;
 
 	private BigDecimal valorPremio;
 
@@ -25,6 +27,7 @@ public class PremioSerializer {
 		this.empresa = builder.empresa;
 		this.subEmpresa = builder.subEmpresa;
 		this.segurado = builder.segurado;
+		this.cobranca = builder.cobranca;
 		this.valorPremio = builder.valorPremio;
 		this.valorTaxaAdm = builder.valorTaxaAdm;
 		this.valorRemissao = builder.valorRemissao;
@@ -84,6 +87,7 @@ public class PremioSerializer {
 		private EmpresaSerializer empresa;
 		private SubEmpresaSerializer subEmpresa;
 		private SeguradoSerializer segurado;
+		private CobrancaSerializer cobranca;
 		private BigDecimal valorPremio;
 		private BigDecimal valorTaxaAdm;
 		private BigDecimal valorRemissao;
@@ -109,6 +113,11 @@ public class PremioSerializer {
 
 		public Builder withSegurado(SeguradoSerializer segurado) {
 			this.segurado = segurado;
+			return this;
+		}
+		
+		public Builder withCobranca(CobrancaSerializer cobranca) {
+			this.cobranca = cobranca;
 			return this;
 		}
 
@@ -178,5 +187,13 @@ public class PremioSerializer {
 		} else if (!subEmpresa.equals(other.subEmpresa))
 			return false;
 		return true;
+	}
+
+	public CobrancaSerializer getCobranca() {
+		return cobranca;
+	}
+
+	public void setCobranca(CobrancaSerializer cobranca) {
+		this.cobranca = cobranca;
 	}
 }

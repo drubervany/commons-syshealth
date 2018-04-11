@@ -11,8 +11,8 @@ import java.util.regex.Pattern;
 
 public class StringUtils {
 
-	private static String[] meses = { "", "Janeiro", "Fevereiro", "Mar�o", "Abril", "Maio", "Junho", "Julho", "Agosto",
-			"Setembro", "Outubro", "Novembro", "Dezembro" };
+	private static String[] meses = { "", "Janeiro", "Fevereiro", "Mar�o", "Abril", "Maio", "Junho", "Julho",
+			"Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" };
 	private static String[] mesesAbreviado = { "", "Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out",
 			"Nov", "Dez" };
 
@@ -84,21 +84,25 @@ public class StringUtils {
 	}
 
 	public static int calculaIdade(Date dataNascInput) {
-		Calendar dateOfBirth = new GregorianCalendar();
-		dateOfBirth.setTime(dataNascInput);
 
-		// Cria um objeto calendar com a data atual
-		Calendar today = Calendar.getInstance();
+		if (dataNascInput != null) {
+			Calendar dateOfBirth = new GregorianCalendar();
+			dateOfBirth.setTime(dataNascInput);
 
-		// Obt�m a idade baseado no ano
-		int age = today.get(Calendar.YEAR) - dateOfBirth.get(Calendar.YEAR);
+			// Cria um objeto calendar com a data atual
+			Calendar today = Calendar.getInstance();
 
-		dateOfBirth.add(Calendar.YEAR, age);
+			// Obt�m a idade baseado no ano
+			int age = today.get(Calendar.YEAR) - dateOfBirth.get(Calendar.YEAR);
 
-		if (today.before(dateOfBirth)) {
-			age--;
+			dateOfBirth.add(Calendar.YEAR, age);
+
+			if (today.before(dateOfBirth)) {
+				age--;
+			}
+			return age;
 		}
-		return age;
+		return 0;
 	}
 
 	public final static Date converteDataStringParaDate(String data) {
