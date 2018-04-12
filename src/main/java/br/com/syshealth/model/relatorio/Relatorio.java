@@ -27,6 +27,9 @@ public class Relatorio {
 	private List<RankingMaiorUsuario> rankingMaiorUsuario;
 	private List<RankingMaiorPrestador> rankingMaiorPrestador;
 
+	public Relatorio() {
+	}
+
 	private Relatorio(Builder builder) {
 		this.competencia = builder.competencia;
 		this.subEmpresa = builder.subEmpresa;
@@ -93,6 +96,58 @@ public class Relatorio {
 
 	public List<RankingMaiorPrestador> getRankingMaiorPrestador() {
 		return rankingMaiorPrestador;
+	}
+
+	public void setCompetencia(Integer competencia) {
+		this.competencia = competencia;
+	}
+
+	public void setSubEmpresa(SubEmpresaSerializer subEmpresa) {
+		this.subEmpresa = subEmpresa;
+	}
+
+	public void setEvolucaoVidas(EvolucaoVidas evolucaoVidas) {
+		this.evolucaoVidas = evolucaoVidas;
+	}
+
+	public void setVidasGenero(List<VidasGenero> vidasGenero) {
+		this.vidasGenero = vidasGenero;
+	}
+
+	public void setVidasPlano(List<VidasPlano> vidasPlano) {
+		this.vidasPlano = vidasPlano;
+	}
+
+	public void setVidasPlanoAcomodacao(VidasPlanoAcomodacao vidasPlanoAcomodacao) {
+		this.vidasPlanoAcomodacao = vidasPlanoAcomodacao;
+	}
+
+	public void setVidasTipoBeneficiario(List<VidasTipoBeneficiario> vidasTipoBeneficiario) {
+		this.vidasTipoBeneficiario = vidasTipoBeneficiario;
+	}
+
+	public void setPerfilFinanceiro(PerfilFinanceiro perfilFinanceiro) {
+		this.perfilFinanceiro = perfilFinanceiro;
+	}
+
+	public void setSinistroFaixaEtaria(List<SinistroFaixaEtaria> sinistroFaixaEtaria) {
+		this.sinistroFaixaEtaria = sinistroFaixaEtaria;
+	}
+
+	public void setSinistroGrupoConsolidado(List<SinistroGrupoConsolidado> sinistroGrupoConsolidado) {
+		this.sinistroGrupoConsolidado = sinistroGrupoConsolidado;
+	}
+
+	public void setSinistroRedeReembolso(SinistroRedeReembolso sinistroRedeReembolso) {
+		this.sinistroRedeReembolso = sinistroRedeReembolso;
+	}
+
+	public void setRankingMaiorUsuario(List<RankingMaiorUsuario> rankingMaiorUsuario) {
+		this.rankingMaiorUsuario = rankingMaiorUsuario;
+	}
+
+	public void setRankingMaiorPrestador(List<RankingMaiorPrestador> rankingMaiorPrestador) {
+		this.rankingMaiorPrestador = rankingMaiorPrestador;
 	}
 
 	/**
