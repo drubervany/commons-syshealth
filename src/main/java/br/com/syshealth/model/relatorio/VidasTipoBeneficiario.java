@@ -87,14 +87,15 @@ public class VidasTipoBeneficiario {
 	 * Builder to build {@link VidasTipoBeneficiario}.
 	 */
 	public static final class Builder {
+
 		private String faixaEtaria;
-		private Integer titular;
-		private Integer dependente;
-		private Integer afastado;
-		private Integer demitido;
-		private Integer aposentado;
-		private Integer agregado;
-		private BigDecimal percentual;
+		private Integer titular = 0;
+		private Integer dependente = 0;
+		private Integer afastado = 0;
+		private Integer demitido = 0;
+		private Integer aposentado = 0;
+		private Integer agregado = 0;
+		private BigDecimal percentual = BigDecimal.ZERO;
 
 		private Builder() {
 		}

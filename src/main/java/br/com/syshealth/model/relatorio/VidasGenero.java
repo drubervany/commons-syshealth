@@ -9,9 +9,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class VidasGenero {
 
 	private String faixaEtaria;
-	private Integer masculino;
-	private Integer feminino;
-	private BigDecimal percentual;
+	private Integer masculino = 0;
+	private Integer feminino = 0;
+	private BigDecimal percentual = BigDecimal.ZERO;
 
 	private VidasGenero(Builder builder) {
 		this.faixaEtaria = builder.faixaEtaria;
@@ -74,9 +74,9 @@ public class VidasGenero {
 	 */
 	public static final class Builder {
 		private String faixaEtaria;
-		private Integer masculino;
-		private Integer feminino;
-		private BigDecimal percentual;
+		private Integer masculino = 0;
+		private Integer feminino = 0;
+		private BigDecimal percentual = BigDecimal.ZERO;
 
 		private Builder() {
 		}

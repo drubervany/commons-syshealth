@@ -28,42 +28,26 @@ public class VidasPlanoAcomodacao {
 		return competencia;
 	}
 
-	public void setCompetencia(final Integer competencia) {
-		this.competencia = competencia;
-	}
-
 	public Integer getBasico() {
 		return basico;
-	}
-
-	public void setBasico(final Integer basico) {
-		this.basico = basico;
 	}
 
 	public Integer getIntermediario() {
 		return intermediario;
 	}
 
-	public void setIntermediario(final Integer intermediario) {
-		this.intermediario = intermediario;
-	}
-
 	public Integer getExecutivo() {
 		return executivo;
 	}
 
-	public void setExecutivo(final Integer executivo) {
-		this.executivo = executivo;
-	}
-
 	@JsonProperty
 	public Integer getTotal() {
-		return basico + intermediario + executivo;
+		return this.basico + this.intermediario + this.executivo;
 	}
 
 	@JsonIgnore
 	public String getCompetenciaConvertida() {
-		return StringUtils.converteCompetenciaEmDataAbreviada(competencia);
+		return StringUtils.converteCompetenciaEmDataAbreviada(this.competencia);
 	}
 
 	/**
@@ -80,9 +64,9 @@ public class VidasPlanoAcomodacao {
 	 */
 	public static final class Builder {
 		private Integer competencia;
-		private Integer basico;
-		private Integer intermediario;
-		private Integer executivo;
+		private Integer basico = 0;
+		private Integer intermediario = 0;
+		private Integer executivo = 0;
 
 		private Builder() {
 		}

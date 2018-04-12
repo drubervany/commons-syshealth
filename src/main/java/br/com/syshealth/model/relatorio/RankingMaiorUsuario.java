@@ -9,10 +9,17 @@ import br.com.syshealth.commons.serializer.SeguradoSerializer;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RankingMaiorUsuario {
 
-	private Integer ranking;
+	private Integer ranking = 0;
 	private SeguradoSerializer segurado;
-	private BigDecimal sinistro;
-	private BigDecimal percSinistro;
+	private BigDecimal sinistro = BigDecimal.ZERO;
+	private BigDecimal percSinistro = BigDecimal.ZERO;
+
+	private RankingMaiorUsuario(Builder builder) {
+		this.ranking = builder.ranking;
+		this.segurado = builder.segurado;
+		this.sinistro = builder.sinistro;
+		this.percSinistro = builder.percSinistro;
+	}
 
 	public RankingMaiorUsuario() {
 	}
@@ -21,24 +28,12 @@ public class RankingMaiorUsuario {
 		return ranking;
 	}
 
-	public void setRanking(Integer ranking) {
-		this.ranking = ranking;
-	}
-
 	public BigDecimal getSinistro() {
 		return sinistro;
 	}
 
-	public void setSinistro(BigDecimal sinistro) {
-		this.sinistro = sinistro;
-	}
-
 	public BigDecimal getPercSinistro() {
 		return percSinistro;
-	}
-
-	public void setPercSinistro(BigDecimal percSinistro) {
-		this.percSinistro = percSinistro;
 	}
 
 	public SeguradoSerializer getSegurado() {
@@ -47,6 +42,53 @@ public class RankingMaiorUsuario {
 
 	public void setSegurado(SeguradoSerializer segurado) {
 		this.segurado = segurado;
+	}
+
+	/**
+	 * Creates builder to build {@link RankingMaiorUsuario}.
+	 * 
+	 * @return created builder
+	 */
+	public static Builder builder() {
+		return new Builder();
+	}
+
+	/**
+	 * Builder to build {@link RankingMaiorUsuario}.
+	 */
+	public static final class Builder {
+
+		private Integer ranking = 0;
+		private SeguradoSerializer segurado;
+		private BigDecimal sinistro = BigDecimal.ZERO;
+		private BigDecimal percSinistro = BigDecimal.ZERO;
+
+		private Builder() {
+		}
+
+		public Builder withRanking(Integer ranking) {
+			this.ranking = ranking;
+			return this;
+		}
+
+		public Builder withSegurado(SeguradoSerializer segurado) {
+			this.segurado = segurado;
+			return this;
+		}
+
+		public Builder withSinistro(BigDecimal sinistro) {
+			this.sinistro = sinistro;
+			return this;
+		}
+
+		public Builder withPercSinistro(BigDecimal percSinistro) {
+			this.percSinistro = percSinistro;
+			return this;
+		}
+
+		public RankingMaiorUsuario build() {
+			return new RankingMaiorUsuario(this);
+		}
 	}
 
 	@Override
@@ -73,5 +115,4 @@ public class RankingMaiorUsuario {
 			return false;
 		return true;
 	}
-
 }

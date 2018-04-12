@@ -11,8 +11,15 @@ public class RankingMaiorPrestador {
 
 	private Integer ranking;
 	private PrestadorSerializer prestador;
-	private BigDecimal sinistro;
-	private BigDecimal percSinistro;
+	private BigDecimal sinistro = BigDecimal.ZERO;
+	private BigDecimal percSinistro = BigDecimal.ZERO;
+
+	private RankingMaiorPrestador(Builder builder) {
+		this.ranking = builder.ranking;
+		this.prestador = builder.prestador;
+		this.sinistro = builder.sinistro;
+		this.percSinistro = builder.percSinistro;
+	};
 
 	public RankingMaiorPrestador() {
 	}
@@ -21,32 +28,62 @@ public class RankingMaiorPrestador {
 		return ranking;
 	}
 
-	public void setRanking(Integer ranking) {
-		this.ranking = ranking;
-	}
-
 	public PrestadorSerializer getPrestador() {
 		return prestador;
-	}
-
-	public void setPrestador(PrestadorSerializer prestador) {
-		this.prestador = prestador;
 	}
 
 	public BigDecimal getSinistro() {
 		return sinistro;
 	}
 
-	public void setSinistro(BigDecimal sinistro) {
-		this.sinistro = sinistro;
-	}
-
 	public BigDecimal getPercSinistro() {
 		return percSinistro;
 	}
 
-	public void setPercSinistro(BigDecimal percSinistro) {
-		this.percSinistro = percSinistro;
+	/**
+	 * Creates builder to build {@link RankingMaiorPrestador}.
+	 * 
+	 * @return created builder
+	 */
+	public static Builder builder() {
+		return new Builder();
+	}
+
+	/**
+	 * Builder to build {@link RankingMaiorPrestador}.
+	 */
+	public static final class Builder {
+		private Integer ranking;
+		private PrestadorSerializer prestador;
+		private BigDecimal sinistro = BigDecimal.ZERO;;
+		private BigDecimal percSinistro = BigDecimal.ZERO;;
+
+		private Builder() {
+		}
+
+		public Builder withRanking(Integer ranking) {
+			this.ranking = ranking;
+			return this;
+		}
+
+		public Builder withPrestador(PrestadorSerializer prestador) {
+			this.prestador = prestador;
+			return this;
+		}
+
+		public Builder withSinistro(BigDecimal sinistro) {
+			this.sinistro = sinistro;
+			return this;
+		}
+
+		public Builder withPercSinistro(BigDecimal percSinistro) {
+			this.percSinistro = percSinistro;
+			return this;
+		}
+
+		public RankingMaiorPrestador build() {
+			return new RankingMaiorPrestador(this);
+		}
 	}
 
 }

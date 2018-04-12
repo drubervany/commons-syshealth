@@ -54,7 +54,7 @@ public class EvolucaoVidas {
 	 */
 	public static final class Builder {
 		private Integer competencia;
-		private Integer vidas;
+		private Integer vidas = 0;
 
 		private Builder() {
 		}

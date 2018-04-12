@@ -27,6 +27,7 @@ public class PerfilFinanceiro {
 		this.aporte = builder.aporte;
 		this.sinistro = builder.sinistro;
 		this.copay = builder.copay;
+		this.sinistralidade = builder.sinistralidade;
 	}
 
 	public PerfilFinanceiro() {
@@ -116,9 +117,10 @@ public class PerfilFinanceiro {
 		private Integer competencia;
 		private Integer vidas = 0;
 		private BigDecimal premio = BigDecimal.ZERO;
-		private BigDecimal aporte = BigDecimal.ZERO;;
-		private BigDecimal sinistro = BigDecimal.ZERO;;
-		private BigDecimal copay = BigDecimal.ZERO;;
+		private BigDecimal aporte = BigDecimal.ZERO;
+		private BigDecimal sinistro = BigDecimal.ZERO;
+		private BigDecimal copay = BigDecimal.ZERO;
+		private BigDecimal sinistralidade = BigDecimal.ZERO;
 
 		private Builder() {
 		}
@@ -150,6 +152,11 @@ public class PerfilFinanceiro {
 
 		public Builder withCopay(BigDecimal copay) {
 			this.copay = copay;
+			return this;
+		}
+		
+		public Builder withSinistralidade(BigDecimal sinistralidade) {
+			this.sinistralidade = sinistralidade;
 			return this;
 		}
 

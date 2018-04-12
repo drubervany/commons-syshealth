@@ -52,28 +52,9 @@ public class SinistroFaixaEtaria {
 		return percSinistro;
 	}
 
-	public void setFaixaEtaria(String faixaEtaria) {
-		this.faixaEtaria = faixaEtaria;
-	}
-
-	public void setVidas(Integer vidas) {
-		this.vidas = vidas;
-	}
-
-	public void setSinistro(BigDecimal sinistro) {
-		this.sinistro = sinistro;
-	}
-
-	public void setPercVidas(BigDecimal percVidas) {
-		this.percVidas = percVidas;
-	}
-
-	public void setPercSinistro(BigDecimal percSinistro) {
-		this.percSinistro = percSinistro;
-	}
-
 	/**
 	 * Creates builder to build {@link SinistroFaixaEtaria}.
+	 * 
 	 * @return created builder
 	 */
 	public static Builder builder() {
@@ -85,10 +66,10 @@ public class SinistroFaixaEtaria {
 	 */
 	public static final class Builder {
 		private String faixaEtaria;
-		private Integer vidas;
-		private BigDecimal sinistro;
-		private BigDecimal percVidas;
-		private BigDecimal percSinistro;
+		private Integer vidas = 0;
+		private BigDecimal sinistro = BigDecimal.ZERO;
+		private BigDecimal percVidas = BigDecimal.ZERO;
+		private BigDecimal percSinistro = BigDecimal.ZERO;
 
 		private Builder() {
 		}

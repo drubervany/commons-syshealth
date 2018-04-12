@@ -26,32 +26,16 @@ public class VidasPlano {
 		return plano;
 	}
 
-	public void setPlano(String plano) {
-		this.plano = plano;
-	}
-
 	public Integer getVidas() {
 		return vidas;
-	}
-
-	public void setVidas(Integer vidas) {
-		this.vidas = vidas;
 	}
 
 	public Integer getUtilizacao() {
 		return utilizacao;
 	}
 
-	public void setUtilizacao(Integer utilizacao) {
-		this.utilizacao = utilizacao;
-	}
-
 	public BigDecimal getPercentual() {
 		return percentual;
-	}
-
-	public void setPercentual(BigDecimal percentual) {
-		this.percentual = percentual;
 	}
 
 	/**
@@ -68,9 +52,9 @@ public class VidasPlano {
 	 */
 	public static final class Builder {
 		private String plano;
-		private Integer vidas;
-		private Integer utilizacao;
-		private BigDecimal percentual;
+		private Integer vidas = 0;
+		private Integer utilizacao = 0;
+		private BigDecimal percentual = BigDecimal.ZERO;
 
 		private Builder() {
 		}

@@ -63,10 +63,11 @@ public class SinistroGrupoConsolidado {
 	 * Builder to build {@link SinistroGrupoConsolidado}.
 	 */
 	public static final class Builder {
+
 		private GrupoServicoEnum grupoServico;
-		private Integer quantidade;
-		private BigDecimal sinistro;
-		private BigDecimal frequencia;
+		private Integer quantidade = 0;
+		private BigDecimal sinistro = BigDecimal.ZERO;
+		private BigDecimal frequencia = BigDecimal.ZERO;
 
 		private Builder() {
 		}

@@ -30,24 +30,12 @@ public class SinistroRedeReembolso {
 		return competencia;
 	}
 
-	public void setCompetencia(Integer competencia) {
-		this.competencia = competencia;
-	}
-
 	public BigDecimal getRede() {
 		return rede;
 	}
 
-	public void setRede(BigDecimal rede) {
-		this.rede = rede;
-	}
-
 	public BigDecimal getReembolso() {
 		return reembolso;
-	}
-
-	public void setReembolso(BigDecimal reembolso) {
-		this.reembolso = reembolso;
 	}
 
 	@JsonProperty
@@ -57,10 +45,6 @@ public class SinistroRedeReembolso {
 
 	public BigDecimal getPercentual() {
 		return percentual;
-	}
-
-	public void setPercentual(BigDecimal percentual) {
-		this.percentual = percentual;
 	}
 
 	@JsonIgnore
@@ -81,10 +65,11 @@ public class SinistroRedeReembolso {
 	 * Builder to build {@link SinistroRedeReembolso}.
 	 */
 	public static final class Builder {
+		
 		private Integer competencia;
-		private BigDecimal rede;
-		private BigDecimal reembolso;
-		private BigDecimal percentual;
+		private BigDecimal rede = BigDecimal.ZERO;
+		private BigDecimal reembolso = BigDecimal.ZERO;
+		private BigDecimal percentual = BigDecimal.ZERO;
 
 		private Builder() {
 		}
