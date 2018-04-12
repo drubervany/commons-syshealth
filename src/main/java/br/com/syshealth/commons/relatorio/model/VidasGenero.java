@@ -1,4 +1,4 @@
-package br.com.syshealth.model.relatorio;
+package br.com.syshealth.commons.relatorio.model;
 
 import java.math.BigDecimal;
 
