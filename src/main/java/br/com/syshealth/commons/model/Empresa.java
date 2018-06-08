@@ -43,6 +43,22 @@ public class Empresa {
 		this.limiteTecnico = limiteTecnico;
 	}
 
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setContrato(Long contrato) {
+		this.contrato = contrato;
+	}
+
+	public void setOperadora(OperadoraEnum operadora) {
+		this.operadora = operadora;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
