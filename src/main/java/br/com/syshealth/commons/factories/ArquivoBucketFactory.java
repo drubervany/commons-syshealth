@@ -7,6 +7,14 @@ public class ArquivoBucketFactory {
 	private static final String XLSX = ".xlsx";
 	private static final String JSON = ".json";
 
+	public static String criarNomeArquivo(String entity, Integer codigo, OperadoraEnum operadora) {
+		return entity + "_" + codigo + "_" + operadora.name() + JSON;
+	}
+
+	public static String criarNomeArquivo(String entity, String codigoEmpresa, OperadoraEnum operadora) {
+		return entity + "_" + codigoEmpresa + "_" + operadora.name() + JSON;
+	}
+
 	public static String criarNomeArquivo(Integer codigoEmpresa, OperadoraEnum operadora) {
 		return codigoEmpresa + "_" + operadora.name() + JSON;
 	}
@@ -15,17 +23,17 @@ public class ArquivoBucketFactory {
 		return contrato + "_" + competencia + "_" + operadora.name() + JSON;
 	}
 
-	public static String criarNomeArquivoRelatorio(Long contrato, Integer dataInicio, Integer dataFim,
+	public static String criarNomeArquivoRelatorio(Integer contrato, Integer dataInicio, Integer dataFim,
 			OperadoraEnum operadora) {
 		return nomeArquivoRelatorio(contrato, dataInicio, dataFim, operadora, JSON);
 	}
 
-	public static String criarNomeArquivoExcel(Long contrato, Integer dataInicio, Integer dataFim,
+	public static String criarNomeArquivoExcel(Integer contrato, Integer dataInicio, Integer dataFim,
 			OperadoraEnum operadora) {
 		return nomeArquivoRelatorio(contrato, dataInicio, dataFim, operadora, XLSX);
 	}
 
-	private static String nomeArquivoRelatorio(Long contrato, Integer dataInicio, Integer dataFim,
+	private static String nomeArquivoRelatorio(Integer contrato, Integer dataInicio, Integer dataFim,
 			OperadoraEnum operadora, String extencao) {
 		return contrato + "_" + dataInicio + "_" + dataFim + "_" + operadora.name() + extencao;
 	}
