@@ -11,8 +11,12 @@ public class ArquivoBucketFactory {
 		return entity + "_" + codigo + "_" + operadora.name() + JSON;
 	}
 
-	public static String criarNomeArquivo(String entity, String codigoEmpresa, OperadoraEnum operadora) {
-		return entity + "_" + codigoEmpresa + "_" + operadora.name() + JSON;
+	public static String criarNomeArquivo(String entity, Long codigo, OperadoraEnum operadora) {
+		return entity + "_" + codigo + "_" + operadora.name() + JSON;
+	}
+
+	public static String criarNomeArquivo(String entity, String codigo, OperadoraEnum operadora) {
+		return entity + "_" + codigo + "_" + operadora.name() + JSON;
 	}
 
 	public static String criarNomeArquivo(Integer codigoEmpresa, OperadoraEnum operadora) {
