@@ -144,4 +144,12 @@ public class VidasTipoBeneficiario {
 			return new VidasTipoBeneficiario(this);
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "VidasTipoBeneficiario [faixaEtaria=" + faixaEtaria + ", titular=" + titular + ", dependente="
+				+ dependente + ", afastado=" + afastado + ", demitido=" + demitido + ", aposentado=" + aposentado
+				+ ", agregado=" + agregado + ", percentual=" + percentual + "]";
+	}
+
 }

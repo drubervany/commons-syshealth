@@ -19,12 +19,16 @@ public class ArquivoBucketFactory {
 		return entity + "_" + codigo + "_" + operadora.name() + JSON;
 	}
 
-	public static String criarNomeArquivo(Integer codigoEmpresa, OperadoraEnum operadora) {
-		return codigoEmpresa + "_" + operadora.name() + JSON;
+	public static String criarNomeArquivo(Integer codigo, OperadoraEnum operadora) {
+		return codigo + "_" + operadora.name() + JSON;
 	}
 
-	public static String criarNomeArquivo(Long contrato, Integer competencia, OperadoraEnum operadora) {
-		return contrato + "_" + competencia + "_" + operadora.name() + JSON;
+	public static String criarNomeArquivo(Long codigo, Integer competencia, OperadoraEnum operadora) {
+		return codigo + "_" + competencia + "_" + operadora.name() + JSON;
+	}
+
+	public static String criarNomeArquivo(Integer codigo, Integer competencia, OperadoraEnum operadora) {
+		return codigo + "_" + competencia + "_" + operadora.name() + JSON;
 	}
 
 	public static String criarNomeArquivoRelatorio(Integer contrato, Integer dataInicio, Integer dataFim,

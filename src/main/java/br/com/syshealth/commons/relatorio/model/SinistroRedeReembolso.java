@@ -49,7 +49,10 @@ public class SinistroRedeReembolso {
 
 	@JsonIgnore
 	public String getCompetenciaConvertida() {
-		return StringUtils.converteCompetenciaEmDataAbreviada(competencia);
+		if (competencia > 0)
+			return StringUtils.converteCompetenciaEmDataAbreviada(competencia);
+
+		return null;
 	}
 
 	/**
@@ -65,7 +68,7 @@ public class SinistroRedeReembolso {
 	 * Builder to build {@link SinistroRedeReembolso}.
 	 */
 	public static final class Builder {
-		
+
 		private Integer competencia;
 		private BigDecimal rede = BigDecimal.ZERO;
 		private BigDecimal reembolso = BigDecimal.ZERO;
