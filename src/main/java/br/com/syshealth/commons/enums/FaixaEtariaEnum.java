@@ -5,7 +5,8 @@ public enum FaixaEtariaEnum {
     FAIXA_0_18(0, 18),
     FAIXA_19_23(19, 23),
     FAIXA_24_28(24, 28),
-    FAIXA_29_38(29, 38),
+    FAIXA_29_33(29, 33),
+    FAIXA_34_38(34, 38),
     FAIXA_39_43(39, 43),
     FAIXA_44_48(44, 48),
     FAIXA_49_53(49, 53),
@@ -16,8 +17,7 @@ public enum FaixaEtariaEnum {
 
     private int idadeFinal;
 
-    private FaixaEtariaEnum(final int idadeInicio,
-            final int idadeFinal) {
+    private FaixaEtariaEnum(final int idadeInicio, final int idadeFinal) {
         this.idadeInicio = idadeInicio;
         this.idadeFinal = idadeFinal;
     }
@@ -33,7 +33,4 @@ public enum FaixaEtariaEnum {
     public String getFaixaEtaria() {
         return this.idadeInicio + " - " + this.idadeFinal;
     }
-    
-    
-
 }

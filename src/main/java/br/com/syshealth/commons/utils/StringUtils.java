@@ -126,6 +126,27 @@ public class StringUtils {
 		return null;
 	}
 
+	public final static Date converteDataStringParaDate(Integer competencia) {
+		try {
+			SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
+
+			String data = String.valueOf(competencia);
+			String dia = data.substring(6, 8);
+			String mes = data.substring(4, 6);
+			String ano = data.substring(0, 4);
+
+			data = dia + "/" + mes + "/" + ano;
+			// System.out.println(dataSinistro);
+
+			Date dataFormatada = fmt.parse(data);
+			// System.out.println(dataFormatada);
+
+			return dataFormatada;
+		} catch (ParseException p) {
+		}
+		return null;
+	}
+
 	public static String converteVigenciaParaCapa(Integer inicioVigencia, Integer fimVigencia) {
 
 		String dataInicio = inicioVigencia.toString() + "01";
@@ -237,6 +258,11 @@ public class StringUtils {
 
 		Integer ano = cal.get(Calendar.YEAR);
 		Integer mes = cal.get(Calendar.MONTH);
+
+		if (mes == 0) {
+			mes = 12;
+			ano = ano - 1;
+		}
 
 		return Integer.parseInt(ano.toString() + lpad(mes.toString(), "0", 2));
 	}
