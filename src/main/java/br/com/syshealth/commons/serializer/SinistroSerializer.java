@@ -3,18 +3,12 @@ package br.com.syshealth.commons.serializer;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.annotation.Generated;
+
 import br.com.syshealth.commons.enums.RedeReembolsoEnum;
 import br.com.syshealth.commons.enums.SimNaoEnum;
 
 public class SinistroSerializer {
-
-	private Integer competencia;
-
-	private EmpresaSerializer empresa;
-
-	private SubEmpresaSerializer subEmpresa;
-
-	private SeguradoSerializer segurado;
 
 	private String conta;
 
@@ -50,48 +44,7 @@ public class SinistroSerializer {
 
 	private String crmSolicitante;
 
-	private SinistroSerializer(Builder builder) {
-		this.competencia = builder.competencia;
-		this.empresa = builder.empresa;
-		this.subEmpresa = builder.subEmpresa;
-		this.segurado = builder.segurado;
-		this.conta = builder.conta;
-		this.dataAtendimento = builder.dataAtendimento;
-		this.dataPagamento = builder.dataPagamento;
-		this.grupoDespesa = builder.grupoDespesa;
-		this.procedimento = builder.procedimento;
-		this.qtdeProcedimento = builder.qtdeProcedimento;
-		this.prestador = builder.prestador;
-		this.valorSinistro = builder.valorSinistro;
-		this.valorRecibo = builder.valorRecibo;
-		this.valorPago = builder.valorPago;
-		this.valorInssIssFajtr = builder.valorInssIssFajtr;
-		this.valorInssIssMoeda = builder.valorInssIssMoeda;
-		this.numDocumento = builder.numDocumento;
-		this.redeReembolso = builder.redeReembolso;
-		this.internado = builder.internado;
-		this.localAtendimento = builder.localAtendimento;
-		this.crmSolicitante = builder.crmSolicitante;
-	}
-
 	public SinistroSerializer() {
-
-	}
-
-	public Integer getCompetencia() {
-		return competencia;
-	}
-
-	public EmpresaSerializer getEmpresa() {
-		return empresa;
-	}
-
-	public SubEmpresaSerializer getSubEmpresa() {
-		return subEmpresa;
-	}
-
-	public SeguradoSerializer getSegurado() {
-		return segurado;
 	}
 
 	public String getConta() {
@@ -162,6 +115,27 @@ public class SinistroSerializer {
 		return crmSolicitante;
 	}
 
+	@Generated("SparkTools")
+	private SinistroSerializer(Builder builder) {
+		this.conta = builder.conta;
+		this.dataAtendimento = builder.dataAtendimento;
+		this.dataPagamento = builder.dataPagamento;
+		this.grupoDespesa = builder.grupoDespesa;
+		this.procedimento = builder.procedimento;
+		this.qtdeProcedimento = builder.qtdeProcedimento;
+		this.prestador = builder.prestador;
+		this.valorSinistro = builder.valorSinistro;
+		this.valorRecibo = builder.valorRecibo;
+		this.valorPago = builder.valorPago;
+		this.valorInssIssFajtr = builder.valorInssIssFajtr;
+		this.valorInssIssMoeda = builder.valorInssIssMoeda;
+		this.numDocumento = builder.numDocumento;
+		this.redeReembolso = builder.redeReembolso;
+		this.internado = builder.internado;
+		this.localAtendimento = builder.localAtendimento;
+		this.crmSolicitante = builder.crmSolicitante;
+	}
+
 	/**
 	 * Creates builder to build {@link SinistroSerializer}.
 	 * 
@@ -174,11 +148,8 @@ public class SinistroSerializer {
 	/**
 	 * Builder to build {@link SinistroSerializer}.
 	 */
+	@Generated("SparkTools")
 	public static final class Builder {
-		private Integer competencia;
-		private EmpresaSerializer empresa;
-		private SubEmpresaSerializer subEmpresa;
-		private SeguradoSerializer segurado;
 		private String conta;
 		private Date dataAtendimento;
 		private Date dataPagamento;
@@ -198,26 +169,6 @@ public class SinistroSerializer {
 		private String crmSolicitante;
 
 		private Builder() {
-		}
-
-		public Builder withCompetencia(Integer competencia) {
-			this.competencia = competencia;
-			return this;
-		}
-
-		public Builder withEmpresa(EmpresaSerializer empresa) {
-			this.empresa = empresa;
-			return this;
-		}
-
-		public Builder withSubEmpresa(SubEmpresaSerializer subEmpresa) {
-			this.subEmpresa = subEmpresa;
-			return this;
-		}
-
-		public Builder withSegurado(SeguradoSerializer segurado) {
-			this.segurado = segurado;
-			return this;
 		}
 
 		public Builder withConta(String conta) {
@@ -308,67 +259,6 @@ public class SinistroSerializer {
 		public SinistroSerializer build() {
 			return new SinistroSerializer(this);
 		}
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((competencia == null) ? 0 : competencia.hashCode());
-		result = prime * result + ((dataAtendimento == null) ? 0 : dataAtendimento.hashCode());
-		result = prime * result + ((empresa == null) ? 0 : empresa.hashCode());
-		result = prime * result + ((prestador == null) ? 0 : prestador.hashCode());
-		result = prime * result + ((procedimento == null) ? 0 : procedimento.hashCode());
-		result = prime * result + ((segurado == null) ? 0 : segurado.hashCode());
-		result = prime * result + ((subEmpresa == null) ? 0 : subEmpresa.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		SinistroSerializer other = (SinistroSerializer) obj;
-		if (competencia == null) {
-			if (other.competencia != null)
-				return false;
-		} else if (!competencia.equals(other.competencia))
-			return false;
-		if (dataAtendimento == null) {
-			if (other.dataAtendimento != null)
-				return false;
-		} else if (!dataAtendimento.equals(other.dataAtendimento))
-			return false;
-		if (empresa == null) {
-			if (other.empresa != null)
-				return false;
-		} else if (!empresa.equals(other.empresa))
-			return false;
-		if (prestador == null) {
-			if (other.prestador != null)
-				return false;
-		} else if (!prestador.equals(other.prestador))
-			return false;
-		if (procedimento == null) {
-			if (other.procedimento != null)
-				return false;
-		} else if (!procedimento.equals(other.procedimento))
-			return false;
-		if (segurado == null) {
-			if (other.segurado != null)
-				return false;
-		} else if (!segurado.equals(other.segurado))
-			return false;
-		if (subEmpresa == null) {
-			if (other.subEmpresa != null)
-				return false;
-		} else if (!subEmpresa.equals(other.subEmpresa))
-			return false;
-		return true;
 	}
 
 }

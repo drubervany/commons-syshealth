@@ -2,39 +2,31 @@ package br.com.syshealth.commons.serializer;
 
 import java.util.List;
 
-public class CadastroSerializer {
+public class OcorrenciaSerializer {
 
 	private Integer competencia;
 	private List<SeguradoSerializer> segurados;
 
-	public CadastroSerializer() {
-	}
-
-	private CadastroSerializer(Builder builder) {
+	private OcorrenciaSerializer(Builder builder) {
 		this.competencia = builder.competencia;
 		this.segurados = builder.segurados;
 	}
 
-	public List<SeguradoSerializer> getSegurados() {
-		return segurados;
+	public OcorrenciaSerializer() {
 	}
 
 	public Integer getCompetencia() {
 		return competencia;
 	}
 
-	/**
-	 * Creates builder to build {@link CadastroSerializer}.
-	 * 
-	 * @return created builder
-	 */
+	public List<SeguradoSerializer> getSegurados() {
+		return segurados;
+	}
+
 	public static Builder builder() {
 		return new Builder();
 	}
 
-	/**
-	 * Builder to build {@link CadastroSerializer}.
-	 */
 	public static final class Builder {
 		private Integer competencia;
 		private List<SeguradoSerializer> segurados;
@@ -52,8 +44,8 @@ public class CadastroSerializer {
 			return this;
 		}
 
-		public CadastroSerializer build() {
-			return new CadastroSerializer(this);
+		public OcorrenciaSerializer build() {
+			return new OcorrenciaSerializer(this);
 		}
 	}
 
@@ -73,7 +65,7 @@ public class CadastroSerializer {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		CadastroSerializer other = (CadastroSerializer) obj;
+		OcorrenciaSerializer other = (OcorrenciaSerializer) obj;
 		if (competencia == null) {
 			if (other.competencia != null)
 				return false;

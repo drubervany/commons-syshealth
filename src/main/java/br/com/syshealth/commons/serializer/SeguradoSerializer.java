@@ -7,8 +7,11 @@ import br.com.syshealth.commons.enums.GrauParentescoEnum;
 import br.com.syshealth.commons.enums.SexoEnum;
 import br.com.syshealth.commons.enums.TipoBeneficiarioEnum;
 import br.com.syshealth.commons.utils.StringUtils;
+import javax.annotation.Generated;
 
 public class SeguradoSerializer {
+
+	private SubEmpresaSerializer subEmpresa;
 
 	private Long codigo;
 
@@ -36,10 +39,13 @@ public class SeguradoSerializer {
 
 	private PlanoSerializer plano;
 
-	public SeguradoSerializer() {
-	}
+	private PremioSerializer premio;
 
+	private SinistroSerializer sinistro;
+
+	@Generated("SparkTools")
 	private SeguradoSerializer(Builder builder) {
+		this.subEmpresa = builder.subEmpresa;
 		this.codigo = builder.codigo;
 		this.carteirinha = builder.carteirinha;
 		this.nome = builder.nome;
@@ -53,6 +59,15 @@ public class SeguradoSerializer {
 		this.estadoCivil = builder.estadoCivil;
 		this.idade = StringUtils.calculaIdade(builder.dataNascimento);
 		this.plano = builder.plano;
+		this.premio = builder.premio;
+		this.sinistro = builder.sinistro;
+	}
+
+	public SeguradoSerializer() {
+	}
+
+	public SubEmpresaSerializer getSubEmpresa() {
+		return subEmpresa;
 	}
 
 	public Long getCodigo() {
@@ -107,11 +122,20 @@ public class SeguradoSerializer {
 		return plano;
 	}
 
+	public PremioSerializer getPremio() {
+		return premio;
+	}
+
+	public SinistroSerializer getSinistro() {
+		return sinistro;
+	}
+
 	/**
 	 * Creates builder to build {@link SeguradoSerializer}.
 	 * 
 	 * @return created builder
 	 */
+	@Generated("SparkTools")
 	public static Builder builder() {
 		return new Builder();
 	}
@@ -119,7 +143,9 @@ public class SeguradoSerializer {
 	/**
 	 * Builder to build {@link SeguradoSerializer}.
 	 */
+	@Generated("SparkTools")
 	public static final class Builder {
+		private SubEmpresaSerializer subEmpresa;
 		private Long codigo;
 		private String carteirinha;
 		private String nome;
@@ -132,8 +158,15 @@ public class SeguradoSerializer {
 		private GrauParentescoEnum parentesco;
 		private EstadoCivilEnum estadoCivil;
 		private PlanoSerializer plano;
+		private PremioSerializer premio;
+		private SinistroSerializer sinistro;
 
 		private Builder() {
+		}
+
+		public Builder withSubEmpresa(SubEmpresaSerializer subEmpresa) {
+			this.subEmpresa = subEmpresa;
+			return this;
 		}
 
 		public Builder withCodigo(Long codigo) {
@@ -196,6 +229,16 @@ public class SeguradoSerializer {
 			return this;
 		}
 
+		public Builder withPremio(PremioSerializer premio) {
+			this.premio = premio;
+			return this;
+		}
+
+		public Builder withSinistro(SinistroSerializer sinistro) {
+			this.sinistro = sinistro;
+			return this;
+		}
+
 		public SeguradoSerializer build() {
 			return new SeguradoSerializer(this);
 		}
@@ -206,6 +249,7 @@ public class SeguradoSerializer {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		result = prime * result + ((subEmpresa == null) ? 0 : subEmpresa.hashCode());
 		return result;
 	}
 
@@ -222,6 +266,11 @@ public class SeguradoSerializer {
 			if (other.codigo != null)
 				return false;
 		} else if (!codigo.equals(other.codigo))
+			return false;
+		if (subEmpresa == null) {
+			if (other.subEmpresa != null)
+				return false;
+		} else if (!subEmpresa.equals(other.subEmpresa))
 			return false;
 		return true;
 	}
