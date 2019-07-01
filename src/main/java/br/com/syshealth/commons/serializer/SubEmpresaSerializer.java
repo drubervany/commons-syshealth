@@ -1,12 +1,14 @@
 package br.com.syshealth.commons.serializer;
 
+import dev.morphia.annotations.Entity;
+import dev.morphia.annotations.Id;
+
+@Entity("subEmpresa")
 public class SubEmpresaSerializer {
 
+	@Id
 	private Integer codigo;
-
 	private String nome;
-
-	private EmpresaSerializer empresa;
 
 	public SubEmpresaSerializer() {
 	}
@@ -14,7 +16,6 @@ public class SubEmpresaSerializer {
 	private SubEmpresaSerializer(Builder builder) {
 		this.codigo = builder.codigo;
 		this.nome = builder.nome;
-		this.empresa = builder.empresa;
 	}
 
 	public Integer getCodigo() {
@@ -34,17 +35,12 @@ public class SubEmpresaSerializer {
 		return new Builder();
 	}
 
-	public EmpresaSerializer getEmpresa() {
-		return empresa;
-	}
-
 	/**
 	 * Builder to build {@link SubEmpresaSerializer}.
 	 */
 	public static final class Builder {
 		private Integer codigo;
 		private String nome;
-		private EmpresaSerializer empresa;
 
 		private Builder() {
 		}
@@ -59,11 +55,6 @@ public class SubEmpresaSerializer {
 			return this;
 		}
 
-		public Builder withEmpresa(EmpresaSerializer empresa) {
-			this.empresa = empresa;
-			return this;
-		}
-
 		public SubEmpresaSerializer build() {
 			return new SubEmpresaSerializer(this);
 		}
@@ -74,7 +65,6 @@ public class SubEmpresaSerializer {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
-		result = prime * result + ((empresa == null) ? 0 : empresa.hashCode());
 		return result;
 	}
 
@@ -92,12 +82,6 @@ public class SubEmpresaSerializer {
 				return false;
 		} else if (!codigo.equals(other.codigo))
 			return false;
-		if (empresa == null) {
-			if (other.empresa != null)
-				return false;
-		} else if (!empresa.equals(other.empresa))
-			return false;
 		return true;
 	}
-
 }

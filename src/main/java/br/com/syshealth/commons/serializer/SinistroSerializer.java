@@ -3,46 +3,43 @@ package br.com.syshealth.commons.serializer;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import javax.annotation.Generated;
+import org.bson.types.ObjectId;
 
 import br.com.syshealth.commons.enums.RedeReembolsoEnum;
 import br.com.syshealth.commons.enums.SimNaoEnum;
+import dev.morphia.annotations.Entity;
+import dev.morphia.annotations.Id;
 
+@Entity("sinistro")
 public class SinistroSerializer {
 
+	@Id
+	private ObjectId id;
+	
+	private Integer competencia;
+
+	private SeguradoSerializer segurado;
+	
 	private String conta;
-
 	private Date dataAtendimento;
-
 	private Date dataPagamento;
-
 	private String grupoDespesa;
 
 	private ProcedimentoSerializer procedimento;
-
 	private Integer qtdeProcedimento;
 
 	private PrestadorSerializer prestador;
-
 	private BigDecimal valorSinistro;
-
 	private BigDecimal valorRecibo;
-
 	private BigDecimal valorPago;
-
 	private BigDecimal valorInssIssFajtr;
-
 	private BigDecimal valorInssIssMoeda;
-
 	private String numDocumento;
-
 	private RedeReembolsoEnum redeReembolso;
-
 	private SimNaoEnum internado;
-
 	private String localAtendimento;
-
 	private String crmSolicitante;
+	private Long codigoDoenca;
 
 	public SinistroSerializer() {
 	}
@@ -115,8 +112,21 @@ public class SinistroSerializer {
 		return crmSolicitante;
 	}
 
-	@Generated("SparkTools")
+	public Long getCodigoDoenca() {
+		return codigoDoenca;
+	}
+
+	public SeguradoSerializer getSegurado() {
+		return segurado;
+	}
+
+	public Integer getCompetencia() {
+		return competencia;
+	}
+
 	private SinistroSerializer(Builder builder) {
+		this.competencia = builder.competencia;
+		this.segurado = builder.segurado;
 		this.conta = builder.conta;
 		this.dataAtendimento = builder.dataAtendimento;
 		this.dataPagamento = builder.dataPagamento;
@@ -134,6 +144,7 @@ public class SinistroSerializer {
 		this.internado = builder.internado;
 		this.localAtendimento = builder.localAtendimento;
 		this.crmSolicitante = builder.crmSolicitante;
+		this.codigoDoenca = builder.codigoDoenca;
 	}
 
 	/**
@@ -148,8 +159,9 @@ public class SinistroSerializer {
 	/**
 	 * Builder to build {@link SinistroSerializer}.
 	 */
-	@Generated("SparkTools")
 	public static final class Builder {
+		private Integer competencia;
+		private SeguradoSerializer segurado;
 		private String conta;
 		private Date dataAtendimento;
 		private Date dataPagamento;
@@ -167,6 +179,7 @@ public class SinistroSerializer {
 		private SimNaoEnum internado;
 		private String localAtendimento;
 		private String crmSolicitante;
+		private Long codigoDoenca;
 
 		private Builder() {
 		}
@@ -256,9 +269,34 @@ public class SinistroSerializer {
 			return this;
 		}
 
+		public Builder withCodigoDoenca(Long codigoDoenca) {
+			this.codigoDoenca = codigoDoenca;
+			return this;
+		}
+
+		public Builder withSegurado(SeguradoSerializer segurado) {
+			this.segurado = segurado;
+			return this;
+		}
+
+		public Builder withCompetencia(Integer competencia) {
+			this.competencia = competencia;
+			return this;
+		}
+
 		public SinistroSerializer build() {
 			return new SinistroSerializer(this);
 		}
 	}
 
+	@Override
+	public String toString() {
+		return "SinistroSerializer [conta=" + conta + ", dataAtendimento=" + dataAtendimento + ", dataPagamento="
+				+ dataPagamento + ", grupoDespesa=" + grupoDespesa + ", procedimento=" + procedimento
+				+ ", qtdeProcedimento=" + qtdeProcedimento + ", prestador=" + prestador + ", valorSinistro="
+				+ valorSinistro + ", valorRecibo=" + valorRecibo + ", valorPago=" + valorPago + ", valorInssIssFajtr="
+				+ valorInssIssFajtr + ", valorInssIssMoeda=" + valorInssIssMoeda + ", numDocumento=" + numDocumento
+				+ ", redeReembolso=" + redeReembolso + ", internado=" + internado + ", localAtendimento="
+				+ localAtendimento + ", crmSolicitante=" + crmSolicitante + "]";
+	}
 }

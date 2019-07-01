@@ -8,7 +8,7 @@ public enum TipoBeneficiarioEnum {
 	DEMITIDO("Demitido"), 
 	APOSENTADO("Aposentado"), 
 	AFASTADO("Afastado"), 
-	SEMTIPO("Náo Informado");
+	SEMTIPO("Não Informado");
 
 	private String descricao;
 

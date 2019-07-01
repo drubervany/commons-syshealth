@@ -8,7 +8,7 @@ package br.com.syshealth.commons.utils;
 public enum Sistema {
 
     /** The left. */
-    FORMATO_DATA("dd-mm-yyyy");
+    FORMATO_DATA("dd-MM-yyyy");
 
     private String formatoData;
 

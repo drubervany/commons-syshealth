@@ -4,17 +4,17 @@ import java.math.BigDecimal;
 
 public class PremioSerializer {
 
+	private Integer competencia;
+	private SeguradoSerializer segurado;
 	private CobrancaSerializer cobranca;
-
 	private BigDecimal valorPremio;
-
 	private BigDecimal valorTaxaAdm;
-
 	private BigDecimal valorRemissao;
-
 	private BigDecimal valorParteSegurado;
 
 	private PremioSerializer(Builder builder) {
+		this.competencia = builder.competencia;
+		this.segurado = builder.segurado;
 		this.cobranca = builder.cobranca;
 		this.valorPremio = builder.valorPremio;
 		this.valorTaxaAdm = builder.valorTaxaAdm;
@@ -45,11 +45,22 @@ public class PremioSerializer {
 		return valorParteSegurado;
 	}
 
+	public SeguradoSerializer getSegurado() {
+		return segurado;
+	}
+
+	public Integer getCompetencia() {
+		return competencia;
+	}
+
 	public static Builder builder() {
 		return new Builder();
 	}
 
 	public static final class Builder {
+		
+		private Integer competencia;
+		private SeguradoSerializer segurado;
 		private CobrancaSerializer cobranca;
 		private BigDecimal valorPremio;
 		private BigDecimal valorTaxaAdm;
@@ -81,6 +92,16 @@ public class PremioSerializer {
 
 		public Builder withValorParteSegurado(BigDecimal valorParteSegurado) {
 			this.valorParteSegurado = valorParteSegurado;
+			return this;
+		}
+
+		public Builder withSegurado(SeguradoSerializer segurado) {
+			this.segurado = segurado;
+			return this;
+		}
+		
+		public Builder withCompetencia(Integer competencia) {
+			this.competencia = competencia;
 			return this;
 		}
 

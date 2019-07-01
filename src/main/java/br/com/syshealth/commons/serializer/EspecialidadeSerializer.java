@@ -1,24 +1,21 @@
 package br.com.syshealth.commons.serializer;
 
-import br.com.syshealth.commons.enums.TipoEventoEnum;
 import dev.morphia.annotations.Entity;
 import dev.morphia.annotations.Id;
 
-@Entity("procedimento")
-public class ProcedimentoSerializer {
+@Entity
+public class EspecialidadeSerializer {
 
 	@Id
 	private Long codigo;
 	private String nome;
-	private TipoEventoEnum tipoEvento;
 
-	private ProcedimentoSerializer(Builder builder) {
+	private EspecialidadeSerializer(Builder builder) {
 		this.codigo = builder.codigo;
 		this.nome = builder.nome;
-		this.tipoEvento = builder.tipoEvento;
 	}
 
-	public ProcedimentoSerializer() {
+	public EspecialidadeSerializer() {
 
 	}
 
@@ -30,12 +27,8 @@ public class ProcedimentoSerializer {
 		return nome;
 	}
 
-	public TipoEventoEnum getTipoEvento() {
-		return tipoEvento;
-	}
-
 	/**
-	 * Creates builder to build {@link ProcedimentoSerializer}.
+	 * Creates builder to build {@link EspecialidadeSerializer}.
 	 * 
 	 * @return created builder
 	 */
@@ -44,12 +37,11 @@ public class ProcedimentoSerializer {
 	}
 
 	/**
-	 * Builder to build {@link ProcedimentoSerializer}.
+	 * Builder to build {@link EspecialidadeSerializer}.
 	 */
 	public static final class Builder {
 		private Long codigo;
 		private String nome;
-		private TipoEventoEnum tipoEvento;
 
 		private Builder() {
 		}
@@ -59,18 +51,13 @@ public class ProcedimentoSerializer {
 			return this;
 		}
 
-		public Builder withTipoEvento(TipoEventoEnum tipoEvento) {
-			this.tipoEvento = tipoEvento;
-			return this;
-		}
-
 		public Builder withNome(String nome) {
 			this.nome = nome;
 			return this;
 		}
 
-		public ProcedimentoSerializer build() {
-			return new ProcedimentoSerializer(this);
+		public EspecialidadeSerializer build() {
+			return new EspecialidadeSerializer(this);
 		}
 	}
 
@@ -79,6 +66,7 @@ public class ProcedimentoSerializer {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
 	}
 
@@ -90,11 +78,16 @@ public class ProcedimentoSerializer {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ProcedimentoSerializer other = (ProcedimentoSerializer) obj;
+		EspecialidadeSerializer other = (EspecialidadeSerializer) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;
 		} else if (!codigo.equals(other.codigo))
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
 			return false;
 		return true;
 	}

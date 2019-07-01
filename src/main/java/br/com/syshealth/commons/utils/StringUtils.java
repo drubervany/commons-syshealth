@@ -32,7 +32,7 @@ public class StringUtils {
 		return dataConvertida;
 	}
 
-	public static String converteFaixaEtariaMaior59OuMias(Integer idadeDe, Integer idadeAte) {
+	public static String converteFaixaEtariaMaior59OuMais(Integer idadeDe, Integer idadeAte) {
 
 		String faixa = idadeDe.toString() + " - " + idadeAte.toString();
 
@@ -44,7 +44,7 @@ public class StringUtils {
 
 	public static Integer converteDataStringParaInteger(Date dataString) {
 
-		DateFormat sdf = new SimpleDateFormat("YYYYMMDD");
+		DateFormat sdf = new SimpleDateFormat("YYyyMMDD");
 		Date dataNascInput = null;
 		try {
 			dataNascInput = sdf.parse(dataString.toString());
@@ -105,6 +105,29 @@ public class StringUtils {
 		return 0;
 	}
 
+	public static int calculaIdade(Date dataNascInput, Date dataAtual) {
+
+		if (dataNascInput != null) {
+			Calendar dateOfBirth = new GregorianCalendar();
+			dateOfBirth.setTime(dataNascInput);
+
+			// Cria um objeto calendar com a data atual
+			Calendar today = Calendar.getInstance();
+			today.setTime(dataAtual);
+
+			// Obt�m a idade baseado no ano
+			int age = today.get(Calendar.YEAR) - dateOfBirth.get(Calendar.YEAR);
+
+			dateOfBirth.add(Calendar.YEAR, age);
+
+			if (today.before(dateOfBirth)) {
+				age--;
+			}
+			return age;
+		}
+		return 0;
+	}
+
 	public final static Date converteDataStringParaDate(String data) {
 		try {
 			SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
@@ -126,23 +149,19 @@ public class StringUtils {
 		return null;
 	}
 
-	public final static Date converteDataStringParaDate(Integer competencia) {
+	public final static Date converteCompetenciaUltimoDiaMes(Integer competencia) {
 		try {
-			SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
+			SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");
 
-			String data = String.valueOf(competencia);
-			String dia = data.substring(6, 8);
-			String mes = data.substring(4, 6);
-			String ano = data.substring(0, 4);
+			Date suaData = fmt.parse(String.valueOf(competencia + "01"));
 
-			data = dia + "/" + mes + "/" + ano;
-			// System.out.println(dataSinistro);
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(suaData);
 
-			Date dataFormatada = fmt.parse(data);
-			// System.out.println(dataFormatada);
-
-			return dataFormatada;
+			return fmt.parse(String.valueOf(
+					competencia + lpad(String.valueOf(calendar.getActualMaximum(Calendar.DAY_OF_MONTH)), "0", 2)));
 		} catch (ParseException p) {
+			System.out.println(p.getMessage());
 		}
 		return null;
 	}

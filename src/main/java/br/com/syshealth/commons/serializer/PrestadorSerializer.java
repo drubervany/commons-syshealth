@@ -1,20 +1,26 @@
 package br.com.syshealth.commons.serializer;
 
+import dev.morphia.annotations.Entity;
+import dev.morphia.annotations.Id;
+
+@Entity("prestador")
 public class PrestadorSerializer {
 
+	@Id
 	private Long codigo;
-
+	
 	private String nome;
-
 	private String cpfCgcDoReferenciado;
-
 	private String tipoDoReferenciado;
+	
+	private EspecialidadeSerializer especialidade;
 
 	private PrestadorSerializer(Builder builder) {
 		this.codigo = builder.codigo;
 		this.nome = builder.nome;
 		this.cpfCgcDoReferenciado = builder.cpfCgcDoReferenciado;
 		this.tipoDoReferenciado = builder.tipoDoReferenciado;
+		this.especialidade = builder.especialidade;
 	}
 
 	public PrestadorSerializer() {
@@ -27,6 +33,10 @@ public class PrestadorSerializer {
 
 	public String getNome() {
 		return nome;
+	}
+
+	public EspecialidadeSerializer getEspecialidade() {
+		return especialidade;
 	}
 
 	public String getCpfCgcDoReferenciado() {
@@ -54,6 +64,7 @@ public class PrestadorSerializer {
 		private String nome;
 		private String cpfCgcDoReferenciado;
 		private String tipoDoReferenciado;
+		private EspecialidadeSerializer especialidade;
 
 		private Builder() {
 		}
@@ -75,6 +86,11 @@ public class PrestadorSerializer {
 
 		public Builder withTipoDoReferenciado(String tipoDoReferenciado) {
 			this.tipoDoReferenciado = tipoDoReferenciado;
+			return this;
+		}
+
+		public Builder withEspecialidade(EspecialidadeSerializer especialidade) {
+			this.especialidade = especialidade;
 			return this;
 		}
 
@@ -119,4 +135,5 @@ public class PrestadorSerializer {
 			return false;
 		return true;
 	}
+
 }

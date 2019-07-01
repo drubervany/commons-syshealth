@@ -5,11 +5,11 @@ import java.util.List;
 public class FaturaSerializer {
 
 	private Integer competencia;
-	private List<SeguradoSerializer> segurados;
+	private List<PremioSerializer> premios;
 
 	private FaturaSerializer(Builder builder) {
 		this.competencia = builder.competencia;
-		this.segurados = builder.segurados;
+		this.premios = builder.premios;
 	}
 
 	public FaturaSerializer() {
@@ -20,8 +20,8 @@ public class FaturaSerializer {
 		return competencia;
 	}
 
-	public List<SeguradoSerializer> getSegurados() {
-		return segurados;
+	public List<PremioSerializer> getPremios() {
+		return premios;
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public class FaturaSerializer {
 
 	public static final class Builder {
 		private Integer competencia;
-		private List<SeguradoSerializer> segurados;
+		private List<PremioSerializer> premios;
 
 		private Builder() {
 		}
@@ -65,8 +65,8 @@ public class FaturaSerializer {
 			return this;
 		}
 
-		public Builder withSegurados(List<SeguradoSerializer> segurados) {
-			this.segurados = segurados;
+		public Builder withPremios(List<PremioSerializer> premios) {
+			this.premios = premios;
 			return this;
 		}
 

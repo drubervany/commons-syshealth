@@ -1,7 +1,7 @@
 package br.com.syshealth.commons.enums;
 
 public enum OperadoraEnum {
-	BRADESCO("Bradesco Saúde");
+	BRADESCO(1L, "Bradesco Saúde");
 	// ALLIANZ,
 	// AMIL,
 	// BRADESCO,
@@ -33,13 +33,19 @@ public enum OperadoraEnum {
 	// UNIMEDPAULISTANA,
 	// UNIMEDRJ;
 
+	private final Long codigo;
 	private final String nome;
 
-	private OperadoraEnum(final String nome) {
+	private OperadoraEnum(final Long codigo, final String nome) {
+		this.codigo = codigo;
 		this.nome = nome;
 	}
 
 	public String getNome() {
 		return nome;
+	}
+
+	public Long getCodigo() {
+		return codigo;
 	}
 }

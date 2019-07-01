@@ -5,11 +5,11 @@ import java.util.List;
 public class OcorrenciaSerializer {
 
 	private Integer competencia;
-	private List<SeguradoSerializer> segurados;
+	private List<SinistroSerializer> sinistros;
 
 	private OcorrenciaSerializer(Builder builder) {
 		this.competencia = builder.competencia;
-		this.segurados = builder.segurados;
+		this.sinistros = builder.sinistros;
 	}
 
 	public OcorrenciaSerializer() {
@@ -19,17 +19,17 @@ public class OcorrenciaSerializer {
 		return competencia;
 	}
 
-	public List<SeguradoSerializer> getSegurados() {
-		return segurados;
-	}
-
 	public static Builder builder() {
 		return new Builder();
 	}
 
+	public List<SinistroSerializer> getSinistros() {
+		return sinistros;
+	}
+
 	public static final class Builder {
 		private Integer competencia;
-		private List<SeguradoSerializer> segurados;
+		private List<SinistroSerializer> sinistros;
 
 		private Builder() {
 		}
@@ -39,14 +39,15 @@ public class OcorrenciaSerializer {
 			return this;
 		}
 
-		public Builder withSegurados(List<SeguradoSerializer> segurados) {
-			this.segurados = segurados;
+		public Builder withSinistros(List<SinistroSerializer> sinistros) {
+			this.sinistros = sinistros;
 			return this;
 		}
 
 		public OcorrenciaSerializer build() {
 			return new OcorrenciaSerializer(this);
 		}
+
 	}
 
 	@Override

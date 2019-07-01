@@ -3,24 +3,27 @@ package br.com.syshealth.commons.serializer;
 import java.math.BigDecimal;
 
 import br.com.syshealth.commons.enums.OperadoraEnum;
+import dev.morphia.annotations.Entity;
+import dev.morphia.annotations.Id;
 
+@Entity("empresa")
 public class EmpresaSerializer {
 
+	@Id
 	private Integer codigo;
-
 	private String nome;
-
 	private Long contrato;
-
 	private OperadoraEnum operadora;
-
 	private BigDecimal limiteTecnico;
+
+	private SubEmpresaSerializer subEmpresa;
 
 	public EmpresaSerializer() {
 	}
 
 	private EmpresaSerializer(Builder builder) {
 		this.codigo = builder.codigo;
+		this.subEmpresa = builder.subEmpresa;
 		this.nome = builder.nome;
 		this.contrato = builder.contrato;
 		this.operadora = builder.operadora;
@@ -51,6 +54,10 @@ public class EmpresaSerializer {
 		this.limiteTecnico = limiteTecnico;
 	}
 
+	public SubEmpresaSerializer getSubEmpresa() {
+		return subEmpresa;
+	}
+
 	/**
 	 * Creates builder to build {@link EmpresaSerializer}.
 	 * 
@@ -65,6 +72,7 @@ public class EmpresaSerializer {
 	 */
 	public static final class Builder {
 		private Integer codigo;
+		private SubEmpresaSerializer subEmpresa;
 		private String nome;
 		private Long contrato;
 		private OperadoraEnum operadora;
@@ -98,6 +106,11 @@ public class EmpresaSerializer {
 			return this;
 		}
 
+		public Builder withSubEmpresa(SubEmpresaSerializer subEmpresa) {
+			this.subEmpresa = subEmpresa;
+			return this;
+		}
+
 		public EmpresaSerializer build() {
 			return new EmpresaSerializer(this);
 		}
@@ -108,6 +121,7 @@ public class EmpresaSerializer {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		result = prime * result + ((subEmpresa == null) ? 0 : subEmpresa.hashCode());
 		return result;
 	}
 
@@ -125,7 +139,11 @@ public class EmpresaSerializer {
 				return false;
 		} else if (!codigo.equals(other.codigo))
 			return false;
+		if (subEmpresa == null) {
+			if (other.subEmpresa != null)
+				return false;
+		} else if (!subEmpresa.equals(other.subEmpresa))
+			return false;
 		return true;
 	}
-
 }

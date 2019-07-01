@@ -2,51 +2,48 @@ package br.com.syshealth.commons.serializer;
 
 import java.util.Date;
 
+import org.bson.types.ObjectId;
+
 import br.com.syshealth.commons.enums.EstadoCivilEnum;
 import br.com.syshealth.commons.enums.GrauParentescoEnum;
 import br.com.syshealth.commons.enums.SexoEnum;
 import br.com.syshealth.commons.enums.TipoBeneficiarioEnum;
 import br.com.syshealth.commons.utils.StringUtils;
-import javax.annotation.Generated;
+import dev.morphia.annotations.Entity;
+import dev.morphia.annotations.Field;
+import dev.morphia.annotations.Id;
+import dev.morphia.annotations.Index;
+import dev.morphia.annotations.IndexOptions;
+import dev.morphia.annotations.Indexes;
 
+@Entity("segurado")
+@Indexes(@Index(fields = { @Field("codigo"), @Field("empresa") }, options = @IndexOptions(name = "index_segurado")))
 public class SeguradoSerializer {
 
-	private SubEmpresaSerializer subEmpresa;
-
+	@Id
+	private ObjectId id;
 	private Long codigo;
-
+	private EmpresaSerializer empresa;
 	private String carteirinha;
-
 	private String nome;
-
 	private String cpf;
-
 	private Date dataNascimento;
-
 	private Date dataInicio;
-
 	private Date dataFim;
-
 	private TipoBeneficiarioEnum tipoBeneficiario;
-
 	private SexoEnum sexo;
-
 	private GrauParentescoEnum parentesco;
-
 	private EstadoCivilEnum estadoCivil;
-
 	private Integer idade;
-
 	private PlanoSerializer plano;
 
-	private PremioSerializer premio;
+	private SeguradoSerializer titular;
+	private String nomeDaMae;
+	private Integer competencia;
 
-	private SinistroSerializer sinistro;
-
-	@Generated("SparkTools")
 	private SeguradoSerializer(Builder builder) {
-		this.subEmpresa = builder.subEmpresa;
 		this.codigo = builder.codigo;
+		this.empresa = builder.empresa;
 		this.carteirinha = builder.carteirinha;
 		this.nome = builder.nome;
 		this.cpf = builder.cpf;
@@ -57,17 +54,22 @@ public class SeguradoSerializer {
 		this.sexo = builder.sexo;
 		this.parentesco = builder.parentesco;
 		this.estadoCivil = builder.estadoCivil;
-		this.idade = StringUtils.calculaIdade(builder.dataNascimento);
+		this.idade = builder.idade;
 		this.plano = builder.plano;
-		this.premio = builder.premio;
-		this.sinistro = builder.sinistro;
+		this.titular = builder.titular;
+		this.nomeDaMae = builder.nomeDaMae;
+		this.competencia = builder.competencia;
 	}
 
 	public SeguradoSerializer() {
 	}
 
-	public SubEmpresaSerializer getSubEmpresa() {
-		return subEmpresa;
+	public ObjectId getId() {
+		return id;
+	}
+
+	public EmpresaSerializer getEmpresa() {
+		return empresa;
 	}
 
 	public Long getCodigo() {
@@ -98,6 +100,10 @@ public class SeguradoSerializer {
 		return dataFim;
 	}
 
+	public void setDataFim(Date dataFim) {
+		this.dataFim = dataFim;
+	}
+
 	public TipoBeneficiarioEnum getTipoBeneficiario() {
 		return tipoBeneficiario;
 	}
@@ -122,12 +128,16 @@ public class SeguradoSerializer {
 		return plano;
 	}
 
-	public PremioSerializer getPremio() {
-		return premio;
+	public SeguradoSerializer getTitular() {
+		return titular;
 	}
 
-	public SinistroSerializer getSinistro() {
-		return sinistro;
+	public Integer getCompetencia() {
+		return competencia;
+	}
+
+	public String getNomeDaMae() {
+		return this.nomeDaMae;
 	}
 
 	/**
@@ -135,7 +145,6 @@ public class SeguradoSerializer {
 	 * 
 	 * @return created builder
 	 */
-	@Generated("SparkTools")
 	public static Builder builder() {
 		return new Builder();
 	}
@@ -143,9 +152,8 @@ public class SeguradoSerializer {
 	/**
 	 * Builder to build {@link SeguradoSerializer}.
 	 */
-	@Generated("SparkTools")
 	public static final class Builder {
-		private SubEmpresaSerializer subEmpresa;
+		private EmpresaSerializer empresa;
 		private Long codigo;
 		private String carteirinha;
 		private String nome;
@@ -158,14 +166,21 @@ public class SeguradoSerializer {
 		private GrauParentescoEnum parentesco;
 		private EstadoCivilEnum estadoCivil;
 		private PlanoSerializer plano;
-		private PremioSerializer premio;
-		private SinistroSerializer sinistro;
+		private SeguradoSerializer titular;
+		private String nomeDaMae;
+		private Integer idade;
+		private Integer competencia;
 
 		private Builder() {
 		}
 
-		public Builder withSubEmpresa(SubEmpresaSerializer subEmpresa) {
-			this.subEmpresa = subEmpresa;
+		public Builder withCompetencia(Integer competencia) {
+			this.competencia = competencia;
+			return this;
+		}
+
+		public Builder withEmpresa(EmpresaSerializer empresa) {
+			this.empresa = empresa;
 			return this;
 		}
 
@@ -191,6 +206,7 @@ public class SeguradoSerializer {
 
 		public Builder withDataNascimento(Date dataNascimento) {
 			this.dataNascimento = dataNascimento;
+			this.idade = StringUtils.calculaIdade(dataNascimento);
 			return this;
 		}
 
@@ -229,13 +245,18 @@ public class SeguradoSerializer {
 			return this;
 		}
 
-		public Builder withPremio(PremioSerializer premio) {
-			this.premio = premio;
+		public Builder withTitular(SeguradoSerializer titular) {
+			this.titular = titular;
 			return this;
 		}
 
-		public Builder withSinistro(SinistroSerializer sinistro) {
-			this.sinistro = sinistro;
+		public Builder withNomeDaMae(String nomeDaMae) {
+			this.nomeDaMae = nomeDaMae;
+			return this;
+		}
+
+		public Builder withCalculaIdade(Date dataNascimento, Date dataAtendimento) {
+			this.idade = StringUtils.calculaIdade(dataNascimento, dataAtendimento);
 			return this;
 		}
 
@@ -249,7 +270,6 @@ public class SeguradoSerializer {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
-		result = prime * result + ((subEmpresa == null) ? 0 : subEmpresa.hashCode());
 		return result;
 	}
 
@@ -266,11 +286,6 @@ public class SeguradoSerializer {
 			if (other.codigo != null)
 				return false;
 		} else if (!codigo.equals(other.codigo))
-			return false;
-		if (subEmpresa == null) {
-			if (other.subEmpresa != null)
-				return false;
-		} else if (!subEmpresa.equals(other.subEmpresa))
 			return false;
 		return true;
 	}
