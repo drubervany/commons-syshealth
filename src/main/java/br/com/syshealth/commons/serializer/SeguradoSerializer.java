@@ -1,8 +1,7 @@
 package br.com.syshealth.commons.serializer;
 
+import java.io.Serializable;
 import java.util.Date;
-
-import org.bson.types.ObjectId;
 
 import br.com.syshealth.commons.enums.EstadoCivilEnum;
 import br.com.syshealth.commons.enums.GrauParentescoEnum;
@@ -10,40 +9,49 @@ import br.com.syshealth.commons.enums.SexoEnum;
 import br.com.syshealth.commons.enums.TipoBeneficiarioEnum;
 import br.com.syshealth.commons.utils.StringUtils;
 import dev.morphia.annotations.Entity;
-import dev.morphia.annotations.Field;
 import dev.morphia.annotations.Id;
-import dev.morphia.annotations.Index;
-import dev.morphia.annotations.IndexOptions;
-import dev.morphia.annotations.Indexes;
+import dev.morphia.annotations.Reference;
 
-@Entity("segurado")
-@Indexes(@Index(fields = { @Field("codigo"), @Field("empresa") }, options = @IndexOptions(name = "index_segurado")))
-public class SeguradoSerializer {
+@Entity("segurados")
+public class SeguradoSerializer implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	private ObjectId id;
+	private SeguradoId id;
+
 	private Long codigo;
+	@Reference
 	private EmpresaSerializer empresa;
+	@Reference
+	private SubEmpresaSerializer subEmpresa;
 	private String carteirinha;
 	private String nome;
 	private String cpf;
 	private Date dataNascimento;
 	private Date dataInicio;
 	private Date dataFim;
+	@Reference
 	private TipoBeneficiarioEnum tipoBeneficiario;
+	@Reference
 	private SexoEnum sexo;
+	@Reference
 	private GrauParentescoEnum parentesco;
+	@Reference
 	private EstadoCivilEnum estadoCivil;
 	private Integer idade;
+	@Reference
 	private PlanoSerializer plano;
-
-	private SeguradoSerializer titular;
 	private String nomeDaMae;
 	private Integer competencia;
 
+	private SeguradoSerializer titular;
+
 	private SeguradoSerializer(Builder builder) {
+		this.id = new SeguradoId(builder.codigo, builder.empresa, builder.subEmpresa);
 		this.codigo = builder.codigo;
 		this.empresa = builder.empresa;
+		this.subEmpresa = builder.subEmpresa;
 		this.carteirinha = builder.carteirinha;
 		this.nome = builder.nome;
 		this.cpf = builder.cpf;
@@ -62,18 +70,6 @@ public class SeguradoSerializer {
 	}
 
 	public SeguradoSerializer() {
-	}
-
-	public ObjectId getId() {
-		return id;
-	}
-
-	public EmpresaSerializer getEmpresa() {
-		return empresa;
-	}
-
-	public Long getCodigo() {
-		return codigo;
 	}
 
 	public String getCarteirinha() {
@@ -140,6 +136,31 @@ public class SeguradoSerializer {
 		return this.nomeDaMae;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SeguradoSerializer other = (SeguradoSerializer) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+
 	/**
 	 * Creates builder to build {@link SeguradoSerializer}.
 	 * 
@@ -149,11 +170,38 @@ public class SeguradoSerializer {
 		return new Builder();
 	}
 
+	public Long getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
+	public EmpresaSerializer getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(EmpresaSerializer empresa) {
+		this.empresa = empresa;
+	}
+
+	public SubEmpresaSerializer getSubEmpresa() {
+		return subEmpresa;
+	}
+
+	public void setSubEmpresa(SubEmpresaSerializer subEmpresa) {
+		this.subEmpresa = subEmpresa;
+	}
+
 	/**
 	 * Builder to build {@link SeguradoSerializer}.
 	 */
 	public static final class Builder {
+
 		private EmpresaSerializer empresa;
+		private SubEmpresaSerializer subEmpresa;
+
 		private Long codigo;
 		private String carteirinha;
 		private String nome;
@@ -181,6 +229,11 @@ public class SeguradoSerializer {
 
 		public Builder withEmpresa(EmpresaSerializer empresa) {
 			this.empresa = empresa;
+			return this;
+		}
+
+		public Builder withSubEmpresa(SubEmpresaSerializer subEmpresa) {
+			this.subEmpresa = subEmpresa;
 			return this;
 		}
 
@@ -264,30 +317,4 @@ public class SeguradoSerializer {
 			return new SeguradoSerializer(this);
 		}
 	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		SeguradoSerializer other = (SeguradoSerializer) obj;
-		if (codigo == null) {
-			if (other.codigo != null)
-				return false;
-		} else if (!codigo.equals(other.codigo))
-			return false;
-		return true;
-	}
-
 }

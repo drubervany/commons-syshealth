@@ -1,32 +1,80 @@
 package br.com.syshealth.commons.serializer;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import br.com.syshealth.commons.enums.OperadoraEnum;
 import dev.morphia.annotations.Entity;
 import dev.morphia.annotations.Id;
 
-@Entity("empresa")
-public class EmpresaSerializer {
+@Entity("empresas")
+public class EmpresaSerializer implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
+	private EmpresaId id;
+
 	private Integer codigo;
 	private String nome;
 	private Long contrato;
-	private OperadoraEnum operadora;
-	private BigDecimal limiteTecnico;
 
-	private SubEmpresaSerializer subEmpresa;
+	private BigDecimal limiteTecnico;
 
 	public EmpresaSerializer() {
 	}
 
+	public EmpresaId getId() {
+		return id;
+	}
+
+	public void setId(EmpresaId id) {
+		this.id = id;
+	}
+
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setContrato(Long contrato) {
+		this.contrato = contrato;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		EmpresaSerializer other = (EmpresaSerializer) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+
 	private EmpresaSerializer(Builder builder) {
+		this.id = new EmpresaId(builder.codigo, builder.operadora);
 		this.codigo = builder.codigo;
-		this.subEmpresa = builder.subEmpresa;
 		this.nome = builder.nome;
 		this.contrato = builder.contrato;
-		this.operadora = builder.operadora;
+//		this.operadora = builder.operadora;
 		this.limiteTecnico = builder.limiteTecnico;
 	}
 
@@ -42,20 +90,12 @@ public class EmpresaSerializer {
 		return contrato;
 	}
 
-	public OperadoraEnum getOperadora() {
-		return operadora;
-	}
-
 	public BigDecimal getLimiteTecnico() {
 		return limiteTecnico;
 	}
 
 	public void setLimiteTecnico(BigDecimal limiteTecnico) {
 		this.limiteTecnico = limiteTecnico;
-	}
-
-	public SubEmpresaSerializer getSubEmpresa() {
-		return subEmpresa;
 	}
 
 	/**
@@ -72,7 +112,6 @@ public class EmpresaSerializer {
 	 */
 	public static final class Builder {
 		private Integer codigo;
-		private SubEmpresaSerializer subEmpresa;
 		private String nome;
 		private Long contrato;
 		private OperadoraEnum operadora;
@@ -106,44 +145,8 @@ public class EmpresaSerializer {
 			return this;
 		}
 
-		public Builder withSubEmpresa(SubEmpresaSerializer subEmpresa) {
-			this.subEmpresa = subEmpresa;
-			return this;
-		}
-
 		public EmpresaSerializer build() {
 			return new EmpresaSerializer(this);
 		}
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
-		result = prime * result + ((subEmpresa == null) ? 0 : subEmpresa.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		EmpresaSerializer other = (EmpresaSerializer) obj;
-		if (codigo == null) {
-			if (other.codigo != null)
-				return false;
-		} else if (!codigo.equals(other.codigo))
-			return false;
-		if (subEmpresa == null) {
-			if (other.subEmpresa != null)
-				return false;
-		} else if (!subEmpresa.equals(other.subEmpresa))
-			return false;
-		return true;
 	}
 }

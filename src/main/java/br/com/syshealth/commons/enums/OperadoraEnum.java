@@ -1,5 +1,7 @@
 package br.com.syshealth.commons.enums;
 
+import dev.morphia.annotations.Entity;
+
 public enum OperadoraEnum {
 	BRADESCO(1L, "Bradesco Saúde");
 	// ALLIANZ,

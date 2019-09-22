@@ -1,12 +1,18 @@
 package br.com.syshealth.commons.serializer;
 
+import java.io.Serializable;
+
 import dev.morphia.annotations.Entity;
 import dev.morphia.annotations.Id;
 
 @Entity("subEmpresa")
-public class SubEmpresaSerializer {
+public class SubEmpresaSerializer implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
+	private SubEmpresaId id;
+
 	private Integer codigo;
 	private String nome;
 
@@ -14,6 +20,7 @@ public class SubEmpresaSerializer {
 	}
 
 	private SubEmpresaSerializer(Builder builder) {
+		this.id = new SubEmpresaId(builder.codigo, builder.empresa);
 		this.codigo = builder.codigo;
 		this.nome = builder.nome;
 	}
@@ -24,6 +31,31 @@ public class SubEmpresaSerializer {
 
 	public String getNome() {
 		return nome;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SubEmpresaSerializer other = (SubEmpresaSerializer) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
 
 	/**
@@ -39,10 +71,16 @@ public class SubEmpresaSerializer {
 	 * Builder to build {@link SubEmpresaSerializer}.
 	 */
 	public static final class Builder {
+		private EmpresaSerializer empresa;
 		private Integer codigo;
 		private String nome;
 
 		private Builder() {
+		}
+
+		public Builder withEmpresa(EmpresaSerializer empresa) {
+			this.empresa = empresa;
+			return this;
 		}
 
 		public Builder withCodigo(Integer codigo) {
@@ -58,30 +96,5 @@ public class SubEmpresaSerializer {
 		public SubEmpresaSerializer build() {
 			return new SubEmpresaSerializer(this);
 		}
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		SubEmpresaSerializer other = (SubEmpresaSerializer) obj;
-		if (codigo == null) {
-			if (other.codigo != null)
-				return false;
-		} else if (!codigo.equals(other.codigo))
-			return false;
-		return true;
 	}
 }
