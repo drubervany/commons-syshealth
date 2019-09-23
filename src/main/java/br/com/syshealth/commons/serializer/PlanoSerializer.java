@@ -48,18 +48,10 @@ public class PlanoSerializer implements Serializable {
 		this.acomodacao = acomodacao;
 	}
 
-	/**
-	 * Creates builder to build {@link PlanoSerializer}.
-	 * 
-	 * @return created builder
-	 */
 	public static Builder builder() {
 		return new Builder();
 	}
 
-	/**
-	 * Builder to build {@link PlanoSerializer}.
-	 */
 	public static final class Builder {
 		private OperadoraEnum operadora;
 		private String codigo;

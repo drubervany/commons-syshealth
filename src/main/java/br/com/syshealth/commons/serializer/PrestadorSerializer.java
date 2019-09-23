@@ -3,11 +3,11 @@ package br.com.syshealth.commons.serializer;
 import dev.morphia.annotations.Entity;
 import dev.morphia.annotations.Id;
 
-@Entity("prestador")
+@Entity("prestadores")
 public class PrestadorSerializer {
 
 	@Id
-	private Long codigo;
+	private Long id;
 	
 	private String nome;
 	private String cpfCgcDoReferenciado;
@@ -16,7 +16,7 @@ public class PrestadorSerializer {
 	private EspecialidadeSerializer especialidade;
 
 	private PrestadorSerializer(Builder builder) {
-		this.codigo = builder.codigo;
+		this.id = builder.id;
 		this.nome = builder.nome;
 		this.cpfCgcDoReferenciado = builder.cpfCgcDoReferenciado;
 		this.tipoDoReferenciado = builder.tipoDoReferenciado;
@@ -24,11 +24,11 @@ public class PrestadorSerializer {
 	}
 
 	public PrestadorSerializer() {
-
 	}
 
-	public Long getCodigo() {
-		return codigo;
+	
+	public Long getId() {
+		return id;
 	}
 
 	public String getNome() {
@@ -60,7 +60,7 @@ public class PrestadorSerializer {
 	 * Builder to build {@link PrestadorSerializer}.
 	 */
 	public static final class Builder {
-		private Long codigo;
+		private Long id;
 		private String nome;
 		private String cpfCgcDoReferenciado;
 		private String tipoDoReferenciado;
@@ -70,7 +70,7 @@ public class PrestadorSerializer {
 		}
 
 		public Builder withCodigo(Long codigo) {
-			this.codigo = codigo;
+			this.id = codigo;
 			return this;
 		}
 
@@ -103,7 +103,7 @@ public class PrestadorSerializer {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((cpfCgcDoReferenciado == null) ? 0 : cpfCgcDoReferenciado.hashCode());
 		result = prime * result + ((tipoDoReferenciado == null) ? 0 : tipoDoReferenciado.hashCode());
 		return result;
@@ -118,10 +118,10 @@ public class PrestadorSerializer {
 		if (getClass() != obj.getClass())
 			return false;
 		PrestadorSerializer other = (PrestadorSerializer) obj;
-		if (codigo == null) {
-			if (other.codigo != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!codigo.equals(other.codigo))
+		} else if (!id.equals(other.id))
 			return false;
 		if (cpfCgcDoReferenciado == null) {
 			if (other.cpfCgcDoReferenciado != null)

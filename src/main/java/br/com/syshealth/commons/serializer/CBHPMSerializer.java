@@ -1,18 +1,19 @@
 package br.com.syshealth.commons.serializer;
 
-import br.com.syshealth.commons.enums.TipoEventoEnum;
 import dev.morphia.annotations.Entity;
 import dev.morphia.annotations.Id;
 
-@Entity("procedimentos")
-public class ProcedimentoSerializer {
+/**
+ * The Class Internacao.
+ * 
+ * @author Danilo.Rubervany
+ */
+@Entity("cbhpm")
+public class CBHPMSerializer {
 
 	@Id
-	private Long id;
-
-	private TipoEventoEnum tipoEvento;
-
-	private Long codigo;
+	private Long codigoCemig;
+	private Long codigoCBHMP;
 
 	private String dsEvento;
 	private String dsProcedimento;
@@ -38,9 +39,9 @@ public class ProcedimentoSerializer {
 	private Long idEvento;
 	private Long idEventoNivel1;
 
-	private ProcedimentoSerializer(Builder builder) {
-		this.id = builder.id;
-		this.codigo = builder.codigo;
+	private CBHPMSerializer(Builder builder) {
+		this.codigoCemig = builder.codigoCemig;
+		this.codigoCBHMP = builder.codigoCBHMP;
 		this.dsEvento = builder.dsEvento;
 		this.dsProcedimento = builder.dsProcedimento;
 		this.internacaoFinal = builder.internacaoFinal;
@@ -66,28 +67,20 @@ public class ProcedimentoSerializer {
 		this.idEventoNivel1 = builder.idEventoNivel1;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getCodigoCemig() {
+		return codigoCemig;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setCodigoCemig(Long codigoCemig) {
+		this.codigoCemig = codigoCemig;
 	}
 
-	public TipoEventoEnum getTipoEvento() {
-		return tipoEvento;
+	public Long getCodigoCBHMP() {
+		return codigoCBHMP;
 	}
 
-	public void setTipoEvento(TipoEventoEnum tipoEvento) {
-		this.tipoEvento = tipoEvento;
-	}
-
-	public Long getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(Long codigo) {
-		this.codigo = codigo;
+	public void setCodigoCBHMP(Long codigoCBHMP) {
+		this.codigoCBHMP = codigoCBHMP;
 	}
 
 	public String getDsEvento() {
@@ -274,13 +267,38 @@ public class ProcedimentoSerializer {
 		this.idEventoNivel1 = idEventoNivel1;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codigoCemig == null) ? 0 : codigoCemig.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CBHPMSerializer other = (CBHPMSerializer) obj;
+		if (codigoCemig == null) {
+			if (other.codigoCemig != null)
+				return false;
+		} else if (!codigoCemig.equals(other.codigoCemig))
+			return false;
+		return true;
+	}
+
 	public static Builder builder() {
 		return new Builder();
 	}
 
 	public static final class Builder {
-		private Long id;
-		private Long codigo;
+		private Long codigoCemig;
+		private Long codigoCBHMP;
 		private String dsEvento;
 		private String dsProcedimento;
 		private String internacaoFinal;
@@ -308,13 +326,13 @@ public class ProcedimentoSerializer {
 		private Builder() {
 		}
 
-		public Builder withCodigo(Long codigo) {
-			this.codigo = codigo;
+		public Builder withCodigoCemig(Long codigoCemig) {
+			this.codigoCemig = codigoCemig;
 			return this;
 		}
 
-		public Builder withId(Long id) {
-			this.codigo = id;
+		public Builder withCodigoCBHMP(Long codigoCBHMP) {
+			this.codigoCBHMP = codigoCBHMP;
 			return this;
 		}
 
@@ -433,8 +451,8 @@ public class ProcedimentoSerializer {
 			return this;
 		}
 
-		public ProcedimentoSerializer build() {
-			return new ProcedimentoSerializer(this);
+		public CBHPMSerializer build() {
+			return new CBHPMSerializer(this);
 		}
 	}
 
