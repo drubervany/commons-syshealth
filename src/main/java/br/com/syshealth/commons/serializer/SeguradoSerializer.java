@@ -5,6 +5,7 @@ import java.util.Date;
 
 import br.com.syshealth.commons.enums.EstadoCivilEnum;
 import br.com.syshealth.commons.enums.GrauParentescoEnum;
+import br.com.syshealth.commons.enums.OrigemArquivoEnum;
 import br.com.syshealth.commons.enums.SexoEnum;
 import br.com.syshealth.commons.enums.TipoBeneficiarioEnum;
 import br.com.syshealth.commons.utils.StringUtils;
@@ -44,7 +45,9 @@ public class SeguradoSerializer implements Serializable {
 	private PlanoSerializer plano;
 	private String nomeDaMae;
 	private Integer competencia;
+	private OrigemArquivoEnum origem;
 
+	@Reference
 	private SeguradoSerializer titular;
 
 	private SeguradoSerializer(Builder builder) {
@@ -67,9 +70,78 @@ public class SeguradoSerializer implements Serializable {
 		this.titular = builder.titular;
 		this.nomeDaMae = builder.nomeDaMae;
 		this.competencia = builder.competencia;
+		this.setOrigem(builder.origem);
 	}
 
 	public SeguradoSerializer() {
+	}
+
+	public SeguradoId getId() {
+		return id;
+	}
+
+	public void setId(SeguradoId id) {
+		this.id = id;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public void setCarteirinha(String carteirinha) {
+		this.carteirinha = carteirinha;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public void setDataInicio(Date dataInicio) {
+		this.dataInicio = dataInicio;
+	}
+
+	public void setTipoBeneficiario(TipoBeneficiarioEnum tipoBeneficiario) {
+		this.tipoBeneficiario = tipoBeneficiario;
+	}
+
+	public void setSexo(SexoEnum sexo) {
+		this.sexo = sexo;
+	}
+
+	public void setParentesco(GrauParentescoEnum parentesco) {
+		this.parentesco = parentesco;
+	}
+
+	public void setEstadoCivil(EstadoCivilEnum estadoCivil) {
+		this.estadoCivil = estadoCivil;
+	}
+
+	public void setIdade(Integer idade) {
+		this.idade = idade;
+	}
+
+	public void setPlano(PlanoSerializer plano) {
+		this.plano = plano;
+	}
+
+	public void setNomeDaMae(String nomeDaMae) {
+		this.nomeDaMae = nomeDaMae;
+	}
+
+	public void setCompetencia(Integer competencia) {
+		this.competencia = competencia;
+	}
+
+	public void setTitular(SeguradoSerializer titular) {
+		this.titular = titular;
 	}
 
 	public String getCarteirinha() {
@@ -194,6 +266,14 @@ public class SeguradoSerializer implements Serializable {
 		this.subEmpresa = subEmpresa;
 	}
 
+	public OrigemArquivoEnum getOrigem() {
+		return origem;
+	}
+
+	public void setOrigem(OrigemArquivoEnum origem) {
+		this.origem = origem;
+	}
+
 	/**
 	 * Builder to build {@link SeguradoSerializer}.
 	 */
@@ -218,6 +298,7 @@ public class SeguradoSerializer implements Serializable {
 		private String nomeDaMae;
 		private Integer idade;
 		private Integer competencia;
+		private OrigemArquivoEnum origem;
 
 		private Builder() {
 		}
@@ -313,8 +394,14 @@ public class SeguradoSerializer implements Serializable {
 			return this;
 		}
 
+		public Builder withOrigemArquivo(OrigemArquivoEnum origem) {
+			this.origem = origem;
+			return this;
+		}
+
 		public SeguradoSerializer build() {
 			return new SeguradoSerializer(this);
 		}
+
 	}
 }

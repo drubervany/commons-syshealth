@@ -314,7 +314,7 @@ public class ProcedimentoSerializer {
 		}
 
 		public Builder withId(Long id) {
-			this.codigo = id;
+			this.id = id;
 			return this;
 		}
 

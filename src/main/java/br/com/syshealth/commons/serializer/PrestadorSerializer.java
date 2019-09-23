@@ -69,7 +69,7 @@ public class PrestadorSerializer {
 		private Builder() {
 		}
 
-		public Builder withCodigo(Long codigo) {
+		public Builder withId(Long codigo) {
 			this.id = codigo;
 			return this;
 		}

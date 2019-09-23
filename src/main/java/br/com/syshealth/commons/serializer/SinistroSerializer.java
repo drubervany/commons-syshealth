@@ -1,13 +1,13 @@
 package br.com.syshealth.commons.serializer;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 import org.bson.types.ObjectId;
 
+import br.com.syshealth.commons.enums.FaixaEtariaEnum;
 import br.com.syshealth.commons.enums.RedeReembolsoEnum;
 import br.com.syshealth.commons.enums.SimNaoEnum;
-import br.com.syshealth.commons.serializer.SeguradoSerializer.Builder;
+import br.com.syshealth.commons.utils.StringUtils;
 import dev.morphia.annotations.Entity;
 import dev.morphia.annotations.Id;
 import dev.morphia.annotations.Reference;
@@ -17,7 +17,7 @@ public class SinistroSerializer {
 
 	@Id
 	private ObjectId id;
-	
+
 	private Integer competencia;
 
 	@Reference
@@ -26,27 +26,31 @@ public class SinistroSerializer {
 	private SubEmpresaSerializer subEmpresa;
 	@Reference
 	private SeguradoSerializer segurado;
-	
+	@Reference
+	private PrestadorSerializer prestador;
+	@Reference
+	private ProcedimentoSerializer procedimento;
+
 	private String conta;
 	private Date dataAtendimento;
 	private Date dataPagamento;
 	private String grupoDespesa;
-
-	private ProcedimentoSerializer procedimento;
-	private Integer qtdeProcedimento;
-
-	private PrestadorSerializer prestador;
-	private BigDecimal valorSinistro;
-	private BigDecimal valorRecibo;
-	private BigDecimal valorPago;
-	private BigDecimal valorInssIssFajtr;
-	private BigDecimal valorInssIssMoeda;
 	private String numDocumento;
 	private RedeReembolsoEnum redeReembolso;
 	private SimNaoEnum internado;
 	private String localAtendimento;
 	private String crmSolicitante;
 	private Long codigoDoenca;
+
+	private Integer idade;
+	private FaixaEtariaEnum faixaEtaria;
+
+	private Integer qtdeProcedimento;
+	private Double valorSinistro;
+	private Double valorRecibo;
+	private Double valorPago;
+	private Double valorInssIssFajtr;
+	private Double valorInssIssMoeda;
 
 	public SinistroSerializer() {
 	}
@@ -79,23 +83,23 @@ public class SinistroSerializer {
 		return prestador;
 	}
 
-	public BigDecimal getValorSinistro() {
+	public Double getValorSinistro() {
 		return valorSinistro;
 	}
 
-	public BigDecimal getValorRecibo() {
+	public Double getValorRecibo() {
 		return valorRecibo;
 	}
 
-	public BigDecimal getValorPago() {
+	public Double getValorPago() {
 		return valorPago;
 	}
 
-	public BigDecimal getValorInssIssFajtr() {
+	public Double getValorInssIssFajtr() {
 		return valorInssIssFajtr;
 	}
 
-	public BigDecimal getValorInssIssMoeda() {
+	public Double getValorInssIssMoeda() {
 		return valorInssIssMoeda;
 	}
 
@@ -131,7 +135,25 @@ public class SinistroSerializer {
 		return competencia;
 	}
 
+	public FaixaEtariaEnum getFaixaEtaria() {
+		return faixaEtaria;
+	}
+
+	public void setFaixaEtaria(FaixaEtariaEnum faixaEtaria) {
+		this.faixaEtaria = faixaEtaria;
+	}
+
+	public Integer getIdade() {
+		return idade;
+	}
+
+	public void setIdade(Integer idade) {
+		this.idade = idade;
+	}
+
 	private SinistroSerializer(Builder builder) {
+		this.empresa = builder.empresa;
+		this.subEmpresa = builder.subEmpresa;
 		this.competencia = builder.competencia;
 		this.segurado = builder.segurado;
 		this.conta = builder.conta;
@@ -152,6 +174,8 @@ public class SinistroSerializer {
 		this.localAtendimento = builder.localAtendimento;
 		this.crmSolicitante = builder.crmSolicitante;
 		this.codigoDoenca = builder.codigoDoenca;
+		this.idade = builder.idade;
+		this.faixaEtaria = builder.faixaEtaria;
 	}
 
 	/**
@@ -167,7 +191,7 @@ public class SinistroSerializer {
 	 * Builder to build {@link SinistroSerializer}.
 	 */
 	public static final class Builder {
-		
+
 		private EmpresaSerializer empresa;
 		private SubEmpresaSerializer subEmpresa;
 		private Integer competencia;
@@ -179,17 +203,19 @@ public class SinistroSerializer {
 		private ProcedimentoSerializer procedimento;
 		private Integer qtdeProcedimento;
 		private PrestadorSerializer prestador;
-		private BigDecimal valorSinistro;
-		private BigDecimal valorRecibo;
-		private BigDecimal valorPago;
-		private BigDecimal valorInssIssFajtr;
-		private BigDecimal valorInssIssMoeda;
+		private Double valorSinistro;
+		private Double valorRecibo;
+		private Double valorPago;
+		private Double valorInssIssFajtr;
+		private Double valorInssIssMoeda;
 		private String numDocumento;
 		private RedeReembolsoEnum redeReembolso;
 		private SimNaoEnum internado;
 		private String localAtendimento;
 		private String crmSolicitante;
 		private Long codigoDoenca;
+		private Integer idade;
+		private FaixaEtariaEnum faixaEtaria;
 
 		private Builder() {
 		}
@@ -203,7 +229,7 @@ public class SinistroSerializer {
 			this.subEmpresa = subEmpresa;
 			return this;
 		}
-		
+
 		public Builder withConta(String conta) {
 			this.conta = conta;
 			return this;
@@ -239,27 +265,27 @@ public class SinistroSerializer {
 			return this;
 		}
 
-		public Builder withValorSinistro(BigDecimal valorSinistro) {
+		public Builder withValorSinistro(Double valorSinistro) {
 			this.valorSinistro = valorSinistro;
 			return this;
 		}
 
-		public Builder withValorRecibo(BigDecimal valorRecibo) {
+		public Builder withValorRecibo(Double valorRecibo) {
 			this.valorRecibo = valorRecibo;
 			return this;
 		}
 
-		public Builder withValorPago(BigDecimal valorPago) {
+		public Builder withValorPago(Double valorPago) {
 			this.valorPago = valorPago;
 			return this;
 		}
 
-		public Builder withValorInssIssFajtr(BigDecimal valorInssIssFajtr) {
+		public Builder withValorInssIssFajtr(Double valorInssIssFajtr) {
 			this.valorInssIssFajtr = valorInssIssFajtr;
 			return this;
 		}
 
-		public Builder withValorInssIssMoeda(BigDecimal valorInssIssMoeda) {
+		public Builder withValorInssIssMoeda(Double valorInssIssMoeda) {
 			this.valorInssIssMoeda = valorInssIssMoeda;
 			return this;
 		}
@@ -305,6 +331,8 @@ public class SinistroSerializer {
 		}
 
 		public SinistroSerializer build() {
+			this.idade = StringUtils.calculaIdade(this.segurado.getDataNascimento(), this.dataAtendimento);
+			this.faixaEtaria = FaixaEtariaEnum.getFaixaEtaria(this.idade);
 			return new SinistroSerializer(this);
 		}
 	}
