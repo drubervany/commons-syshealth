@@ -15,7 +15,7 @@ public class EmpresaSerializer implements Serializable {
 	@Id
 	private EmpresaId id;
 
-	private Integer codigo;
+	private Long codigo;
 	private String nome;
 	private Long contrato;
 
@@ -28,11 +28,7 @@ public class EmpresaSerializer implements Serializable {
 		return id;
 	}
 
-	public void setId(EmpresaId id) {
-		this.id = id;
-	}
-
-	public void setCodigo(Integer codigo) {
+	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
 
@@ -78,7 +74,7 @@ public class EmpresaSerializer implements Serializable {
 		this.limiteTecnico = builder.limiteTecnico;
 	}
 
-	public Integer getCodigo() {
+	public Long getCodigo() {
 		return codigo;
 	}
 
@@ -111,7 +107,7 @@ public class EmpresaSerializer implements Serializable {
 	 * Builder to build {@link EmpresaSerializer}.
 	 */
 	public static final class Builder {
-		private Integer codigo;
+		private Long codigo;
 		private String nome;
 		private Long contrato;
 		private OperadoraEnum operadora;
@@ -120,7 +116,7 @@ public class EmpresaSerializer implements Serializable {
 		private Builder() {
 		}
 
-		public Builder withCodigo(Integer codigo) {
+		public Builder withCodigo(Long codigo) {
 			this.codigo = codigo;
 			return this;
 		}

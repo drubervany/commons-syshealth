@@ -12,7 +12,7 @@ public class EmpresaId implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Property("codigo")
-	private Integer codigo;
+	private Long codigo;
 
 	@Property("operadora")
 	private OperadoraEnum operadora;
@@ -20,7 +20,7 @@ public class EmpresaId implements Serializable {
 	public EmpresaId() {
 	}
 
-	public EmpresaId(Integer codigo, OperadoraEnum operadora) {
+	public EmpresaId(Long codigo, OperadoraEnum operadora) {
 		this.codigo = codigo;
 		this.operadora = operadora;
 	}

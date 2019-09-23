@@ -28,6 +28,10 @@ public class PlanoSerializer implements Serializable {
 		this.acomodacao = builder.acomodacao;
 	}
 
+	public PlanoId getId() {
+		return id;
+	}
+
 	public String getCodigo() {
 		return codigo;
 	}

@@ -14,7 +14,7 @@ public class SubEmpresaId implements Serializable {
 	private Integer codigo;
 
 	@Property("empresa")
-	private Integer empresa;
+	private Long empresa;
 
 	public SubEmpresaId() {
 	}

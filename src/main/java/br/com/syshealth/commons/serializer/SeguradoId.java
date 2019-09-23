@@ -13,7 +13,7 @@ public class SeguradoId implements Serializable {
 	@Property("segurado")
 	private Long segurado;
 	@Property("empresa")
-	private Integer empresa;
+	private Long empresa;
 	@Property("subEmpresa")
 	private Integer subEmpresa;
 

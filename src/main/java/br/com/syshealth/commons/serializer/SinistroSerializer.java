@@ -7,10 +7,12 @@ import org.bson.types.ObjectId;
 
 import br.com.syshealth.commons.enums.RedeReembolsoEnum;
 import br.com.syshealth.commons.enums.SimNaoEnum;
+import br.com.syshealth.commons.serializer.SeguradoSerializer.Builder;
 import dev.morphia.annotations.Entity;
 import dev.morphia.annotations.Id;
+import dev.morphia.annotations.Reference;
 
-@Entity("sinistro")
+@Entity("sinistros")
 public class SinistroSerializer {
 
 	@Id
@@ -18,6 +20,11 @@ public class SinistroSerializer {
 	
 	private Integer competencia;
 
+	@Reference
+	private EmpresaSerializer empresa;
+	@Reference
+	private SubEmpresaSerializer subEmpresa;
+	@Reference
 	private SeguradoSerializer segurado;
 	
 	private String conta;
@@ -160,6 +167,9 @@ public class SinistroSerializer {
 	 * Builder to build {@link SinistroSerializer}.
 	 */
 	public static final class Builder {
+		
+		private EmpresaSerializer empresa;
+		private SubEmpresaSerializer subEmpresa;
 		private Integer competencia;
 		private SeguradoSerializer segurado;
 		private String conta;
@@ -184,6 +194,16 @@ public class SinistroSerializer {
 		private Builder() {
 		}
 
+		public Builder withEmpresa(EmpresaSerializer empresa) {
+			this.empresa = empresa;
+			return this;
+		}
+
+		public Builder withSubEmpresa(SubEmpresaSerializer subEmpresa) {
+			this.subEmpresa = subEmpresa;
+			return this;
+		}
+		
 		public Builder withConta(String conta) {
 			this.conta = conta;
 			return this;

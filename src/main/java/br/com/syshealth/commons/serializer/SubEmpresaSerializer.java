@@ -25,6 +25,10 @@ public class SubEmpresaSerializer implements Serializable {
 		this.nome = builder.nome;
 	}
 
+	public SubEmpresaId getId() {
+		return id;
+	}
+
 	public Integer getCodigo() {
 		return codigo;
 	}
