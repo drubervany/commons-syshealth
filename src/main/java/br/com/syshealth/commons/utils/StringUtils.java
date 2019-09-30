@@ -9,6 +9,10 @@ import java.util.GregorianCalendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * @author danilo rubervany
+ *
+ */
 public class StringUtils {
 
 	private static String[] meses = { "", "Janeiro", "Fevereiro", "Mar�o", "Abril", "Maio", "Junho", "Julho",
@@ -41,18 +45,19 @@ public class StringUtils {
 		else
 			return faixa;
 	}
+	
+	public static Integer converteDataStringParaInteger(Date data, String format) {
 
-	public static Integer converteDataStringParaInteger(Date dataString) {
-
-		DateFormat sdf = new SimpleDateFormat("YYyyMMDD");
-		Date dataNascInput = null;
+		DateFormat sdf = new SimpleDateFormat(format);
+		String dataNascInput = null;
 		try {
-			dataNascInput = sdf.parse(dataString.toString());
+			dataNascInput = sdf.format(data);
 		} catch (Exception e) {
 		}
 
-		return new Integer(dataNascInput.toString());
+		return new Integer(dataNascInput);
 	}
+
 
 	public static Integer converteDataStringParaIntegerCompetencia(Date data) {
 
@@ -149,6 +154,29 @@ public class StringUtils {
 		return null;
 	}
 
+	
+	public final static Date converteCompetenciaParaDate(Integer data) {
+		try {
+			SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
+
+			String dataSinistro = data.toString();
+			String dia = "01";
+			String mes = dataSinistro.substring(4, 6);
+			String ano = dataSinistro.substring(0, 4);
+
+			dataSinistro = dia + "/" + mes + "/" + ano;
+			// System.out.println(dataSinistro);
+
+			Date dataFormatada = fmt.parse(dataSinistro);
+			// System.out.println(dataFormatada);
+
+			return dataFormatada;
+		} catch (ParseException p) {
+		}
+		return null;
+	}
+
+	
 	public final static Date converteCompetenciaUltimoDiaMes(Integer competencia) {
 		try {
 			SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");
@@ -284,5 +312,15 @@ public class StringUtils {
 		}
 
 		return Integer.parseInt(ano.toString() + lpad(mes.toString(), "0", 2));
+	}
+	
+	public static Date adicionarDia(Date dt, Integer qtdeMeses) {
+
+		Calendar c = Calendar.getInstance(); 
+		c.setTime(dt); 
+		c.add(Calendar.DATE, 1);
+		dt = c.getTime();
+		
+		return dt;
 	}
 }

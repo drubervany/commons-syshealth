@@ -3,18 +3,12 @@ package br.com.syshealth.commons.serializer;
 import dev.morphia.annotations.Entity;
 import dev.morphia.annotations.Id;
 
-/**
- * The Class Internacao.
- * 
- * @author Danilo.Rubervany
- */
 @Entity("cbhpm")
 public class CBHPMSerializer {
 
 	@Id
-	private Long codigoCemig;
-	private Long codigoCBHMP;
-
+	private Long id;
+	
 	private String dsEvento;
 	private String dsProcedimento;
 	private String internacaoFinal;
@@ -26,22 +20,24 @@ public class CBHPMSerializer {
 	private String tipoEventoApoio;
 	private String percentualPorte;
 	private String porte;
-	private String porteNumerico;
+	private Integer porteNumerico;
 	private String valorCustoOperacional;
 	private String numAux;
-	private String porteAnestesico;
+	private Integer porteAnestesico;
 	private String valorFilme;
 	private String incid;
 	private String ur;
 	private String dtAtualizacao;
 	private String tipoCEMIG;
 	private String tabela;
-	private Long idEvento;
-	private Long idEventoNivel1;
+	private Integer idEvento;
+	private Integer idEventoNivel1;
+
+	public CBHPMSerializer() {
+	}
 
 	private CBHPMSerializer(Builder builder) {
-		this.codigoCemig = builder.codigoCemig;
-		this.codigoCBHMP = builder.codigoCBHMP;
+		this.id = builder.id;
 		this.dsEvento = builder.dsEvento;
 		this.dsProcedimento = builder.dsProcedimento;
 		this.internacaoFinal = builder.internacaoFinal;
@@ -67,20 +63,12 @@ public class CBHPMSerializer {
 		this.idEventoNivel1 = builder.idEventoNivel1;
 	}
 
-	public Long getCodigoCemig() {
-		return codigoCemig;
+	public Long getId() {
+		return id;
 	}
 
-	public void setCodigoCemig(Long codigoCemig) {
-		this.codigoCemig = codigoCemig;
-	}
-
-	public Long getCodigoCBHMP() {
-		return codigoCBHMP;
-	}
-
-	public void setCodigoCBHMP(Long codigoCBHMP) {
-		this.codigoCBHMP = codigoCBHMP;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getDsEvento() {
@@ -171,11 +159,11 @@ public class CBHPMSerializer {
 		this.porte = porte;
 	}
 
-	public String getPorteNumerico() {
+	public Integer getPorteNumerico() {
 		return porteNumerico;
 	}
 
-	public void setPorteNumerico(String porteNumerico) {
+	public void setPorteNumerico(Integer porteNumerico) {
 		this.porteNumerico = porteNumerico;
 	}
 
@@ -195,11 +183,11 @@ public class CBHPMSerializer {
 		this.numAux = numAux;
 	}
 
-	public String getPorteAnestesico() {
+	public Integer getPorteAnestesico() {
 		return porteAnestesico;
 	}
 
-	public void setPorteAnestesico(String porteAnestesico) {
+	public void setPorteAnestesico(Integer porteAnestesico) {
 		this.porteAnestesico = porteAnestesico;
 	}
 
@@ -251,45 +239,20 @@ public class CBHPMSerializer {
 		this.tabela = tabela;
 	}
 
-	public Long getIdEvento() {
+	public Integer getIdEvento() {
 		return idEvento;
 	}
 
-	public void setIdEvento(Long idEvento) {
+	public void setIdEvento(Integer idEvento) {
 		this.idEvento = idEvento;
 	}
 
-	public Long getIdEventoNivel1() {
+	public Integer getIdEventoNivel1() {
 		return idEventoNivel1;
 	}
 
-	public void setIdEventoNivel1(Long idEventoNivel1) {
+	public void setIdEventoNivel1(Integer idEventoNivel1) {
 		this.idEventoNivel1 = idEventoNivel1;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((codigoCemig == null) ? 0 : codigoCemig.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		CBHPMSerializer other = (CBHPMSerializer) obj;
-		if (codigoCemig == null) {
-			if (other.codigoCemig != null)
-				return false;
-		} else if (!codigoCemig.equals(other.codigoCemig))
-			return false;
-		return true;
 	}
 
 	public static Builder builder() {
@@ -297,8 +260,7 @@ public class CBHPMSerializer {
 	}
 
 	public static final class Builder {
-		private Long codigoCemig;
-		private Long codigoCBHMP;
+		private Long id;
 		private String dsEvento;
 		private String dsProcedimento;
 		private String internacaoFinal;
@@ -310,29 +272,24 @@ public class CBHPMSerializer {
 		private String tipoEventoApoio;
 		private String percentualPorte;
 		private String porte;
-		private String porteNumerico;
+		private Integer porteNumerico;
 		private String valorCustoOperacional;
 		private String numAux;
-		private String porteAnestesico;
+		private Integer porteAnestesico;
 		private String valorFilme;
 		private String incid;
 		private String ur;
 		private String dtAtualizacao;
 		private String tipoCEMIG;
 		private String tabela;
-		private Long idEvento;
-		private Long idEventoNivel1;
+		private Integer idEvento;
+		private Integer idEventoNivel1;
 
 		private Builder() {
 		}
 
-		public Builder withCodigoCemig(Long codigoCemig) {
-			this.codigoCemig = codigoCemig;
-			return this;
-		}
-
-		public Builder withCodigoCBHMP(Long codigoCBHMP) {
-			this.codigoCBHMP = codigoCBHMP;
+		public Builder withId(Long id) {
+			this.id = id;
 			return this;
 		}
 
@@ -391,7 +348,7 @@ public class CBHPMSerializer {
 			return this;
 		}
 
-		public Builder withPorteNumerico(String porteNumerico) {
+		public Builder withPorteNumerico(Integer porteNumerico) {
 			this.porteNumerico = porteNumerico;
 			return this;
 		}
@@ -406,7 +363,7 @@ public class CBHPMSerializer {
 			return this;
 		}
 
-		public Builder withPorteAnestesico(String porteAnestesico) {
+		public Builder withPorteAnestesico(Integer porteAnestesico) {
 			this.porteAnestesico = porteAnestesico;
 			return this;
 		}
@@ -441,12 +398,12 @@ public class CBHPMSerializer {
 			return this;
 		}
 
-		public Builder withIdEvento(Long idEvento) {
+		public Builder withIdEvento(Integer idEvento) {
 			this.idEvento = idEvento;
 			return this;
 		}
 
-		public Builder withIdEventoNivel1(Long idEventoNivel1) {
+		public Builder withIdEventoNivel1(Integer idEventoNivel1) {
 			this.idEventoNivel1 = idEventoNivel1;
 			return this;
 		}

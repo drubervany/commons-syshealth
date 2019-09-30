@@ -11,7 +11,7 @@ public enum FaixaEtariaEnum {
 	FAIXA_44_48(44, 48), 
 	FAIXA_49_53(49, 53), 
 	FAIXA_54_58(54, 58), 
-	FAIXA_FINAL(59, 999);
+	FAIXA_59_FINAL(59, 999);
 
 	private Integer idadeInicio;
 	private Integer idadeFinal;
