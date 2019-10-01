@@ -402,6 +402,5 @@ public class SeguradoSerializer implements Serializable {
 		public SeguradoSerializer build() {
 			return new SeguradoSerializer(this);
 		}
-
 	}
 }

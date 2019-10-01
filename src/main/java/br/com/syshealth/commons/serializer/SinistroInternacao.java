@@ -4,7 +4,11 @@ package br.com.syshealth.commons.serializer;
 import java.util.Date;
 
 import dev.morphia.annotations.Entity;
+import dev.morphia.annotations.Field;
 import dev.morphia.annotations.Id;
+import dev.morphia.annotations.Index;
+import dev.morphia.annotations.IndexOptions;
+import dev.morphia.annotations.Indexes;
 import dev.morphia.annotations.Reference;
 
 /**
@@ -12,12 +16,16 @@ import dev.morphia.annotations.Reference;
  *
  */
 @Entity("internacoes")
+@Indexes({ @Index(fields = { 
+		@Field("segurado"),
+		@Field("dataAtendimento"),
+		@Field("dataAlta") }, options = @IndexOptions(name = "index_segurado_internado")), })
 public class SinistroInternacao {
 
 	@Id
 	private SinistroInternacaoId id;
 
-	private Integer dtCompetencia;
+	private Integer competencia;
 
 	@Reference
 	private SeguradoSerializer segurado;
@@ -25,8 +33,8 @@ public class SinistroInternacao {
 	@Reference
 	private PrestadorSerializer prestador;
 
-	private Date dtAtendimentoPrimeiro;
-	private Date dtAtendimentoUltimo;
+	private Date dataAtendimento;
+	private Date dataAlta;
 
 	@Reference
 	private ProcedimentoSerializer procedimento;
@@ -46,20 +54,20 @@ public class SinistroInternacao {
 		return id;
 	}
 
-	public Integer getDtCompetencia() {
-		return dtCompetencia;
+	public Integer getCompetencia() {
+		return competencia;
 	}
 
 	public SeguradoSerializer getSegurado() {
 		return segurado;
 	}
 
-	public Date getDtAtendimentoPrimeiro() {
-		return dtAtendimentoPrimeiro;
+	public Date getDataAtendimento() {
+		return dataAtendimento;
 	}
 
-	public Date getDtAtendimentoUltimo() {
-		return dtAtendimentoUltimo;
+	public Date getDataAlta() {
+		return dataAlta;
 	}
 
 	public ProcedimentoSerializer getProcedimento() {
@@ -99,13 +107,12 @@ public class SinistroInternacao {
 	}
 
 	private SinistroInternacao(Builder builder) {
-		this.id = new SinistroInternacaoId(builder.segurado, builder.dtAtendimentoPrimeiro,
-				builder.dtAtendimentoUltimo);
-		this.dtCompetencia = builder.dtCompetencia;
+		this.id = new SinistroInternacaoId(builder.segurado, builder.dataAtendimento, builder.dataAlta);
+		this.competencia = builder.competencia;
 		this.segurado = builder.segurado;
 		this.prestador = builder.prestador;
-		this.dtAtendimentoPrimeiro = builder.dtAtendimentoPrimeiro;
-		this.dtAtendimentoUltimo = builder.dtAtendimentoUltimo;
+		this.dataAtendimento = builder.dataAtendimento;
+		this.dataAlta = builder.dataAlta;
 		this.procedimento = builder.procedimento;
 		this.senha = builder.senha;
 		this.qtdeProcedimento = builder.qtdeProcedimento;
@@ -129,11 +136,11 @@ public class SinistroInternacao {
 	 * Builder to build {@link SinistroInternacao}.
 	 */
 	public static final class Builder {
-		private Integer dtCompetencia;
+		private Integer competencia;
 		private SeguradoSerializer segurado;
 		private PrestadorSerializer prestador;
-		private Date dtAtendimentoPrimeiro;
-		private Date dtAtendimentoUltimo;
+		private Date dataAtendimento;
+		private Date dataAlta;
 		private ProcedimentoSerializer procedimento;
 		private String senha;
 		private Integer qtdeProcedimento;
@@ -146,8 +153,8 @@ public class SinistroInternacao {
 		private Builder() {
 		}
 
-		public Builder withDtCompetencia(Integer dtCompetencia) {
-			this.dtCompetencia = dtCompetencia;
+		public Builder withCompetencia(Integer competencia) {
+			this.competencia = competencia;
 			return this;
 		}
 
@@ -161,13 +168,13 @@ public class SinistroInternacao {
 			return this;
 		}
 
-		public Builder withDtAtendimentoPrimeiro(Date dtAtendimentoPrimeiro) {
-			this.dtAtendimentoPrimeiro = dtAtendimentoPrimeiro;
+		public Builder withDataAtendimento(Date dataAtendimento) {
+			this.dataAtendimento = dataAtendimento;
 			return this;
 		}
 
-		public Builder withDtAtendimentoUltimo(Date dtAtendimentoUltimo) {
-			this.dtAtendimentoUltimo = dtAtendimentoUltimo;
+		public Builder withDataAlta(Date dataAlta) {
+			this.dataAlta = dataAlta;
 			return this;
 		}
 

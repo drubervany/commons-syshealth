@@ -3,10 +3,8 @@ package br.com.syshealth.commons.serializer;
 import java.io.Serializable;
 
 import br.com.syshealth.commons.enums.OperadoraEnum;
-import dev.morphia.annotations.Entity;
 import dev.morphia.annotations.Property;
 
-@Entity(noClassnameStored = true)
 public class EmpresaId implements Serializable {
 
 	private static final long serialVersionUID = 1L;

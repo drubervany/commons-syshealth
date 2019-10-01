@@ -10,11 +10,17 @@ import br.com.syshealth.commons.enums.SimNaoEnum;
 import br.com.syshealth.commons.enums.TipoEventoEnum;
 import br.com.syshealth.commons.utils.StringUtils;
 import dev.morphia.annotations.Entity;
+import dev.morphia.annotations.Field;
 import dev.morphia.annotations.Id;
+import dev.morphia.annotations.Index;
+import dev.morphia.annotations.IndexOptions;
+import dev.morphia.annotations.Indexes;
 import dev.morphia.annotations.NotSaved;
 import dev.morphia.annotations.Reference;
 
 @Entity("sinistros")
+@Indexes({ @Index(fields = { @Field("segurado"),
+		@Field("internado") }, options = @IndexOptions(name = "index_segurado_internado")), })
 public class SinistroSerializer {
 
 	@Id
@@ -73,6 +79,10 @@ public class SinistroSerializer {
 
 	public Date getDataAtendimentoProxima() {
 		return StringUtils.adicionarDia(this.dataAtendimento, 1);
+	}
+
+	public Date getDataAtendimentoAnterior() {
+		return StringUtils.adicionarDia(this.dataAtendimento, -1);
 	}
 
 	public Date getDataPagamento() {

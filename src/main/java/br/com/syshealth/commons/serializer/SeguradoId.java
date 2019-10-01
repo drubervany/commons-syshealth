@@ -5,7 +5,6 @@ import java.io.Serializable;
 import dev.morphia.annotations.Entity;
 import dev.morphia.annotations.Property;
 
-@Entity(noClassnameStored = true)
 public class SeguradoId implements Serializable {
 
 	private static final long serialVersionUID = 1L;

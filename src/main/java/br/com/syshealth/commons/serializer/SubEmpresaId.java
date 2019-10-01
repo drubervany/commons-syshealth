@@ -2,10 +2,8 @@ package br.com.syshealth.commons.serializer;
 
 import java.io.Serializable;
 
-import dev.morphia.annotations.Entity;
 import dev.morphia.annotations.Property;
 
-@Entity(noClassnameStored = true)
 public class SubEmpresaId implements Serializable {
 
 	private static final long serialVersionUID = 1L;

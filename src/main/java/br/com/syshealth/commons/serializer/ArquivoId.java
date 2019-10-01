@@ -3,9 +3,7 @@ package br.com.syshealth.commons.serializer;
 import java.io.Serializable;
 
 import br.com.syshealth.commons.enums.OrigemArquivoEnum;
-import dev.morphia.annotations.Entity;
 
-@Entity(noClassnameStored = true)
 public class ArquivoId implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -16,7 +14,7 @@ public class ArquivoId implements Serializable {
 
 	public ArquivoId() {
 	}
-	
+
 	public ArquivoId(OrigemArquivoEnum origem, Long apolice, Integer competencia) {
 		this.origem = origem;
 		this.apolice = apolice;
