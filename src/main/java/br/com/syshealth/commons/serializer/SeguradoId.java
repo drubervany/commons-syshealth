@@ -2,15 +2,14 @@ package br.com.syshealth.commons.serializer;
 
 import java.io.Serializable;
 
-import dev.morphia.annotations.Entity;
 import dev.morphia.annotations.Property;
 
 public class SeguradoId implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Property("segurado")
-	private Long segurado;
+	@Property("codigo")
+	private Long codigo;
 	@Property("empresa")
 	private Long empresa;
 	@Property("subEmpresa")
@@ -20,7 +19,7 @@ public class SeguradoId implements Serializable {
 	}
 
 	public SeguradoId(Long codigo, EmpresaSerializer empresa, SubEmpresaSerializer subEmpresa) {
-		this.segurado = codigo;
+		this.codigo = codigo;
 		this.empresa = empresa.getCodigo();
 		this.subEmpresa = subEmpresa.getCodigo();
 	}
@@ -29,7 +28,7 @@ public class SeguradoId implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((segurado == null) ? 0 : segurado.hashCode());
+		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
 		result = prime * result + ((empresa == null) ? 0 : empresa.hashCode());
 		result = prime * result + ((subEmpresa == null) ? 0 : subEmpresa.hashCode());
 		return result;
@@ -44,10 +43,10 @@ public class SeguradoId implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		SeguradoId other = (SeguradoId) obj;
-		if (segurado == null) {
-			if (other.segurado != null)
+		if (codigo == null) {
+			if (other.codigo != null)
 				return false;
-		} else if (!segurado.equals(other.segurado))
+		} else if (!codigo.equals(other.codigo))
 			return false;
 		if (empresa == null) {
 			if (other.empresa != null)
