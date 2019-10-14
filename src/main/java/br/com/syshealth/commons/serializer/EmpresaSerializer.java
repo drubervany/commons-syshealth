@@ -94,18 +94,10 @@ public class EmpresaSerializer implements Serializable {
 		this.limiteTecnico = limiteTecnico;
 	}
 
-	/**
-	 * Creates builder to build {@link EmpresaSerializer}.
-	 * 
-	 * @return created builder
-	 */
 	public static Builder builder() {
 		return new Builder();
 	}
 
-	/**
-	 * Builder to build {@link EmpresaSerializer}.
-	 */
 	public static final class Builder {
 		private Long codigo;
 		private String nome;

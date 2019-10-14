@@ -32,13 +32,9 @@ public class SeguradoSerializer implements Serializable {
 	private Date dataNascimento;
 	private Date dataInicio;
 	private Date dataFim;
-	@Reference
 	private TipoBeneficiarioEnum tipoBeneficiario;
-	@Reference
 	private SexoEnum sexo;
-	@Reference
 	private GrauParentescoEnum parentesco;
-	@Reference
 	private EstadoCivilEnum estadoCivil;
 	private Integer idade;
 	@Reference
