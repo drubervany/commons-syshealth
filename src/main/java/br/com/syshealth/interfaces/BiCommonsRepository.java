@@ -3,7 +3,6 @@ package br.com.syshealth.interfaces;
 import java.util.List;
 import java.util.Set;
 
-import br.com.syshealth.commons.serializer.CBHPMSerializer;
 import br.com.syshealth.commons.serializer.EmpresaSerializer;
 import br.com.syshealth.commons.serializer.PlanoSerializer;
 import br.com.syshealth.commons.serializer.PrestadorSerializer;
@@ -11,7 +10,6 @@ import br.com.syshealth.commons.serializer.ProcedimentoSerializer;
 import br.com.syshealth.commons.serializer.SeguradoSerializer;
 import br.com.syshealth.commons.serializer.SinistroSerializer;
 import br.com.syshealth.commons.serializer.SubEmpresaSerializer;
-import br.com.syshealth.file.fixed.model.SinistroMovimento;
 import dev.morphia.Datastore;
 import dev.morphia.query.Query;
 

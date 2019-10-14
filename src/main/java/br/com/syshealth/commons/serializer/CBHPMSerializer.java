@@ -1,5 +1,6 @@
 package br.com.syshealth.commons.serializer;
 
+import br.com.syshealth.commons.enums.SimNaoEnum;
 import dev.morphia.annotations.Entity;
 import dev.morphia.annotations.Id;
 
@@ -32,6 +33,7 @@ public class CBHPMSerializer {
 	private String tabela;
 	private Integer idEvento;
 	private Integer idEventoNivel1;
+	private SimNaoEnum prontoSocorro;
 
 	public CBHPMSerializer() {
 	}
@@ -61,203 +63,110 @@ public class CBHPMSerializer {
 		this.tabela = builder.tabela;
 		this.idEvento = builder.idEvento;
 		this.idEventoNivel1 = builder.idEventoNivel1;
+		this.prontoSocorro  = builder.prontoSocorro;
 	}
 
 	public Long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	public String getDsEvento() {
 		return dsEvento;
-	}
-
-	public void setDsEvento(String dsEvento) {
-		this.dsEvento = dsEvento;
 	}
 
 	public String getDsProcedimento() {
 		return dsProcedimento;
 	}
 
-	public void setDsProcedimento(String dsProcedimento) {
-		this.dsProcedimento = dsProcedimento;
-	}
-
 	public String getInternacaoFinal() {
 		return internacaoFinal;
-	}
-
-	public void setInternacaoFinal(String internacaoFinal) {
-		this.internacaoFinal = internacaoFinal;
 	}
 
 	public Long getCodigoGrupo() {
 		return codigoGrupo;
 	}
 
-	public void setCodigoGrupo(Long codigoGrupo) {
-		this.codigoGrupo = codigoGrupo;
-	}
-
 	public String getGrupo() {
 		return grupo;
-	}
-
-	public void setGrupo(String grupo) {
-		this.grupo = grupo;
 	}
 
 	public Long getCodigoSubGrupo() {
 		return codigoSubGrupo;
 	}
 
-	public void setCodigoSubGrupo(Long codigoSubGrupo) {
-		this.codigoSubGrupo = codigoSubGrupo;
-	}
-
 	public String getSubGrupo() {
 		return subGrupo;
-	}
-
-	public void setSubGrupo(String subGrupo) {
-		this.subGrupo = subGrupo;
 	}
 
 	public String getDescricaoProcedimento() {
 		return descricaoProcedimento;
 	}
 
-	public void setDescricaoProcedimento(String descricaoProcedimento) {
-		this.descricaoProcedimento = descricaoProcedimento;
-	}
-
 	public String getTipoEventoApoio() {
 		return tipoEventoApoio;
-	}
-
-	public void setTipoEventoApoio(String tipoEventoApoio) {
-		this.tipoEventoApoio = tipoEventoApoio;
 	}
 
 	public String getPercentualPorte() {
 		return percentualPorte;
 	}
 
-	public void setPercentualPorte(String percentualPorte) {
-		this.percentualPorte = percentualPorte;
-	}
-
 	public String getPorte() {
 		return porte;
-	}
-
-	public void setPorte(String porte) {
-		this.porte = porte;
 	}
 
 	public Integer getPorteNumerico() {
 		return porteNumerico;
 	}
 
-	public void setPorteNumerico(Integer porteNumerico) {
-		this.porteNumerico = porteNumerico;
-	}
-
 	public String getValorCustoOperacional() {
 		return valorCustoOperacional;
-	}
-
-	public void setValorCustoOperacional(String valorCustoOperacional) {
-		this.valorCustoOperacional = valorCustoOperacional;
 	}
 
 	public String getNumAux() {
 		return numAux;
 	}
 
-	public void setNumAux(String numAux) {
-		this.numAux = numAux;
-	}
-
 	public Integer getPorteAnestesico() {
 		return porteAnestesico;
-	}
-
-	public void setPorteAnestesico(Integer porteAnestesico) {
-		this.porteAnestesico = porteAnestesico;
 	}
 
 	public String getValorFilme() {
 		return valorFilme;
 	}
 
-	public void setValorFilme(String valorFilme) {
-		this.valorFilme = valorFilme;
-	}
-
 	public String getIncid() {
 		return incid;
-	}
-
-	public void setIncid(String incid) {
-		this.incid = incid;
 	}
 
 	public String getUr() {
 		return ur;
 	}
 
-	public void setUr(String ur) {
-		this.ur = ur;
-	}
-
 	public String getDtAtualizacao() {
 		return dtAtualizacao;
-	}
-
-	public void setDtAtualizacao(String dtAtualizacao) {
-		this.dtAtualizacao = dtAtualizacao;
 	}
 
 	public String getTipoCEMIG() {
 		return tipoCEMIG;
 	}
 
-	public void setTipoCEMIG(String tipoCEMIG) {
-		this.tipoCEMIG = tipoCEMIG;
-	}
-
 	public String getTabela() {
 		return tabela;
-	}
-
-	public void setTabela(String tabela) {
-		this.tabela = tabela;
 	}
 
 	public Integer getIdEvento() {
 		return idEvento;
 	}
 
-	public void setIdEvento(Integer idEvento) {
-		this.idEvento = idEvento;
-	}
-
 	public Integer getIdEventoNivel1() {
 		return idEventoNivel1;
 	}
 
-	public void setIdEventoNivel1(Integer idEventoNivel1) {
-		this.idEventoNivel1 = idEventoNivel1;
+	public SimNaoEnum getProntoSocorro() {
+		return prontoSocorro;
 	}
 
-	public static Builder builder() {
-		return new Builder();
-	}
+
 
 	public static final class Builder {
 		private Long id;
@@ -284,6 +193,7 @@ public class CBHPMSerializer {
 		private String tabela;
 		private Integer idEvento;
 		private Integer idEventoNivel1;
+		private SimNaoEnum prontoSocorro = SimNaoEnum.NAO;
 
 		private Builder() {
 		}
@@ -407,10 +317,13 @@ public class CBHPMSerializer {
 			this.idEventoNivel1 = idEventoNivel1;
 			return this;
 		}
+		public Builder withProntoSocorro(SimNaoEnum prontoSocorro) {
+			this.prontoSocorro = prontoSocorro;
+			return this;
+		}
 
 		public CBHPMSerializer build() {
 			return new CBHPMSerializer(this);
 		}
 	}
-
 }
